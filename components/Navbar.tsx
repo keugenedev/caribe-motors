@@ -31,7 +31,7 @@ export default function Navbar({ onOpenTestDrive }: NavbarProps) {
           <a href="#vehicules" className="text-xs font-extrabold uppercase tracking-[0.12em] text-slate-600 transition hover:text-[#0d4b8e]">Nos véhicules</a>
           <a href="#services" className="text-xs font-extrabold uppercase tracking-[0.12em] text-slate-600 transition hover:text-[#0d4b8e]">Services</a>
           <a href="#financement" className="text-xs font-extrabold uppercase tracking-[0.12em] text-slate-600 transition hover:text-[#0d4b8e]">Financement</a>
-          <a href="#apropos" className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-[0.12em] text-slate-600 transition hover:text-[#0d4b8e]"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" /></svg>À propos</a>
+          <a href="#apropos" className="text-xs font-extrabold uppercase tracking-[0.12em] text-slate-600 transition hover:text-[#0d4b8e]">À propos</a>
           <a href="#contact" className="text-xs font-extrabold uppercase tracking-[0.12em] text-slate-600 transition hover:text-[#0d4b8e]">Contact</a>
         </nav>
       </div>
