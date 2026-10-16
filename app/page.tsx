@@ -4,6 +4,7 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import CarShowcase from "@/components/CarShowcase";
 import TestDriveModal from "@/components/TestDriveModal";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const [isTestDriveOpen, setIsTestDriveOpen] = useState(false);
@@ -31,6 +32,8 @@ export default function Home() {
       <main className="flex flex-1 flex-col">
         <CarShowcase onOpenTestDrive={handleOpenTestDrive} />
       </main>
+
+      <Footer />
 
       {/* 3. Interactive Test Drive Booking Modal */}
       <TestDriveModal
