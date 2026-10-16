@@ -1,8 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;
+  --foreground: #172760;
+  --caribe-blue: #0047ab;
+  --caribe-green: #54b834;
+  --jetour-red: #e51a2c;
 }
 
 @theme inline {
@@ -12,15 +15,55 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Jetour Glow & Reflection Effects */
+.car-platform-glow {
+  background: radial-gradient(
+    ellipse 70% 35% at 50% 60%,
+    rgba(229, 26, 44, 0.10) 0%,
+    rgba(0, 71, 171, 0.10) 35%,
+    rgba(255, 255, 255, 0) 70%
+  );
+}
+
+.car-shadow-ground {
+  filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.8));
+}
+
+/* Smooth car appearance transition */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-car-swap {
+  animation: fadeInScale 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* Glassmorphism styling */
+.glass-panel {
+  background: rgba(15, 20, 30, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
