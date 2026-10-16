@@ -32,12 +32,12 @@ export default function Navbar({ onOpenTestDrive }: NavbarProps) {
           </div>
         </Link>
 
-        <nav aria-label="Navigation principale" className="ml-auto hidden items-center gap-7 xl:flex">
-          <a href="#vehicules" className="text-xs font-extrabold uppercase tracking-[0.12em] text-slate-600 transition hover:text-[#0d4b8e]">Nos véhicules</a>
-          <a href="#services" className="text-xs font-extrabold uppercase tracking-[0.12em] text-slate-600 transition hover:text-[#0d4b8e]">Services</a>
-          <a href="#financement" className="text-xs font-extrabold uppercase tracking-[0.12em] text-slate-600 transition hover:text-[#0d4b8e]">Financement</a>
-          <a href="#apropos" className="text-xs font-extrabold uppercase tracking-[0.12em] text-slate-600 transition hover:text-[#0d4b8e]">À propos</a>
-          <a href="#contact" className="text-xs font-extrabold uppercase tracking-[0.12em] text-slate-600 transition hover:text-[#0d4b8e]">Contact</a>
+        <nav aria-label="Navigation principale" className="ml-auto hidden items-center gap-8 xl:flex">
+          <a href="#vehicules" className="text-[13px] font-extrabold uppercase tracking-[0.035em] text-[#14223c] transition hover:text-[#0d4b8e]">Nos véhicules</a>
+          <a href="#services" className="text-[13px] font-extrabold uppercase tracking-[0.035em] text-[#14223c] transition hover:text-[#0d4b8e]">Services</a>
+          <a href="#financement" className="text-[13px] font-extrabold uppercase tracking-[0.035em] text-[#14223c] transition hover:text-[#0d4b8e]">Financement</a>
+          <a href="#apropos" className="text-[13px] font-extrabold uppercase tracking-[0.035em] text-[#14223c] transition hover:text-[#0d4b8e]">À propos</a>
+          <a href="#contact" className="text-[13px] font-extrabold uppercase tracking-[0.035em] text-[#14223c] transition hover:text-[#0d4b8e]">Contact</a>
         </nav>
       </div>
     </header>
