@@ -19,8 +19,8 @@ export default function Navbar({ onOpenTestDrive }: NavbarProps) {
           </Link>
           <div className="hidden h-7 w-px bg-slate-200 sm:block" />
           <div className="hidden items-center gap-2 sm:flex">
-            <div className="relative h-6 w-20">
-              <Image src="/images/jetour/jetour-logo.svg" alt="JETOUR" fill className="object-contain" sizes="80px" />
+            <div className="relative h-7 w-28">
+              <Image src="/images/jetour/jetour-logo.svg" alt="JETOUR" fill className="object-contain" sizes="112px" />
             </div>
             <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Concessionnaire officiel</span>
           </div>
