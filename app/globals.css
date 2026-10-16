@@ -5,14 +5,13 @@
   --foreground: #172760;
   --caribe-blue: #0047ab;
   --caribe-green: #54b834;
-  --jetour-red: #e51a2c;
+  --caribe-navy: #102a56;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-montserrat);
 }
 
 body {
@@ -22,11 +21,11 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom Jetour Glow & Reflection Effects */
+/* Vehicle presentation glow */
 .car-platform-glow {
   background: radial-gradient(
     ellipse 70% 35% at 50% 60%,
-    rgba(229, 26, 44, 0.10) 0%,
+    rgba(84, 184, 52, 0.10) 0%,
     rgba(0, 71, 171, 0.10) 35%,
     rgba(255, 255, 255, 0) 70%
   );
