@@ -18,7 +18,6 @@ const JETOUR_MODELS: CarModel[] = [
   { id: "t1", name: "JETOUR T1", subtitle: "SUV tout-terrain 4x4", tagline: "L’aventure sans compromis", defaultImage: "/images/jetour/t1-black.png", engine: "2.0T GDI Turbo", power: "254 ch", torque: "390 Nm", drive: "Intelligent X-WD 4x4", colors: T1_COLORS },
   { id: "t2", name: "JETOUR T2", subtitle: "Baroudeur nouvelle génération", tagline: "Dominez tous les terrains", defaultImage: "/images/jetour/model-t2.png", engine: "2.0T GDI Turbo", power: "254 ch", torque: "390 Nm", drive: "Traction intégrale 4WD" },
   { id: "dashing", name: "JETOUR DASHING", subtitle: "SUV coupé technologique", tagline: "Le design du futur", defaultImage: "/images/jetour/model-dashing.png", engine: "1.6T GDI Turbo", power: "197 ch", torque: "290 Nm", drive: "Traction avant · 7 DCT" },
-  { id: "x50", name: "JETOUR X50", subtitle: "Crossover urbain", tagline: "L’élégance en mouvement", defaultImage: "https://www.jetourhn.com/x50/car_blue_carousel.webp", engine: "1.5T Turbo", power: "156 ch", torque: "230 Nm", drive: "Traction avant · 6 DCT" },
   { id: "x70plus", name: "JETOUR X70 PLUS", subtitle: "Grand SUV familial", tagline: "L’espace pour vos projets", defaultImage: "/images/jetour/model-x70plus.png", engine: "1.6T GDI", power: "197 ch", torque: "290 Nm", drive: "7 places modulables" },
   { id: "x90plus", name: "JETOUR X90 PLUS", subtitle: "SUV exécutif premium", tagline: "Luxe & puissance", defaultImage: "/images/jetour/model-x90plus.png", engine: "2.0T GDI Turbo", power: "254 ch", torque: "390 Nm", drive: "Finition 7 places" },
 ];
