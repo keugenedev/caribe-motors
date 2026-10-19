@@ -32,7 +32,7 @@ export default function CarShowcase({ onOpenTestDrive }: CarShowcaseProps) {
   const currentColorName = hasColors ? selectedColor.name : "Teinte de présentation constructeur";
   const remoteImage = currentImage.startsWith("http");
 
-  return <section className="relative flex flex-1 flex-col justify-between overflow-hidden bg-[#f8fafc] px-4 py-4 sm:px-6 lg:px-8">
+  return <section id="vehicules" className="relative flex flex-1 flex-col justify-between overflow-hidden bg-[#f8fafc] px-4 py-4 sm:px-6 lg:px-8">
     <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"><div className="absolute left-1/2 -top-24 h-96 w-[700px] -translate-x-1/2 rounded-full bg-blue-100/70 blur-[130px]" /><div className="absolute left-1/2 top-1/2 h-[420px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-50/80 blur-[160px]" /><div className="absolute inset-0 bg-[linear-gradient(to_right,#1e3a8a08_1px,transparent_1px),linear-gradient(to_bottom,#1e3a8a08_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" /></div>
 
     <div className="mx-auto w-full max-w-7xl"><div className="flex flex-col items-center justify-between gap-4 md:flex-row md:items-end"><div className="relative h-9 w-44 translate-x-12 translate-y-3 sm:h-10 sm:w-52 sm:translate-x-16 sm:translate-y-4"><Image src="/images/jetour/jetour-wordmark.png" alt="JETOUR" fill priority className="object-contain object-left" sizes="208px" /></div>

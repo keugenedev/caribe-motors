@@ -10,7 +10,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Caribe Motors | Jetour - Drive Your Future",
+  title: "Caribe Motors",
   description: "Découvrez la nouvelle gamme Jetour chez Caribe Motors. Choisissez votre modèle et personnalisez votre couleur en direct.",
 };
 

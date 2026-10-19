@@ -2,8 +2,57 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+
+const JETOUR_MODELS = [
+  { name: "T1", image: "/images/jetour/t1-black.png" },
+  { name: "T2", image: "/images/jetour/model-t2.png" },
+  { name: "Dashing", image: "/images/jetour/model-dashing.png" },
+  { name: "X70", image: "/images/jetour/model-x70.png" },
+  { name: "X70 Plus", image: "/images/jetour/model-x70plus.png" },
+  { name: "X90 Plus", image: "/images/jetour/model-x90plus.png" },
+];
+
+const BRANDS = [
+  { name: "Jetour", image: "/images/brands/jetour.png", available: true },
+  { name: "Chery", image: "/images/brands/Chery.png" },
+  { name: "GWM", image: "/images/brands/GWM.png" },
+  { name: "Haval", image: "/images/brands/Haval.png" },
+  { name: "Tank", image: "/images/brands/Tank.png" },
+  { name: "Suzuki", image: "/images/brands/Suzuki.png" },
+  { name: "Jimny", image: "/images/brands/Jimny.png" },
+  { name: "Jeep", image: "/images/brands/Jeep.png" },
+  { name: "RAM", image: "/images/brands/Ram.png" },
+  { name: "Dodge", image: "/images/brands/Dodge.png" },
+  { name: "Chrysler", image: "/images/brands/Chrysler.png" },
+];
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const [isBrandsMenuOpen, setIsBrandsMenuOpen] = useState(false);
+  const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
+  const [isModelsOpen, setIsModelsOpen] = useState(false);
+
+  const toggleBrandsMenu = () => {
+    setIsBrandsMenuOpen((isOpen) => !isOpen);
+    setSelectedBrand(null);
+    setIsModelsOpen(false);
+  };
+
+  const openBrandsMenu = () => setIsBrandsMenuOpen(true);
+
+  const closeBrandsMenu = () => {
+    setIsBrandsMenuOpen(false);
+    setSelectedBrand(null);
+    setIsModelsOpen(false);
+  };
+
+  const previewJetourModels = () => {
+    setSelectedBrand("jetour");
+    setIsModelsOpen(true);
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white shadow-[0_8px_30px_rgba(15,23,42,0.06)]">
       <div className="hidden bg-[#102a56] text-white lg:block">
@@ -94,13 +143,88 @@ export default function Navbar() {
           </div>
         </Link>
 
-        <nav aria-label="Navigation principale" className="ml-auto hidden items-center gap-8 xl:flex">
+        <nav aria-label="Navigation principale" onMouseLeave={closeBrandsMenu} className="relative ml-auto hidden items-center gap-8 xl:flex">
           <a href="#vehicules" className="text-[15px] font-semibold tracking-normal text-[#14223c] transition hover:text-[#0d4b8e]">Nos véhicules</a>
-          <a href="#marques" className="text-[15px] font-semibold tracking-normal text-[#14223c] transition hover:text-[#0d4b8e]">Nos marques</a>
-          <a href="#services" className="text-[15px] font-semibold tracking-normal text-[#14223c] transition hover:text-[#0d4b8e]">Services</a>
+          <button
+            type="button"
+            aria-expanded={isBrandsMenuOpen}
+            aria-controls="menu-marques"
+            onClick={toggleBrandsMenu}
+            onMouseEnter={openBrandsMenu}
+            onFocus={openBrandsMenu}
+            className="inline-flex items-center gap-1 text-[15px] font-semibold tracking-normal text-[#14223c] transition hover:text-[#0d4b8e]"
+          >
+            Nos marques
+            <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" className={`h-3.5 w-3.5 transition-transform ${isBrandsMenuOpen ? "rotate-180" : ""}`}>
+              <path d="m4 6 4 4 4-4" />
+            </svg>
+          </button>
+          <Link href="/services" aria-current={pathname === "/services" ? "page" : undefined} className={`text-[15px] font-semibold tracking-normal transition hover:text-[#0d4b8e] ${pathname === "/services" ? "text-[#54b834]" : "text-[#14223c]"}`}>Services</Link>
           <a href="#financement" className="text-[15px] font-semibold tracking-normal text-[#14223c] transition hover:text-[#0d4b8e]">Financement</a>
           <a href="#apropos" className="text-[15px] font-semibold tracking-normal text-[#14223c] transition hover:text-[#0d4b8e]">À propos</a>
           <a href="#contact" className="text-[15px] font-semibold tracking-normal text-[#14223c] transition hover:text-[#0d4b8e]">Contact</a>
+          {isBrandsMenuOpen && (
+            <div id="menu-marques" className="absolute right-0 top-full z-50 w-[860px] overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-slate-900/15">
+              <div className="flex items-center justify-between p-4">
+                {BRANDS.map((brand) =>
+                  brand.available ? (
+                    <button
+                      key={brand.name}
+                      type="button"
+                      aria-label={brand.name}
+                      onMouseEnter={previewJetourModels}
+                      onFocus={previewJetourModels}
+                      onClick={previewJetourModels}
+                      className={`relative flex h-12 w-14 shrink-0 items-center justify-center rounded-xl p-2 transition ${selectedBrand === "jetour" ? "ring-2 ring-[#54b834] ring-offset-2" : "hover:bg-slate-50"}`}
+                    >
+                      <Image src={brand.image} alt={brand.name} fill sizes="56px" className="object-contain" />
+                    </button>
+                  ) : (
+                    <div key={brand.name} className="relative h-12 w-14 shrink-0 p-2">
+                      <Image src={brand.image} alt={brand.name} fill sizes="56px" className="object-contain" />
+                    </div>
+                  )
+                )}
+              </div>
+
+              {selectedBrand === "jetour" && (
+                <div className="border-t border-slate-200 px-5 py-4">
+                  <button
+                    type="button"
+                    onClick={() => setIsModelsOpen((isOpen) => !isOpen)}
+                    aria-expanded={isModelsOpen}
+                    className="flex w-full items-center justify-between text-left"
+                  >
+                    <span className="flex items-center gap-3">
+                      <span className="relative h-7 w-28">
+                        <Image src="/images/brands/jetour.png" alt="Jetour" fill sizes="80px" className="object-contain object-left" />
+                      </span>
+                      <span className="text-sm font-bold text-[#102a56]">Tous les modèles</span>
+                      <span className="text-xs font-medium text-slate-400">{JETOUR_MODELS.length}</span>
+                    </span>
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-[#1643aa]" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" className={`h-3.5 w-3.5 ${isModelsOpen ? "rotate-180" : ""}`}>
+                        <path d="m4 6 4 4 4-4" />
+                      </svg>
+                    </span>
+                  </button>
+
+                  {isModelsOpen && (
+                    <div className="mt-4 grid grid-cols-3 gap-3">
+                      {JETOUR_MODELS.map((model) => (
+                        <a key={model.name} href="#vehicules" className="rounded-xl p-2.5">
+                          <div className="relative h-20 overflow-hidden rounded-lg">
+                            <Image src={model.image} alt={`Jetour ${model.name}`} fill sizes="190px" className="object-contain" />
+                          </div>
+                          <p className="mt-2 text-xs font-bold text-[#102a56]">{model.name}</p>
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
         </nav>
       </div>
     </header>
