@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import CarShowcase from "@/components/CarShowcase";
 import TestDriveModal from "@/components/TestDriveModal";
 import Footer from "@/components/Footer";
+import BrandMarquee from "@/components/BrandMarquee";
 
 export default function Home() {
   const [isTestDriveOpen, setIsTestDriveOpen] = useState(false);
@@ -26,11 +27,12 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-[#f8fafc] text-[#172760]">
       {/* 1. Navbar with Caribe Motors Logo */}
-      <Navbar onOpenTestDrive={() => handleOpenTestDrive(modalData.model, modalData.color, modalData.image)} />
+      <Navbar />
 
-      {/* 2. Single Section: Jetour Car & Color Customizer */}
+      {/* 2. Jetour Car & Color Customizer + Nos Marques */}
       <main className="flex flex-1 flex-col">
         <CarShowcase onOpenTestDrive={handleOpenTestDrive} />
+        <BrandMarquee />
       </main>
 
       <Footer />

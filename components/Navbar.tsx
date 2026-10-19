@@ -3,11 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-interface NavbarProps {
-  onOpenTestDrive?: () => void;
-}
-
-export default function Navbar({ onOpenTestDrive }: NavbarProps) {
+export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white shadow-[0_8px_30px_rgba(15,23,42,0.06)]">
       <div className="hidden bg-[#102a56] text-white lg:block">
@@ -100,20 +96,12 @@ export default function Navbar({ onOpenTestDrive }: NavbarProps) {
 
         <nav aria-label="Navigation principale" className="ml-auto hidden items-center gap-8 xl:flex">
           <a href="#vehicules" className="text-[15px] font-semibold tracking-normal text-[#14223c] transition hover:text-[#0d4b8e]">Nos véhicules</a>
+          <a href="#marques" className="text-[15px] font-semibold tracking-normal text-[#14223c] transition hover:text-[#0d4b8e]">Nos marques</a>
           <a href="#services" className="text-[15px] font-semibold tracking-normal text-[#14223c] transition hover:text-[#0d4b8e]">Services</a>
           <a href="#financement" className="text-[15px] font-semibold tracking-normal text-[#14223c] transition hover:text-[#0d4b8e]">Financement</a>
           <a href="#apropos" className="text-[15px] font-semibold tracking-normal text-[#14223c] transition hover:text-[#0d4b8e]">À propos</a>
           <a href="#contact" className="text-[15px] font-semibold tracking-normal text-[#14223c] transition hover:text-[#0d4b8e]">Contact</a>
         </nav>
-
-        {onOpenTestDrive && (
-          <button
-            onClick={onOpenTestDrive}
-            className="hidden sm:inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#1643aa] to-[#3165da] px-4 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-md shadow-blue-200 transition hover:scale-[1.02] cursor-pointer"
-          >
-            Réserver un essai
-          </button>
-        )}
       </div>
     </header>
   );
