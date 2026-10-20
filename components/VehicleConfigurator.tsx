@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import TestDriveModal from "@/components/TestDriveModal";
 
@@ -98,25 +99,16 @@ const BRANDS: Brand[] = [
 ];
 
 export default function VehicleConfigurator() {
-  const [selectedBrandId, setSelectedBrandId] = useState<BrandId>("jetour");
-  const [selectedVehicleId, setSelectedVehicleId] = useState("t1");
-  const [selectedColor, setSelectedColor] = useState<ColorOption>(T1_COLORS[0]);
   const [isTestDriveOpen, setIsTestDriveOpen] = useState(false);
+  const [modalData, setModalData] = useState({
+    model: "Jetour T1",
+    color: "Noir Onyx",
+    image: "/images/jetour/t1-black.png",
+  });
 
-  const selectedBrand = BRANDS.find((brand) => brand.id === selectedBrandId) ?? BRANDS[0];
-  const selectedVehicle = selectedBrand.vehicles.find((vehicle) => vehicle.id === selectedVehicleId) ?? selectedBrand.vehicles[0];
-  const displayImage = selectedVehicle.colors ? selectedColor.image : selectedVehicle.image;
-  const colorName = selectedVehicle.colors ? selectedColor.name : "Couleur de présentation constructeur";
-
-  const chooseBrand = (brand: Brand) => {
-    setSelectedBrandId(brand.id);
-    setSelectedVehicleId(brand.vehicles[0].id);
-    setSelectedColor(brand.vehicles[0].colors?.[0] ?? T1_COLORS[0]);
-  };
-
-  const chooseVehicle = (vehicle: Vehicle) => {
-    setSelectedVehicleId(vehicle.id);
-    setSelectedColor(vehicle.colors?.[0] ?? T1_COLORS[0]);
+  const openTestDrive = (brand: Brand, vehicle: Vehicle, color: string, image: string) => {
+    setModalData({ model: `${brand.name} ${vehicle.name}`, color, image });
+    setIsTestDriveOpen(true);
   };
 
   return (
@@ -128,66 +120,85 @@ export default function VehicleConfigurator() {
         </div>
 
         <div className="mx-auto max-w-7xl">
-          <div className="grid items-center gap-6 lg:min-h-[410px] lg:grid-cols-[0.75fr_1.25fr]">
-            <div className="order-2 max-w-md lg:order-1">
-              <div className={`relative ${selectedBrand.id === "chery" ? "h-12 w-52" : "h-10 w-36"}`}><Image src={selectedBrand.logo} alt={selectedBrand.name} fill sizes="208px" className="object-contain object-left" /></div>
-              <p className="mt-7 text-xs font-bold uppercase tracking-[0.2em] text-[#54b834]">{selectedVehicle.category}</p>
-              {selectedVehicle.modelLogo && <div className="relative mt-4 h-8 w-40"><Image src={selectedVehicle.modelLogo} alt={selectedVehicle.name} fill sizes="160px" className="object-contain object-left" /></div>}
-              <h1 className="mt-3 text-4xl font-black tracking-tight text-[#102a56]">{selectedBrand.name} {selectedVehicle.name}</h1>
-
-              {selectedVehicle.colors && (
-                <div className="mt-7">
-                  <p className="text-sm font-bold text-slate-600">Choisissez une couleur</p>
-                  <div className="mt-3 flex flex-wrap gap-3">
-                    {selectedVehicle.colors.map((color) => {
-                      const active = selectedColor.id === color.id;
-                      return <button key={color.id} type="button" onClick={() => setSelectedColor(color)} aria-label={`Choisir ${color.name}`} aria-pressed={active} className={`flex h-11 w-11 items-center justify-center rounded-full border-2 transition-colors ${active ? "border-[#54b834]" : "border-transparent hover:border-slate-300"}`}><span className="h-8 w-8 rounded-full" style={{ backgroundColor: color.hex, border: `2px solid ${color.borderHex}` }} /></button>;
-                    })}
-                  </div>
-                  <p className="mt-3 text-sm font-semibold text-slate-500">{colorName}</p>
-                </div>
-              )}
-
-              <button type="button" onClick={() => setIsTestDriveOpen(true)} className="mt-8 rounded-xl bg-[#54b834] px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#469f2d]">Demander un essai</button>
-            </div>
-
-            <div className="relative order-1 min-h-[280px] sm:min-h-[370px] lg:order-2">
-              <div className="absolute inset-x-[12%] bottom-[17%] h-14 rounded-full bg-slate-900/15 blur-2xl" />
-              <Image src={displayImage} alt={`${selectedBrand.name} ${selectedVehicle.name} - ${colorName}`} fill priority sizes="(max-width: 1024px) 100vw, 62vw" className="object-contain drop-shadow-[0_24px_25px_rgba(15,23,42,0.2)]" />
-            </div>
-          </div>
-
-          <div className="border-t border-slate-200 pt-5">
-            <div className="flex flex-wrap items-center justify-between gap-5">
-              <div className="flex items-center gap-3">
-                <div className={`relative ${selectedBrand.id === "chery" ? "h-9 w-40" : "h-7 w-28"}`}><Image src={selectedBrand.logo} alt={selectedBrand.name} fill sizes="160px" className="object-contain object-left" /></div>
-                <span className="text-sm font-bold text-[#102a56]">Tous les modèles</span>
-                <span className="text-xs font-semibold text-slate-400">{selectedBrand.vehicles.length}</span>
-              </div>
-              <div className="flex items-center gap-4" aria-label="Changer de marque">
-                {BRANDS.map((brand) => {
-                  const active = selectedBrand.id === brand.id;
-                  return <button key={brand.id} type="button" onClick={() => chooseBrand(brand)} aria-label={`Afficher ${brand.name}`} aria-pressed={active} className={`relative h-10 w-28 border-b-2 px-2 transition-all ${active ? "border-[#54b834] opacity-100" : "border-transparent opacity-65 hover:opacity-100"}`}><Image src={brand.logo} alt={brand.name} fill sizes="112px" className="object-contain" /></button>;
-                })}
-              </div>
-            </div>
-
-            <div className="mt-4 flex items-end gap-5 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" aria-label={`Gamme ${selectedBrand.name}`}>
-              {selectedBrand.vehicles.map((vehicle) => {
-                const active = selectedVehicle.id === vehicle.id;
-                return (
-                  <button key={vehicle.id} type="button" onClick={() => chooseVehicle(vehicle)} aria-pressed={active} className={`shrink-0 border-b-2 px-1 pb-2 text-left transition-colors ${active ? "border-[#54b834] text-[#102a56]" : "border-transparent text-slate-500 hover:border-slate-300 hover:text-[#102a56]"}`}>
-                    <span className="relative block h-20 w-32 sm:h-24 sm:w-40"><Image src={vehicle.image} alt={`${selectedBrand.name} ${vehicle.name}`} fill sizes="160px" className="object-contain" /></span>
-                    {vehicle.modelLogo ? <span className="relative mt-1 block h-5 w-24"><Image src={vehicle.modelLogo} alt={vehicle.name} fill sizes="96px" className="object-contain object-left" /></span> : <span className="mt-1 block text-sm font-bold">{vehicle.name}</span>}
-                  </button>
-                );
-              })}
-            </div>
+          <div className="space-y-16 lg:space-y-20">
+            {BRANDS.map((brand) => <BrandCollectionView key={brand.id} brand={brand} onOpenTestDrive={openTestDrive} />)}
           </div>
         </div>
       </section>
 
-      <TestDriveModal isOpen={isTestDriveOpen} onClose={() => setIsTestDriveOpen(false)} carModel={`${selectedBrand.name} ${selectedVehicle.name}`} carColor={colorName} carImage={displayImage} />
+      <TestDriveModal isOpen={isTestDriveOpen} onClose={() => setIsTestDriveOpen(false)} carModel={modalData.model} carColor={modalData.color} carImage={modalData.image} />
     </>
   );
+}
+
+function BrandCollectionView({ brand, onOpenTestDrive }: { brand: Brand; onOpenTestDrive: (brand: Brand, vehicle: Vehicle, color: string, image: string) => void }) {
+  const [selectedVehicle, setSelectedVehicle] = useState<Vehicle>(brand.vehicles[0]);
+  const [selectedColor, setSelectedColor] = useState<ColorOption | undefined>(brand.vehicles[0].colors?.[0]);
+  const displayImage = selectedVehicle.colors ? selectedColor?.image ?? selectedVehicle.image : selectedVehicle.image;
+  const colorName = selectedVehicle.colors ? selectedColor?.name ?? "Couleur de présentation constructeur" : "Couleur de présentation constructeur";
+
+  const chooseVehicle = (vehicle: Vehicle) => {
+    setSelectedVehicle(vehicle);
+    setSelectedColor(vehicle.colors?.[0]);
+  };
+
+  return (
+    <section aria-label={`Collection ${brand.name}`} className="border-t border-slate-200 pt-8 first:border-t-0 first:pt-0 lg:pt-10">
+      <div className="grid items-center gap-6 lg:min-h-[410px] lg:grid-cols-[0.75fr_1.25fr]">
+        <div className="order-2 max-w-md lg:order-1 lg:self-start lg:pt-6">
+          <div className={`relative ${brand.id === "chery" ? "h-12 w-52" : "h-10 w-36"}`}><Image src={brand.logo} alt={brand.name} fill sizes="208px" className="object-contain object-left" /></div>
+          <p className="mt-7 text-xs font-bold uppercase tracking-[0.2em] text-[#54b834]">{selectedVehicle.category}</p>
+          {selectedVehicle.modelLogo && <div className={`relative mt-1 h-7 w-40 ${selectedVehicle.id === "himla" ? "-ml-6" : ""}`}><Image src={selectedVehicle.modelLogo} alt={selectedVehicle.name} fill sizes="160px" className="object-contain object-left" /></div>}
+          <h2 className="mt-1 text-4xl font-black tracking-tight text-[#102a56]">{brand.name} {selectedVehicle.name}</h2>
+
+          {selectedVehicle.colors && (
+            <div className="mt-7">
+              <p className="text-sm font-bold text-slate-600">Choisissez une couleur</p>
+              <div className="mt-3 flex flex-wrap gap-3">
+                {selectedVehicle.colors.map((color) => {
+                  const active = selectedColor?.id === color.id;
+                  return <button key={color.id} type="button" onClick={() => setSelectedColor(color)} aria-label={`Choisir ${color.name}`} aria-pressed={active} className={`flex h-11 w-11 items-center justify-center rounded-full border-2 transition-colors ${active ? "border-[#54b834]" : "border-transparent hover:border-slate-300"}`}><span className="h-8 w-8 rounded-full" style={{ backgroundColor: color.hex, border: `2px solid ${color.borderHex}` }} /></button>;
+                })}
+              </div>
+              <p className="mt-3 text-sm font-semibold text-slate-500">{colorName}</p>
+            </div>
+          )}
+
+          <div className="mt-8 flex flex-col items-start gap-3">
+            <button type="button" onClick={() => onOpenTestDrive(brand, selectedVehicle, colorName, displayImage)} className="rounded-none bg-[#54b834] px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#469f2d]">Demander un essai</button>
+            {brand.id === "chery" && <Link href={`/vehicules/chery/${selectedVehicle.id}`} className="inline-flex text-sm font-bold text-[#102a56] underline decoration-[#54b834] decoration-2 underline-offset-4">Découvrir le Chery {selectedVehicle.name}</Link>}
+          </div>
+        </div>
+
+        <div className="relative order-1 min-h-[280px] sm:min-h-[370px] lg:order-2">
+          <div className="absolute inset-x-[12%] bottom-[17%] h-14 rounded-full bg-slate-900/15 blur-2xl" />
+          <Image src={displayImage} alt={`${brand.name} ${selectedVehicle.name} - ${colorName}`} fill priority sizes="(max-width: 1024px) 100vw, 62vw" className="object-contain drop-shadow-[0_24px_25px_rgba(15,23,42,0.2)]" />
+        </div>
+      </div>
+
+      <div className="mt-5 border-t border-slate-200 pt-5">
+        <div className="flex items-center gap-3">
+          <div className={`relative ${brand.id === "chery" ? "h-9 w-40" : "h-7 w-28"}`}><Image src={brand.logo} alt={brand.name} fill sizes="160px" className="object-contain object-left" /></div>
+          <span className="text-sm font-bold text-[#102a56]">Tous les modèles</span>
+          <span className="text-xs font-semibold text-slate-400">{brand.vehicles.length}</span>
+        </div>
+
+        <div className="mt-4 hidden items-end gap-5 overflow-x-auto pb-2 lg:flex [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {brand.vehicles.map((vehicle) => <VehicleThumbnail key={vehicle.id} brand={brand} vehicle={vehicle} active={selectedVehicle.id === vehicle.id} onClick={() => chooseVehicle(vehicle)} />)}
+        </div>
+
+        <div className="mt-3 border-t border-slate-200 lg:hidden">
+          {brand.vehicles.map((vehicle) => <VehicleMobileRow key={vehicle.id} brand={brand} vehicle={vehicle} active={selectedVehicle.id === vehicle.id} onClick={() => chooseVehicle(vehicle)} />)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function VehicleThumbnail({ brand, vehicle, active, onClick }: { brand: Brand; vehicle: Vehicle; active: boolean; onClick: () => void }) {
+  return <button type="button" onClick={onClick} aria-pressed={active} className={`shrink-0 border-b-2 px-1 pb-2 text-left transition-colors ${active ? "border-[#54b834] text-[#102a56]" : "border-transparent text-slate-500 hover:border-slate-300 hover:text-[#102a56]"}`}><span className="relative block h-20 w-32 sm:h-24 sm:w-40"><Image src={vehicle.image} alt={`${brand.name} ${vehicle.name}`} fill sizes="160px" className="object-contain" /></span>{vehicle.modelLogo ? <span className={`relative mt-1 block h-5 w-24 ${vehicle.id === "himla" ? "-ml-5" : ""}`}><Image src={vehicle.modelLogo} alt={vehicle.name} fill sizes="96px" className="object-contain object-left" /></span> : <span className="mt-1 block text-sm font-bold">{vehicle.name}</span>}</button>;
+}
+
+function VehicleMobileRow({ brand, vehicle, active, onClick }: { brand: Brand; vehicle: Vehicle; active: boolean; onClick: () => void }) {
+  return <button type="button" onClick={onClick} aria-pressed={active} className={`flex w-full items-center gap-3 border-b border-slate-200 py-3 text-left transition-colors ${active ? "bg-white/70" : "hover:bg-white/50"}`}><span className="relative block h-20 w-32 shrink-0"><Image src={vehicle.image} alt={`${brand.name} ${vehicle.name}`} fill sizes="128px" className="object-contain" /></span><span className="min-w-0 flex-1"><span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-[#54b834]">{vehicle.category}</span>{vehicle.modelLogo ? <span className={`relative mt-1 block h-6 w-32 ${vehicle.id === "himla" ? "-ml-5" : ""}`}><Image src={vehicle.modelLogo} alt={vehicle.name} fill sizes="128px" className="object-contain object-left" /></span> : <span className="mt-1 block text-base font-black text-[#102a56]">{vehicle.name}</span>}<span className="mt-1 block text-sm font-bold text-[#102a56]">{brand.name} {vehicle.name}</span></span></button>;
 }

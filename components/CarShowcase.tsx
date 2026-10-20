@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -140,7 +140,7 @@ export default function CarShowcase({ onOpenTestDrive }: CarShowcaseProps) {
   useEffect(() => {
     const intervalId = window.setInterval(() => {
       setCatalogIndex((currentIndex) => (currentIndex + 1) % CATALOG.length);
-    }, 4800);
+    }, 8000);
 
     return () => window.clearInterval(intervalId);
   }, []);
@@ -148,6 +148,14 @@ export default function CarShowcase({ onOpenTestDrive }: CarShowcaseProps) {
   const selectBrand = (brandId: BrandId) => {
     const firstIndex = CATALOG.findIndex((item) => item.brand.id === brandId);
     if (firstIndex >= 0) setCatalogIndex(firstIndex);
+  };
+
+  const showPreviousVehicle = () => {
+    setCatalogIndex((currentIndex) => (currentIndex - 1 + CATALOG.length) % CATALOG.length);
+  };
+
+  const showNextVehicle = () => {
+    setCatalogIndex((currentIndex) => (currentIndex + 1) % CATALOG.length);
   };
 
   return (
@@ -185,6 +193,8 @@ export default function CarShowcase({ onOpenTestDrive }: CarShowcaseProps) {
                 <Image src={currentCatalog.vehicle.image} alt={`${currentCatalog.brand.name} ${currentCatalog.vehicle.name}`} fill priority sizes="(max-width: 1024px) 100vw, 55vw" className="object-contain object-center drop-shadow-[0_28px_28px_rgba(0,0,0,0.35)]" />
               </motion.div>
             </AnimatePresence>
+            <button type="button" onClick={showPreviousVehicle} aria-label="Voir le véhicule précédent" className="absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full border border-slate-200 bg-white/90 p-2.5 text-[#102a56] shadow-sm transition-colors hover:border-[#54b834] hover:text-[#54b834] sm:p-3"><ChevronLeft className="h-5 w-5" /></button>
+            <button type="button" onClick={showNextVehicle} aria-label="Voir le véhicule suivant" className="absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-full border border-slate-200 bg-white/90 p-2.5 text-[#102a56] shadow-sm transition-colors hover:border-[#54b834] hover:text-[#54b834] sm:p-3"><ChevronRight className="h-5 w-5" /></button>
           </div>
         </div>
       </div>
