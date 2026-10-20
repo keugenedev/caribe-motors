@@ -33,7 +33,7 @@ export default function TestDriveModal({
 
   const handleWhatsAppDirect = () => {
     const message = `Bonjour Caribe Motors, je souhaite réserver un essai routier pour le *${carModel}* (Couleur: ${carColor}).\nNom: ${name || "Client"}\nTéléphone: ${phone || "Non précisé"}\nShowroom: ${showroom}\nDate: ${date || "Dès que possible"}`;
-    const url = `https://wa.me/50937000000?text=${encodeURIComponent(message)}`;
+    const url = `https://wa.me/50929403001?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   };
 

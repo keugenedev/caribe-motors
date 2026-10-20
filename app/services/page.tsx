@@ -67,12 +67,12 @@ export default function ServicesPage() {
       <Navbar />
 
       <main className="flex-1">
-        <section className="relative overflow-hidden bg-[#102a56] px-4 py-16 text-white sm:px-6 sm:py-20 lg:px-8">
+        <section className="relative overflow-hidden bg-[#102a56] px-4 py-12 text-white sm:px-6 sm:py-14 lg:px-8">
           <Image src="/images/services-hero.png" alt="Atelier Caribe Motors" fill priority sizes="100vw" className="object-cover object-[center_10%]" />
           <div className="absolute inset-0 bg-[#102a56]/75" />
           <div className="relative mx-auto max-w-7xl">
             <h1 className="max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl">Nos services automobiles</h1>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-blue-100 sm:text-lg">
+            <p className="mt-4 max-w-2xl text-base leading-7 text-blue-100 sm:text-lg">
               De l&apos;entretien courant à la réparation, notre équipe prend soin de votre véhicule avec professionnalisme.
             </p>
           </div>
