@@ -43,14 +43,19 @@ const models: HomeModel[] = [
 export default function HomeVehicleHero() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const model = models[currentIndex];
+  const brandModels = models.filter((item) => item.brand === model.brand);
   const changeModel = (direction: -1 | 1) => setCurrentIndex((index) => (index + direction + models.length) % models.length);
+  const selectModel = (selectedModel: HomeModel) => {
+    const index = models.indexOf(selectedModel);
+    if (index >= 0) setCurrentIndex(index);
+  };
 
   return (
     <section aria-label="Présentation des véhicules" className="relative isolate h-[calc(100svh-76px)] overflow-hidden bg-[#fcfcfc] lg:h-[calc(100svh-120px)]">
       <AnimatePresence mode="wait">
         <motion.div key={`${model.brand}-${model.name}`} initial="initial" animate="animate" exit="exit" className="absolute inset-0">
           <motion.div aria-hidden="true" variants={{ initial: { opacity: 0, scale: 0.92 }, animate: { opacity: 0.055, scale: 1, transition: { duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] } }, exit: { opacity: 0, transition: { duration: 0.3, ease: "easeInOut" } } }} className="pointer-events-none absolute inset-x-0 top-[43%] h-32 -translate-y-1/2 sm:h-48 lg:h-64"><Image src={model.brandLogo} alt="" fill sizes="100vw" className="object-contain" /></motion.div>
-          <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col px-5 py-14 sm:px-8 sm:py-16 lg:px-10">
+          <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col px-5 py-14 pb-28 sm:px-8 sm:py-16 sm:pb-32 lg:px-10">
             <motion.header variants={{ initial: { opacity: 0, y: -18 }, animate: { opacity: 1, y: 0, transition: { duration: 0.65, ease: "easeOut" } }, exit: { opacity: 0, y: -8, transition: { duration: 0.3, ease: "easeInOut" } } }} className="text-center">
               <div className="relative mx-auto h-14 w-60 sm:h-16 sm:w-72"><Image src={model.modelLogo ?? model.brandLogo} alt={`${model.brand} ${model.name}`} fill priority sizes="288px" className="object-contain" /></div>
               <div className="mt-7 flex justify-center gap-4 text-sm font-light text-slate-500 sm:text-base"><span>{model.category}</span><span className="text-slate-300">|</span><span>Design</span><span className="text-slate-300">|</span><span>Performance</span></div>
@@ -59,8 +64,16 @@ export default function HomeVehicleHero() {
           </div>
         </motion.div>
       </AnimatePresence>
-      <button type="button" onClick={() => changeModel(-1)} aria-label="Véhicule précédent" className="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full border border-slate-200 bg-white/90 p-3 text-[#102a56] shadow-sm transition-colors hover:border-[#54b834] hover:text-[#54b834] sm:left-8"><ChevronLeft className="h-5 w-5" /></button>
-      <button type="button" onClick={() => changeModel(1)} aria-label="Véhicule suivant" className="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full border border-slate-200 bg-white/90 p-3 text-[#102a56] shadow-sm transition-colors hover:border-[#54b834] hover:text-[#54b834] sm:right-8"><ChevronRight className="h-5 w-5" /></button>
+      <button type="button" onClick={() => changeModel(-1)} aria-label="Véhicule précédent" className="absolute left-8 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/95 text-slate-500 shadow-sm transition-colors hover:border-[#54b834] hover:text-[#54b834] md:left-[clamp(4rem,11vw,14rem)] md:top-[58%]"><ChevronLeft className="h-5 w-5" /></button>
+      <button type="button" onClick={() => changeModel(1)} aria-label="Véhicule suivant" className="absolute right-8 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/95 text-[#102a56] shadow-sm transition-colors hover:border-[#54b834] hover:text-[#54b834] md:right-[clamp(4rem,11vw,14rem)] md:top-[58%]"><ChevronRight className="h-5 w-5" /></button>
+      <div aria-label={`Modèles ${model.brand}`} className="absolute inset-x-0 bottom-0 z-20 bg-[#fcfcfc] px-3 py-2.5 sm:px-6">
+        <div className="mx-auto flex max-w-6xl items-center justify-center gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-5">
+          {brandModels.map((brandModel) => {
+            const active = brandModel === model;
+            return <button key={`${brandModel.brand}-${brandModel.name}`} type="button" onClick={() => selectModel(brandModel)} aria-label={`Afficher ${brandModel.brand} ${brandModel.name}`} aria-pressed={active} className={`relative h-14 w-24 shrink-0 transition-all sm:h-20 sm:w-36 ${active ? "opacity-100" : "opacity-35 hover:opacity-70"}`}><Image src={brandModel.image} alt={`${brandModel.brand} ${brandModel.name}`} fill sizes="144px" className="object-contain" /></button>;
+          })}
+        </div>
+      </div>
     </section>
   );
 }

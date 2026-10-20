@@ -19,6 +19,10 @@ interface Brand {
   vehicles?: Vehicle[];
 }
 
+const vehicleHref = (brand: Brand, vehicle: Vehicle) => brand.id === "chery"
+  ? `/vehicules/chery/${vehicle.name.toLowerCase().replace(/\s+/g, "-")}`
+  : `/vehicules#${brand.id}`;
+
 const BRANDS: Brand[] = [
   {
     id: "jetour",
@@ -187,7 +191,7 @@ export default function Navbar() {
                   {isModelsOpen && (
                     <div className="mt-4 grid grid-cols-3 gap-3">
                       {activeBrand.vehicles.map((vehicle) => (
-                        <Link key={vehicle.name} href="/vehicules" className="rounded-xl p-2.5 transition-colors hover:bg-slate-50">
+                        <Link key={vehicle.name} href={vehicleHref(activeBrand, vehicle)} onClick={closeBrandsMenu} className="rounded-xl p-2.5 transition-colors hover:bg-slate-50">
                           <div className="relative h-20 overflow-hidden"><Image src={vehicle.image} alt={`${activeBrand.name} ${vehicle.name}`} fill sizes="220px" className="object-contain" /></div>
                           {vehicle.modelLogo ? <span className="relative mt-2 block h-5 w-24"><Image src={vehicle.modelLogo} alt={vehicle.name} fill sizes="96px" className="object-contain object-left" /></span> : <p className="mt-2 text-xs font-bold text-[#102a56]">{vehicle.name}</p>}
                         </Link>
@@ -231,7 +235,7 @@ export default function Navbar() {
                   {activeMobileBrand?.vehicles && (
                     <div className="mt-4 grid grid-cols-2 gap-2">
                       {activeMobileBrand.vehicles.map((vehicle) => (
-                        <Link key={vehicle.name} href="/vehicules" onClick={closeMobileMenu} className="rounded-xl bg-white p-2.5">
+                        <Link key={vehicle.name} href={vehicleHref(activeMobileBrand, vehicle)} onClick={closeMobileMenu} className="rounded-xl bg-white p-2.5">
                           <div className="relative h-16"><Image src={vehicle.image} alt={`${activeMobileBrand.name} ${vehicle.name}`} fill sizes="150px" className="object-contain" /></div>
                           {vehicle.modelLogo ? <span className="relative mt-1 block h-4 w-20"><Image src={vehicle.modelLogo} alt={vehicle.name} fill sizes="80px" className="object-contain object-left" /></span> : <p className="mt-1 text-xs font-bold text-[#102a56]">{vehicle.name}</p>}
                         </Link>
