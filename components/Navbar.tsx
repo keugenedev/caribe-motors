@@ -21,7 +21,9 @@ interface Brand {
 
 const vehicleHref = (brand: Brand, vehicle: Vehicle) => brand.id === "chery"
   ? `/vehicules/chery/${vehicle.name.toLowerCase().replace(/\s+/g, "-")}`
-  : `/vehicules#${brand.id}`;
+  : brand.id === "jetour"
+    ? `/vehicules/jetour/${vehicle.name === "Zongheng G700" ? "g700" : vehicle.name.toLowerCase().replace(/\s+/g, "-")}`
+    : `/vehicules#${brand.id}`;
 
 const BRANDS: Brand[] = [
   {
@@ -31,10 +33,12 @@ const BRANDS: Brand[] = [
     vehicles: [
       { name: "T1", image: "/images/jetour/model-t1.png" },
       { name: "T2", image: "/images/jetour/model-t2.png" },
+      { name: "X50", image: "/images/jetour/models/x50/x50-001-7.png" },
       { name: "Dashing", image: "/images/jetour/model-dashing.png" },
-      { name: "X70", image: "/images/jetour/model-x70.png" },
+      { name: "X70 FL", image: "/images/jetour/model-x70.png" },
       { name: "X70 Plus", image: "/images/jetour/model-x70plus.png" },
       { name: "X90 Plus", image: "/images/jetour/model-x90plus.png" },
+      { name: "Zongheng G700", image: "/images/jetour/models/g700/g700-009-2.jpg" },
     ],
   },
   {
@@ -154,9 +158,7 @@ export default function Navbar() {
         <nav aria-label="Navigation principale" onMouseLeave={closeBrandsMenu} className="relative ml-auto hidden items-center gap-8 xl:flex">
           <Link href="/" aria-current={pathname === "/" ? "page" : undefined} className={`text-[15px] font-semibold transition hover:text-[#0d4b8e] ${pathname === "/" ? "text-[#54b834]" : "text-[#14223c]"}`}>Accueil</Link>
           <Link href="/vehicules" aria-current={pathname === "/vehicules" ? "page" : undefined} className={`text-[15px] font-semibold transition hover:text-[#0d4b8e] ${pathname === "/vehicules" ? "text-[#54b834]" : "text-[#14223c]"}`}>Nos véhicules</Link>
-          <button type="button" aria-expanded={isBrandsMenuOpen} aria-controls="menu-marques" onClick={() => setIsBrandsMenuOpen((open) => !open)} onMouseEnter={() => setIsBrandsMenuOpen(true)} onFocus={() => setIsBrandsMenuOpen(true)} className="inline-flex items-center gap-1 text-[15px] font-semibold text-[#14223c] transition hover:text-[#0d4b8e]">
-            Nos marques <ChevronDown aria-hidden="true" className={`h-4 w-4 transition-transform ${isBrandsMenuOpen ? "rotate-180" : ""}`} />
-          </button>
+          <div className="inline-flex items-center gap-1"><Link href="/marques" onMouseEnter={() => setIsBrandsMenuOpen(true)} onFocus={() => setIsBrandsMenuOpen(true)} className={`text-[15px] font-semibold transition hover:text-[#0d4b8e] ${pathname === "/marques" ? "text-[#54b834]" : "text-[#14223c]"}`}>Nos marques</Link><button type="button" aria-label="Ouvrir le menu des marques" aria-expanded={isBrandsMenuOpen} aria-controls="menu-marques" onClick={() => setIsBrandsMenuOpen((open) => !open)} onMouseEnter={() => setIsBrandsMenuOpen(true)} onFocus={() => setIsBrandsMenuOpen(true)} className={`transition hover:text-[#0d4b8e] ${pathname === "/marques" ? "text-[#54b834]" : "text-[#14223c]"}`}><ChevronDown aria-hidden="true" className={`h-4 w-4 transition-transform ${isBrandsMenuOpen ? "rotate-180" : ""}`} /></button></div>
           <Link href="/services" aria-current={pathname === "/services" ? "page" : undefined} className={`text-[15px] font-semibold transition hover:text-[#0d4b8e] ${pathname === "/services" ? "text-[#54b834]" : "text-[#14223c]"}`}>Services</Link>
           <Link href="/contact" aria-current={pathname === "/contact" ? "page" : undefined} className={`text-[15px] font-semibold transition hover:text-[#0d4b8e] ${pathname === "/contact" ? "text-[#54b834]" : "text-[#14223c]"}`}>Contact</Link>
 
@@ -226,6 +228,7 @@ export default function Navbar() {
 
               {isMobileBrandsOpen && (
                 <div className="rounded-2xl bg-slate-50 p-3">
+                  <Link href="/marques" onClick={closeMobileMenu} className="mb-3 block rounded-xl bg-white px-3 py-2 text-center text-xs font-bold text-[#54b834] shadow-sm">Voir toutes nos marques</Link>
                   <div className="grid grid-cols-4 gap-2">
                     {BRANDS.filter((brand) => brand.vehicles?.length).map((brand) => {
                       const isActive = mobileSelectedBrand === brand.id;

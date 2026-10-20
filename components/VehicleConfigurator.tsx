@@ -47,10 +47,12 @@ const BRANDS: Brand[] = [
     vehicles: [
       { id: "t1", name: "T1", category: "SUV tout-terrain", image: "/images/jetour/t1-black.png", colors: T1_COLORS },
       { id: "t2", name: "T2", category: "4x4 nouvelle génération", image: "/images/jetour/model-t2.png" },
+      { id: "x50", name: "X50", category: "SUV compact", image: "/images/jetour/models/x50/x50-001-7.png" },
       { id: "dashing", name: "Dashing", category: "SUV coupé", image: "/images/jetour/model-dashing.png" },
-      { id: "x70", name: "X70", category: "SUV familial", image: "/images/jetour/model-x70.png" },
-      { id: "x70plus", name: "X70 Plus", category: "SUV familial", image: "/images/jetour/model-x70plus.png" },
-      { id: "x90plus", name: "X90 Plus", category: "Grand SUV", image: "/images/jetour/model-x90plus.png" },
+      { id: "x70-fl", name: "X70 FL", category: "SUV familial", image: "/images/jetour/model-x70.png" },
+      { id: "x70-plus", name: "X70 Plus", category: "SUV familial", image: "/images/jetour/model-x70plus.png" },
+      { id: "x90-plus", name: "X90 Plus", category: "Grand SUV", image: "/images/jetour/model-x90plus.png" },
+      { id: "g700", name: "Zongheng G700", category: "Grand SUV d’aventure", image: "/images/jetour/models/g700/g700-009-2.jpg" },
     ],
   },
   {
@@ -167,6 +169,7 @@ function BrandCollectionView({ brand, onOpenTestDrive }: { brand: Brand; onOpenT
           <div className="mt-8 flex flex-col items-start gap-3">
             <button type="button" onClick={() => onOpenTestDrive(brand, selectedVehicle, colorName, displayImage)} className="rounded-none bg-[#54b834] px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#469f2d]">Demander un essai</button>
             {brand.id === "chery" && <Link href={`/vehicules/chery/${selectedVehicle.id}`} className="inline-flex text-sm font-bold text-[#102a56] underline decoration-[#54b834] decoration-2 underline-offset-4">Découvrir le Chery {selectedVehicle.name}</Link>}
+            {brand.id === "jetour" && <Link href={`/vehicules/jetour/${selectedVehicle.id}`} className="inline-flex text-sm font-bold text-[#102a56] underline decoration-[#54b834] decoration-2 underline-offset-4">Découvrir le Jetour {selectedVehicle.name}</Link>}
           </div>
         </div>
 

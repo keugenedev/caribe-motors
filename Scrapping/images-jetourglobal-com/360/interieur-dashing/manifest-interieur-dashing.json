@@ -1,0 +1,22 @@
+[
+  {
+    "name": "interior-standard",
+    "source": "https://jetourglobal.com/JETOUR-DASHING-720/files/assets/107782141/1/JETOUR_JX65_international_neishi.jpg"
+  },
+  {
+    "name": "interior-light-standard",
+    "source": "https://jetourglobal.com/JETOUR-DASHING-720/files/assets/108623073/1/JETOUR_JX65_international_neishi_light.jpg"
+  },
+  {
+    "name": "interior-4k",
+    "source": "https://jetourglobal.com/JETOUR-DASHING-720/files/assets/109494088/1/JETOUR_JX65_international_neishi_4K.jpg"
+  },
+  {
+    "name": "interior-light-4k",
+    "source": "https://jetourglobal.com/JETOUR-DASHING-720/files/assets/109494089/1/JETOUR_JX65_international_neishi_light_4K.jpg"
+  },
+  {
+    "name": "interior-3d-model",
+    "source": "https://jetourglobal.com/JETOUR-DASHING-720/files/assets/106371765/1/neishi.glb"
+  }
+]

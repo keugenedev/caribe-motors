@@ -1,0 +1,516 @@
+{
+  "createdAt": "2026-10-20T19:48:44.179Z",
+  "description": "Images classées selon leur dossier source /img/<modele>/.",
+  "files": [
+    {
+      "model": "X70-Plus",
+      "file": "X70-Plus/x70-plus-001-1.png",
+      "source": "https://jetourhaiti.com/img/x70plus/1.png"
+    },
+    {
+      "model": "X70-Plus",
+      "file": "X70-Plus/x70-plus-002-2.png",
+      "source": "https://jetourhaiti.com/img/x70plus/2.png"
+    },
+    {
+      "model": "T1",
+      "file": "T1/t1-001-1.jpg",
+      "source": "https://jetourhaiti.com/img/t1/1.jpg"
+    },
+    {
+      "model": "T1",
+      "file": "T1/t1-002-13.avif",
+      "source": "https://jetourhaiti.com/img/t1/13.avif"
+    },
+    {
+      "model": "T2",
+      "file": "T2/t2-001-1.avif",
+      "source": "https://jetourhaiti.com/img/t2/1.avif"
+    },
+    {
+      "model": "X50",
+      "file": "X50/x50-001-7.png",
+      "source": "https://jetourhaiti.com/img/x50/7.png"
+    },
+    {
+      "model": "Dashing",
+      "file": "Dashing/dashing-001-16.avif",
+      "source": "https://jetourhaiti.com/img/dashing/16.avif"
+    },
+    {
+      "model": "X70-FL",
+      "file": "X70-FL/x70-fl-001-1.png",
+      "source": "https://jetourhaiti.com/img/x70/1.png"
+    },
+    {
+      "model": "X70-Plus",
+      "file": "X70-Plus/x70-plus-003-couleur.png",
+      "source": "https://jetourhaiti.com/img/x70plus/couleur.png"
+    },
+    {
+      "model": "X90-Plus",
+      "file": "X90-Plus/x90-plus-001-couleur.png",
+      "source": "https://jetourhaiti.com/img/x90plus/couleur.png"
+    },
+    {
+      "model": "G700",
+      "file": "G700/g700-001-5.avif",
+      "source": "https://jetourhaiti.com/img/g700/5.avif"
+    },
+    {
+      "model": "T1",
+      "file": "T1/t1-003-14.avif",
+      "source": "https://jetourhaiti.com/img/t1/14.avif"
+    },
+    {
+      "model": "T1",
+      "file": "T1/t1-004-15.avif",
+      "source": "https://jetourhaiti.com/img/t1/15.avif"
+    },
+    {
+      "model": "T1",
+      "file": "T1/t1-005-16.avif",
+      "source": "https://jetourhaiti.com/img/t1/16.avif"
+    },
+    {
+      "model": "T1",
+      "file": "T1/t1-006-interieur.jpg",
+      "source": "https://jetourhaiti.com/img/t1/interieur.jpg"
+    },
+    {
+      "model": "T2",
+      "file": "T2/t2-002-2.avif",
+      "source": "https://jetourhaiti.com/img/t2/2.avif"
+    },
+    {
+      "model": "T2",
+      "file": "T2/t2-003-3.avif",
+      "source": "https://jetourhaiti.com/img/t2/3.avif"
+    },
+    {
+      "model": "T2",
+      "file": "T2/t2-004-4.avif",
+      "source": "https://jetourhaiti.com/img/t2/4.avif"
+    },
+    {
+      "model": "T2",
+      "file": "T2/t2-005-5.avif",
+      "source": "https://jetourhaiti.com/img/t2/5.avif"
+    },
+    {
+      "model": "T2",
+      "file": "T2/t2-006-interieur.webp",
+      "source": "https://jetourhaiti.com/img/t2/interieur.webp"
+    },
+    {
+      "model": "X50",
+      "file": "X50/x50-002-8.png",
+      "source": "https://jetourhaiti.com/img/x50/8.png"
+    },
+    {
+      "model": "X50",
+      "file": "X50/x50-003-9.png",
+      "source": "https://jetourhaiti.com/img/x50/9.png"
+    },
+    {
+      "model": "X50",
+      "file": "X50/x50-004-10.png",
+      "source": "https://jetourhaiti.com/img/x50/10.png"
+    },
+    {
+      "model": "X50",
+      "file": "X50/x50-005-13.png",
+      "source": "https://jetourhaiti.com/img/x50/13.png"
+    },
+    {
+      "model": "X50",
+      "file": "X50/x50-006-interieur.avif",
+      "source": "https://jetourhaiti.com/img/x50/interieur.avif"
+    },
+    {
+      "model": "Dashing",
+      "file": "Dashing/dashing-002-17.avif",
+      "source": "https://jetourhaiti.com/img/dashing/17.avif"
+    },
+    {
+      "model": "Dashing",
+      "file": "Dashing/dashing-003-18.avif",
+      "source": "https://jetourhaiti.com/img/dashing/18.avif"
+    },
+    {
+      "model": "Dashing",
+      "file": "Dashing/dashing-004-19.avif",
+      "source": "https://jetourhaiti.com/img/dashing/19.avif"
+    },
+    {
+      "model": "Dashing",
+      "file": "Dashing/dashing-005-15.png",
+      "source": "https://jetourhaiti.com/img/dashing/15.png"
+    },
+    {
+      "model": "X70-FL",
+      "file": "X70-FL/x70-fl-002-2.png",
+      "source": "https://jetourhaiti.com/img/x70/2.png"
+    },
+    {
+      "model": "X70-FL",
+      "file": "X70-FL/x70-fl-003-3.png",
+      "source": "https://jetourhaiti.com/img/x70/3.png"
+    },
+    {
+      "model": "X70-FL",
+      "file": "X70-FL/x70-fl-004-interieur.png",
+      "source": "https://jetourhaiti.com/img/x70/interieur.png"
+    },
+    {
+      "model": "X70-Plus",
+      "file": "X70-Plus/x70-plus-004-interieur.png",
+      "source": "https://jetourhaiti.com/img/x70plus/interieur.png"
+    },
+    {
+      "model": "X90-Plus",
+      "file": "X90-Plus/x90-plus-002-interieur.png",
+      "source": "https://jetourhaiti.com/img/x90plus/interieur.png"
+    },
+    {
+      "model": "G700",
+      "file": "G700/g700-002-6.avif",
+      "source": "https://jetourhaiti.com/img/g700/6.avif"
+    },
+    {
+      "model": "G700",
+      "file": "G700/g700-003-7.avif",
+      "source": "https://jetourhaiti.com/img/g700/7.avif"
+    },
+    {
+      "model": "G700",
+      "file": "G700/g700-004-interieur.avif",
+      "source": "https://jetourhaiti.com/img/g700/interieur.avif"
+    },
+    {
+      "model": "G700",
+      "file": "G700/g700-005-9.avif",
+      "source": "https://jetourhaiti.com/img/g700/9.avif"
+    },
+    {
+      "model": "G700",
+      "file": "G700/g700-006-10.avif",
+      "source": "https://jetourhaiti.com/img/g700/10.avif"
+    },
+    {
+      "model": "G700",
+      "file": "G700/g700-007-11.avif",
+      "source": "https://jetourhaiti.com/img/g700/11.avif"
+    },
+    {
+      "model": "T1",
+      "file": "T1/t1-007-2.jpg",
+      "source": "https://jetourhaiti.com/img/t1/2.jpg"
+    },
+    {
+      "model": "T1",
+      "file": "T1/t1-008-3.jpg",
+      "source": "https://jetourhaiti.com/img/t1/3.jpg"
+    },
+    {
+      "model": "T1",
+      "file": "T1/t1-009-4.jpg",
+      "source": "https://jetourhaiti.com/img/t1/4.jpg"
+    },
+    {
+      "model": "T1",
+      "file": "T1/t1-010-5.jpg",
+      "source": "https://jetourhaiti.com/img/t1/5.jpg"
+    },
+    {
+      "model": "T1",
+      "file": "T1/t1-011-6.jpg",
+      "source": "https://jetourhaiti.com/img/t1/6.jpg"
+    },
+    {
+      "model": "T1",
+      "file": "T1/t1-012-7.jpg",
+      "source": "https://jetourhaiti.com/img/t1/7.jpg"
+    },
+    {
+      "model": "T1",
+      "file": "T1/t1-013-10.jpg",
+      "source": "https://jetourhaiti.com/img/t1/10.jpg"
+    },
+    {
+      "model": "T1",
+      "file": "T1/t1-014-11.jpg",
+      "source": "https://jetourhaiti.com/img/t1/11.jpg"
+    },
+    {
+      "model": "T1",
+      "file": "T1/t1-015-12.jpg",
+      "source": "https://jetourhaiti.com/img/t1/12.jpg"
+    },
+    {
+      "model": "T2",
+      "file": "T2/t2-007-10.webp",
+      "source": "https://jetourhaiti.com/img/t2/10.webp"
+    },
+    {
+      "model": "T2",
+      "file": "T2/t2-008-11.webp",
+      "source": "https://jetourhaiti.com/img/t2/11.webp"
+    },
+    {
+      "model": "T2",
+      "file": "T2/t2-009-12.avif",
+      "source": "https://jetourhaiti.com/img/t2/12.avif"
+    },
+    {
+      "model": "T2",
+      "file": "T2/t2-010-13.webp",
+      "source": "https://jetourhaiti.com/img/t2/13.webp"
+    },
+    {
+      "model": "T2",
+      "file": "T2/t2-011-14.webp",
+      "source": "https://jetourhaiti.com/img/t2/14.webp"
+    },
+    {
+      "model": "T2",
+      "file": "T2/t2-012-15.webp",
+      "source": "https://jetourhaiti.com/img/t2/15.webp"
+    },
+    {
+      "model": "T2",
+      "file": "T2/t2-013-16.webp",
+      "source": "https://jetourhaiti.com/img/t2/16.webp"
+    },
+    {
+      "model": "T2",
+      "file": "T2/t2-014-7.webp",
+      "source": "https://jetourhaiti.com/img/t2/7.webp"
+    },
+    {
+      "model": "T2",
+      "file": "T2/t2-015-8.webp",
+      "source": "https://jetourhaiti.com/img/t2/8.webp"
+    },
+    {
+      "model": "T2",
+      "file": "T2/t2-016-9.webp",
+      "source": "https://jetourhaiti.com/img/t2/9.webp"
+    },
+    {
+      "model": "X50",
+      "file": "X50/x50-007-1.avif",
+      "source": "https://jetourhaiti.com/img/x50/1.avif"
+    },
+    {
+      "model": "X50",
+      "file": "X50/x50-008-2.avif",
+      "source": "https://jetourhaiti.com/img/x50/2.avif"
+    },
+    {
+      "model": "X50",
+      "file": "X50/x50-009-3.avif",
+      "source": "https://jetourhaiti.com/img/x50/3.avif"
+    },
+    {
+      "model": "X50",
+      "file": "X50/x50-010-4.avif",
+      "source": "https://jetourhaiti.com/img/x50/4.avif"
+    },
+    {
+      "model": "X50",
+      "file": "X50/x50-011-5.webp",
+      "source": "https://jetourhaiti.com/img/x50/5.webp"
+    },
+    {
+      "model": "X50",
+      "file": "X50/x50-012-6.webp",
+      "source": "https://jetourhaiti.com/img/x50/6.webp"
+    },
+    {
+      "model": "Dashing",
+      "file": "Dashing/dashing-006-14.png",
+      "source": "https://jetourhaiti.com/img/dashing/14.png"
+    },
+    {
+      "model": "Dashing",
+      "file": "Dashing/dashing-007-1.webp",
+      "source": "https://jetourhaiti.com/img/dashing/1.webp"
+    },
+    {
+      "model": "Dashing",
+      "file": "Dashing/dashing-008-2.webp",
+      "source": "https://jetourhaiti.com/img/dashing/2.webp"
+    },
+    {
+      "model": "Dashing",
+      "file": "Dashing/dashing-009-3.webp",
+      "source": "https://jetourhaiti.com/img/dashing/3.webp"
+    },
+    {
+      "model": "Dashing",
+      "file": "Dashing/dashing-010-4.webp",
+      "source": "https://jetourhaiti.com/img/dashing/4.webp"
+    },
+    {
+      "model": "Dashing",
+      "file": "Dashing/dashing-011-5.webp",
+      "source": "https://jetourhaiti.com/img/dashing/5.webp"
+    },
+    {
+      "model": "Dashing",
+      "file": "Dashing/dashing-012-6.webp",
+      "source": "https://jetourhaiti.com/img/dashing/6.webp"
+    },
+    {
+      "model": "Dashing",
+      "file": "Dashing/dashing-013-7.webp",
+      "source": "https://jetourhaiti.com/img/dashing/7.webp"
+    },
+    {
+      "model": "Dashing",
+      "file": "Dashing/dashing-014-8.webp",
+      "source": "https://jetourhaiti.com/img/dashing/8.webp"
+    },
+    {
+      "model": "Dashing",
+      "file": "Dashing/dashing-015-9.webp",
+      "source": "https://jetourhaiti.com/img/dashing/9.webp"
+    },
+    {
+      "model": "Dashing",
+      "file": "Dashing/dashing-016-10.webp",
+      "source": "https://jetourhaiti.com/img/dashing/10.webp"
+    },
+    {
+      "model": "Dashing",
+      "file": "Dashing/dashing-017-11.webp",
+      "source": "https://jetourhaiti.com/img/dashing/11.webp"
+    },
+    {
+      "model": "Dashing",
+      "file": "Dashing/dashing-018-12.webp",
+      "source": "https://jetourhaiti.com/img/dashing/12.webp"
+    },
+    {
+      "model": "X70-FL",
+      "file": "X70-FL/x70-fl-005-4.avif",
+      "source": "https://jetourhaiti.com/img/x70/4.avif"
+    },
+    {
+      "model": "X70-FL",
+      "file": "X70-FL/x70-fl-006-5.avif",
+      "source": "https://jetourhaiti.com/img/x70/5.avif"
+    },
+    {
+      "model": "X70-FL",
+      "file": "X70-FL/x70-fl-007-6.avif",
+      "source": "https://jetourhaiti.com/img/x70/6.avif"
+    },
+    {
+      "model": "X70-FL",
+      "file": "X70-FL/x70-fl-008-7.avif",
+      "source": "https://jetourhaiti.com/img/x70/7.avif"
+    },
+    {
+      "model": "X70-FL",
+      "file": "X70-FL/x70-fl-009-8.avif",
+      "source": "https://jetourhaiti.com/img/x70/8.avif"
+    },
+    {
+      "model": "X70-FL",
+      "file": "X70-FL/x70-fl-010-9.avif",
+      "source": "https://jetourhaiti.com/img/x70/9.avif"
+    },
+    {
+      "model": "X70-FL",
+      "file": "X70-FL/x70-fl-011-10.avif",
+      "source": "https://jetourhaiti.com/img/x70/10.avif"
+    },
+    {
+      "model": "X70-FL",
+      "file": "X70-FL/x70-fl-012-11.avif",
+      "source": "https://jetourhaiti.com/img/x70/11.avif"
+    },
+    {
+      "model": "X70-FL",
+      "file": "X70-FL/x70-fl-013-12.avif",
+      "source": "https://jetourhaiti.com/img/x70/12.avif"
+    },
+    {
+      "model": "X70-Plus",
+      "file": "X70-Plus/x70-plus-005-3.png",
+      "source": "https://jetourhaiti.com/img/x70plus/3.png"
+    },
+    {
+      "model": "X70-Plus",
+      "file": "X70-Plus/x70-plus-006-4.png",
+      "source": "https://jetourhaiti.com/img/x70plus/4.png"
+    },
+    {
+      "model": "X70-Plus",
+      "file": "X70-Plus/x70-plus-007-5.webp",
+      "source": "https://jetourhaiti.com/img/x70plus/5.webp"
+    },
+    {
+      "model": "X70-Plus",
+      "file": "X70-Plus/x70-plus-008-6.webp",
+      "source": "https://jetourhaiti.com/img/x70plus/6.webp"
+    },
+    {
+      "model": "X70-Plus",
+      "file": "X70-Plus/x70-plus-009-7.webp",
+      "source": "https://jetourhaiti.com/img/x70plus/7.webp"
+    },
+    {
+      "model": "X90-Plus",
+      "file": "X90-Plus/x90-plus-003-1.png",
+      "source": "https://jetourhaiti.com/img/x90plus/1.png"
+    },
+    {
+      "model": "X90-Plus",
+      "file": "X90-Plus/x90-plus-004-2.png",
+      "source": "https://jetourhaiti.com/img/x90plus/2.png"
+    },
+    {
+      "model": "X90-Plus",
+      "file": "X90-Plus/x90-plus-005-3.png",
+      "source": "https://jetourhaiti.com/img/x90plus/3.png"
+    },
+    {
+      "model": "X90-Plus",
+      "file": "X90-Plus/x90-plus-006-4.png",
+      "source": "https://jetourhaiti.com/img/x90plus/4.png"
+    },
+    {
+      "model": "X90-Plus",
+      "file": "X90-Plus/x90-plus-007-5.png",
+      "source": "https://jetourhaiti.com/img/x90plus/5.png"
+    },
+    {
+      "model": "X90-Plus",
+      "file": "X90-Plus/x90-plus-008-6.png",
+      "source": "https://jetourhaiti.com/img/x90plus/6.png"
+    },
+    {
+      "model": "X90-Plus",
+      "file": "X90-Plus/x90-plus-009-7.png",
+      "source": "https://jetourhaiti.com/img/x90plus/7.png"
+    },
+    {
+      "model": "G700",
+      "file": "G700/g700-008-11.png",
+      "source": "https://jetourhaiti.com/img/g700/11.png"
+    },
+    {
+      "model": "G700",
+      "file": "G700/g700-009-2.jpg",
+      "source": "https://jetourhaiti.com/img/g700/2.jpg"
+    },
+    {
+      "model": "G700",
+      "file": "G700/g700-010-3.jpg",
+      "source": "https://jetourhaiti.com/img/g700/3.jpg"
+    }
+  ]
+}
