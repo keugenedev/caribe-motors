@@ -23,7 +23,7 @@ const vehicleHref = (brand: Brand, vehicle: Vehicle) => brand.id === "chery"
   ? `/vehicules/chery/${vehicle.name.toLowerCase().replace(/\s+/g, "-")}`
   : brand.id === "jetour"
     ? `/vehicules/jetour/${vehicle.name === "Zongheng G700" ? "g700" : vehicle.name.toLowerCase().replace(/\s+/g, "-")}`
-    : `/vehicules#${brand.id}`;
+    : "/marques";
 
 const BRANDS: Brand[] = [
   {
@@ -157,7 +157,6 @@ export default function Navbar() {
 
         <nav aria-label="Navigation principale" onMouseLeave={closeBrandsMenu} className="relative ml-auto hidden items-center gap-8 xl:flex">
           <Link href="/" aria-current={pathname === "/" ? "page" : undefined} className={`text-[15px] font-semibold transition hover:text-[#0d4b8e] ${pathname === "/" ? "text-[#54b834]" : "text-[#14223c]"}`}>Accueil</Link>
-          <Link href="/vehicules" aria-current={pathname === "/vehicules" ? "page" : undefined} className={`text-[15px] font-semibold transition hover:text-[#0d4b8e] ${pathname === "/vehicules" ? "text-[#54b834]" : "text-[#14223c]"}`}>Nos véhicules</Link>
           <div className="inline-flex items-center gap-1"><Link href="/marques" onMouseEnter={() => setIsBrandsMenuOpen(true)} onFocus={() => setIsBrandsMenuOpen(true)} className={`text-[15px] font-semibold transition hover:text-[#0d4b8e] ${pathname === "/marques" ? "text-[#54b834]" : "text-[#14223c]"}`}>Nos marques</Link><button type="button" aria-label="Ouvrir le menu des marques" aria-expanded={isBrandsMenuOpen} aria-controls="menu-marques" onClick={() => setIsBrandsMenuOpen((open) => !open)} onMouseEnter={() => setIsBrandsMenuOpen(true)} onFocus={() => setIsBrandsMenuOpen(true)} className={`transition hover:text-[#0d4b8e] ${pathname === "/marques" ? "text-[#54b834]" : "text-[#14223c]"}`}><ChevronDown aria-hidden="true" className={`h-4 w-4 transition-transform ${isBrandsMenuOpen ? "rotate-180" : ""}`} /></button></div>
           <Link href="/services" aria-current={pathname === "/services" ? "page" : undefined} className={`text-[15px] font-semibold transition hover:text-[#0d4b8e] ${pathname === "/services" ? "text-[#54b834]" : "text-[#14223c]"}`}>Services</Link>
           <Link href="/contact" aria-current={pathname === "/contact" ? "page" : undefined} className={`text-[15px] font-semibold transition hover:text-[#0d4b8e] ${pathname === "/contact" ? "text-[#54b834]" : "text-[#14223c]"}`}>Contact</Link>
@@ -221,7 +220,6 @@ export default function Navbar() {
             </div>
             <nav aria-label="Navigation mobile" className="mt-5 space-y-1">
               <Link href="/" onClick={closeMobileMenu} className="block rounded-xl px-4 py-3 text-sm font-bold text-[#102a56] hover:bg-slate-50">Accueil</Link>
-              <Link href="/vehicules" onClick={closeMobileMenu} className="block rounded-xl px-4 py-3 text-sm font-bold text-[#102a56] hover:bg-slate-50">Nos véhicules</Link>
               <button type="button" onClick={() => setIsMobileBrandsOpen((open) => !open)} aria-expanded={isMobileBrandsOpen} className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-bold text-[#102a56] hover:bg-slate-50">
                 Nos marques <ChevronDown className={`h-4 w-4 transition-transform ${isMobileBrandsOpen ? "rotate-180" : ""}`} />
               </button>
