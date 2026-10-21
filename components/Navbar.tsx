@@ -191,14 +191,14 @@ export default function Navbar() {
                   </button>
 
                   {isModelsOpen && (
-                    <div className="mt-4 grid grid-cols-3 gap-3">
+                    <><div className="mt-4 grid grid-cols-3 gap-3">
                       {activeBrand.vehicles.map((vehicle) => (
                         <Link key={vehicle.name} href={vehicleHref(activeBrand, vehicle)} onClick={closeBrandsMenu} className="rounded-xl p-2.5 transition-colors hover:bg-slate-50">
                           <div className="relative h-20 overflow-hidden"><Image src={vehicle.image} alt={`${activeBrand.name} ${vehicle.name}`} fill sizes="220px" className="object-contain" /></div>
                           {vehicle.modelLogo ? <span className="relative mt-2 block h-5 w-24"><Image src={vehicle.modelLogo} alt={vehicle.name} fill sizes="96px" className="object-contain object-left" /></span> : <p className="mt-2 text-xs font-bold text-[#102a56]">{vehicle.name}</p>}
                         </Link>
                       ))}
-                    </div>
+                    </div>{activeBrand.id === "jetour" && <Link href="/vehicules/jetour/experience" onClick={closeBrandsMenu} className="mt-3 block rounded-xl bg-[#102a56] px-4 py-3 text-center text-xs font-bold text-white transition hover:bg-[#1643aa]">Explorer Jetour en 2D et 720°</Link>}</>
                   )}
                 </div>
               )}
