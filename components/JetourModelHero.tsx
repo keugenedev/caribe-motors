@@ -17,7 +17,7 @@ export default function JetourModelHero({ name, category, description, image }: 
         <Image src="/images/jetour/jetour-wordmark.png" alt="" fill sizes="100vw" className="object-contain" />
       </motion.div>
 
-      <div className="relative z-10 mx-auto flex min-h-[570px] max-w-7xl flex-col px-5 py-14 sm:min-h-[650px] sm:px-8 sm:py-16 lg:min-h-[720px] lg:px-10">
+      <div className="relative z-10 mx-auto flex min-h-[570px] max-w-7xl flex-col px-5 py-14 sm:min-h-[650px] sm:px-8 sm:py-16 md:min-h-[760px] lg:min-h-[820px] lg:px-10">
         <motion.header initial={{ opacity: 0, y: -18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: "easeOut" }} className="text-center">
           <div className="relative mx-auto h-8 w-32 sm:h-10 sm:w-40">
             <Image src="/images/jetour/jetour-logo.svg" alt="Jetour" fill sizes="160px" className="object-contain" />
@@ -29,9 +29,9 @@ export default function JetourModelHero({ name, category, description, image }: 
           <p className="mx-auto mt-5 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">{description}</p>
         </motion.header>
 
-        <motion.div initial={{ opacity: 0, y: 96, scale: 0.9 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 1.9, delay: 0.55, ease: [0.16, 1, 0.3, 1] }} className="relative mx-auto mt-auto h-52 w-full max-w-2xl sm:h-64 lg:h-72">
+        <motion.div initial={{ opacity: 0, y: 96, scale: 0.9 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 1.9, delay: 0.55, ease: [0.16, 1, 0.3, 1] }} className="relative mx-auto mt-auto h-52 w-full max-w-2xl sm:h-72 md:h-[360px] md:max-w-4xl lg:h-[430px] lg:max-w-5xl">
           <div className="absolute inset-x-[20%] bottom-[10%] h-9 rounded-full bg-slate-900/15 blur-xl" />
-          <Image src={image} alt={`Jetour ${name}`} fill priority sizes="(max-width: 768px) 100vw, 672px" className="object-contain object-bottom drop-shadow-[0_20px_20px_rgba(15,23,42,0.14)]" />
+          <Image src={image} alt={`Jetour ${name}`} fill priority sizes="(max-width: 767px) 100vw, (max-width: 1023px) 896px, 1024px" className="object-contain object-bottom drop-shadow-[0_24px_24px_rgba(15,23,42,0.16)]" />
         </motion.div>
       </div>
     </section>
