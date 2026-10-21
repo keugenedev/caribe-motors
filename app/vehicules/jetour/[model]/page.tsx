@@ -99,15 +99,15 @@ export default async function JetourModelPage({ params }: { params: Promise<{ mo
         <JetourModelHero name={car.name} category={car.category} description={car.description} image={car.gallery[0]} />
         <JetourSpecifications specifications={specifications} />
         <JetourGallery name={car.name} images={car.gallery} />
-        <section className="bg-[#07131d] px-5 py-16 text-white sm:px-8 sm:py-24 lg:px-10">
+        <section className="bg-[#f8fafc] px-5 py-16 sm:px-8 sm:py-24 lg:px-10">
           <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 lg:flex-row lg:items-end">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#83d6de]">Jetour chez Caribe Motors</p>
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#54b834]">Jetour chez Caribe Motors</p>
               <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-5xl">Votre prochaine aventure commence ici.</h2>
-              <p className="mt-5 max-w-xl text-base leading-8 text-slate-300">Contactez notre équipe pour connaître la disponibilité, les versions et les équipements du Jetour {car.name}.</p>
+              <p className="mt-5 max-w-xl text-base leading-8 text-slate-600">Contactez notre équipe pour connaître la disponibilité, les versions et les équipements du Jetour {car.name}.</p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Link href="/vehicules/jetour/experience" className="inline-flex w-fit items-center gap-2 border border-white/30 px-6 py-3.5 text-sm font-bold text-white transition hover:bg-white hover:text-[#07131d]">Explorer en 2D et 720° <ArrowRight className="h-4 w-4" /></Link>
+              <Link href="/vehicules/jetour/experience" className="inline-flex w-fit items-center gap-2 border border-[#102a56] px-6 py-3.5 text-sm font-bold text-[#102a56] transition hover:bg-[#102a56] hover:text-white">Explorer en 2D et 720° <ArrowRight className="h-4 w-4" /></Link>
               <Link href="/contact" className="inline-flex w-fit items-center gap-2 bg-[#54b834] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#469f2d]">
                 <CarFront className="h-4 w-4" /> Demander un essai <ArrowRight className="h-4 w-4" />
               </Link>
