@@ -12,6 +12,7 @@ type Model = {
   name: string;
   category: string;
   description: string;
+  heroImage?: string;
   gallery: string[];
   engine: string;
   power: string;
@@ -28,6 +29,7 @@ const image = (model: string, file: string) => `/images/jetour/models/${model}/$
 const models: Record<string, Model> = {
   t1: {
     name: "T1", category: "SUV tout-terrain", description: "Une silhouette robuste et contemporaine, conçue pour transformer les trajets quotidiens en véritables escapades.",
+    heroImage: "/images/jetour/model-t1.png",
     gallery: [image("t1", "t1-001-1.jpg"), image("t1", "t1-006-interieur.jpg"), image("t1", "t1-007-2.jpg")],
     engine: "1.5L / 2.0L turbo", power: "125–187 kW", torque: "270–390 Nm", transmission: "DCT / automatique", seats: "5 places", consumption: "Variable selon version", dimensions: "Classe 4,7 m", wheelbase: "~2 800 mm",
   },
@@ -53,11 +55,13 @@ const models: Record<string, Model> = {
   },
   "x70-plus": {
     name: "X70 Plus", category: "SUV familial", description: "Un grand SUV qui donne à la famille davantage d’espace, de confort et de présence sur la route.",
+    heroImage: "/images/jetour/model-x70plus.png",
     gallery: [image("x70-plus", "x70-plus-001-1.png"), image("x70-plus", "x70-plus-004-interieur.png"), image("x70-plus", "x70-plus-005-3.png")],
     engine: "1.5L turbo · 1 498 cm³", power: "115 kW à 5 500 tr/min", torque: "230 Nm", transmission: "6-DCT", seats: "7 places", consumption: "~7–9 L/100 km", dimensions: "4 724 × 1 900 × 1 720 mm", wheelbase: "2 720 mm",
   },
   "x90-plus": {
     name: "X90 Plus", category: "Grand SUV", description: "De l’espace pour chaque passager et de la puissance pour les longues distances, dans un SUV à l’allure premium.",
+    heroImage: "/images/jetour/model-x90plus.png",
     gallery: [image("x90-plus", "x90-plus-003-1.png"), image("x90-plus", "x90-plus-002-interieur.png"), image("x90-plus", "x90-plus-004-2.png")],
     engine: "2.0L turbo", power: "~187 kW", torque: "~390 Nm", transmission: "DCT", seats: "7 places", consumption: "~8–11 L/100 km", dimensions: "~4 858 × 1 925 × 1 780 mm", wheelbase: "~2 850 mm",
   },
@@ -96,7 +100,7 @@ export default async function JetourModelPage({ params }: { params: Promise<{ mo
     <div className="min-h-screen bg-white text-[#102a56]">
       <Navbar />
       <main>
-        <JetourModelHero name={car.name} category={car.category} description={car.description} image={car.gallery[0]} />
+        <JetourModelHero name={car.name} category={car.category} description={car.description} image={car.heroImage ?? car.gallery[0]} />
         <JetourSpecifications specifications={specifications} />
         <JetourGallery name={car.name} images={car.gallery} />
         <section className="bg-[#f8fafc] px-5 py-16 sm:px-8 sm:py-24 lg:px-10">
