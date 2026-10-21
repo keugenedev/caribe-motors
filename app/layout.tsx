@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -26,6 +27,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-[#f8fafc] text-[#172760] selection:bg-[#dbe6ff] selection:text-[#172760]">
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );
