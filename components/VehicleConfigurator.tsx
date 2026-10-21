@@ -146,7 +146,7 @@ function BrandCollectionView({ brand, onOpenTestDrive }: { brand: Brand; onOpenT
 
   return (
     <section aria-label={`Collection ${brand.name}`} className="border-t border-slate-200 pt-8 first:border-t-0 first:pt-0 lg:pt-10">
-      <div className="grid items-center gap-6 lg:min-h-[410px] lg:grid-cols-[0.75fr_1.25fr]">
+      <div className="grid items-center gap-6 lg:min-h-[500px] lg:grid-cols-[0.75fr_1.25fr]">
         <div className="order-2 max-w-md lg:order-1 lg:self-start lg:pt-6">
           <div className={`relative ${brand.id === "chery" ? "h-12 w-52" : "h-10 w-36"}`}><Image src={brand.logo} alt={brand.name} fill sizes="208px" className="object-contain object-left" /></div>
           <p className="mt-7 text-xs font-bold uppercase tracking-[0.2em] text-[#54b834]">{selectedVehicle.category}</p>
@@ -173,7 +173,7 @@ function BrandCollectionView({ brand, onOpenTestDrive }: { brand: Brand; onOpenT
           </div>
         </div>
 
-        <div className="relative order-1 min-h-[280px] sm:min-h-[370px] lg:order-2">
+        <div className="relative order-1 min-h-[280px] sm:min-h-[370px] lg:order-2 lg:min-h-[460px]">
           <div className="absolute inset-x-[12%] bottom-[17%] h-14 rounded-full bg-slate-900/15 blur-2xl" />
           <Image src={displayImage} alt={`${brand.name} ${selectedVehicle.name} - ${colorName}`} fill priority sizes="(max-width: 1024px) 100vw, 62vw" className="object-contain drop-shadow-[0_24px_25px_rgba(15,23,42,0.2)]" />
         </div>
