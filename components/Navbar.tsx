@@ -22,7 +22,7 @@ interface Brand {
 const vehicleHref = (brand: Brand, vehicle: Vehicle) => brand.id === "chery"
   ? `/vehicules/chery/${vehicle.name.toLowerCase().replace(/\s+/g, "-")}`
   : brand.id === "jetour"
-    ? `/vehicules/jetour/${vehicle.name === "Zongheng G700" ? "g700" : vehicle.name.toLowerCase().replace(/\s+/g, "-")}`
+    ? `/vehicules/jetour/${vehicle.name.toLowerCase().replace(/\s+/g, "-")}`
     : "/marques";
 
 const BRANDS: Brand[] = [
@@ -38,7 +38,6 @@ const BRANDS: Brand[] = [
       { name: "X70 FL", image: "/images/jetour/model-x70.png" },
       { name: "X70 Plus", image: "/images/jetour/model-x70plus.png" },
       { name: "X90 Plus", image: "/images/jetour/model-x90plus.png" },
-      { name: "Zongheng G700", image: "/images/jetour/models/g700/g700-009-2.jpg" },
     ],
   },
   {
@@ -150,8 +149,8 @@ export default function Navbar() {
 
       <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link href="/" aria-label="Caribe Motors — Accueil" className="flex shrink-0 items-center">
-          <div className="relative h-10 w-40 sm:h-11 sm:w-48">
-            <Image src="/images/caribe-logo.png" alt="Caribe Motors" fill priority className="object-contain object-left" sizes="(max-width: 640px) 160px, 192px" />
+          <div className="relative h-12 w-48 sm:h-14 sm:w-56">
+            <Image src="/images/caribe-logo.png" alt="Caribe Motors" fill priority className="object-contain object-left" sizes="(max-width: 640px) 192px, 224px" />
           </div>
         </Link>
 
@@ -163,17 +162,17 @@ export default function Navbar() {
 
           {isBrandsMenuOpen && (
             <div id="menu-marques" className="absolute right-0 top-full z-50 w-[880px] overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-slate-900/15">
-              <div className="flex flex-wrap items-center justify-center gap-2 p-4">
+              <div className="flex flex-wrap items-center justify-center gap-2 p-3">
                 {BRANDS.map((brand) => {
                   const hasVehicles = Boolean(brand.vehicles?.length);
                   const isActive = selectedBrand === brand.id;
-                  const content = <Image src={brand.image} alt={brand.name} fill sizes="64px" className="object-contain p-2" />;
+                  const content = <Image src={brand.image} alt={brand.name} fill sizes="72px" className="object-contain p-1" />;
                   return hasVehicles ? (
-                    <button key={brand.id} type="button" aria-label={`Afficher les modèles ${brand.name}`} onMouseEnter={() => previewBrand(brand)} onFocus={() => previewBrand(brand)} onClick={() => previewBrand(brand)} className={`relative flex h-12 w-16 items-center justify-center rounded-xl transition-colors ${isActive ? "bg-slate-100 ring-2 ring-[#54b834] ring-offset-2" : "hover:bg-slate-50"}`}>
+                    <button key={brand.id} type="button" aria-label={`Afficher les modèles ${brand.name}`} onMouseEnter={() => previewBrand(brand)} onFocus={() => previewBrand(brand)} onClick={() => previewBrand(brand)} className={`relative flex h-14 w-[72px] items-center justify-center rounded-xl transition-colors ${isActive ? "bg-slate-100 ring-2 ring-[#54b834] ring-offset-2" : "hover:bg-slate-50"}`}>
                       {content}
                     </button>
                   ) : (
-                    <div key={brand.id} className="relative h-12 w-16 opacity-75">{content}</div>
+                    <div key={brand.id} className="relative h-14 w-[72px] opacity-75">{content}</div>
                   );
                 })}
               </div>
@@ -197,7 +196,7 @@ export default function Navbar() {
                           {vehicle.modelLogo ? <span className="relative mt-2 block h-5 w-24"><Image src={vehicle.modelLogo} alt={vehicle.name} fill sizes="96px" className="object-contain object-left" /></span> : <p className="mt-2 text-xs font-bold text-[#102a56]">{vehicle.name}</p>}
                         </Link>
                       ))}
-                    </div>{activeBrand.id === "jetour" && <Link href="/vehicules/jetour/experience" onClick={closeBrandsMenu} className="mt-3 block rounded-xl bg-[#102a56] px-4 py-3 text-center text-xs font-bold text-white transition hover:bg-[#1643aa]">Explorer Jetour en 2D et 720°</Link>}</>
+                    </div></>
                   )}
                 </div>
               )}
@@ -215,7 +214,7 @@ export default function Navbar() {
           <button type="button" aria-label="Fermer le menu" onClick={closeMobileMenu} className="absolute inset-0 bg-slate-950/30" />
           <aside className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col overflow-y-auto bg-white p-5 shadow-2xl">
             <div className="flex items-center justify-between border-b border-slate-200 pb-5">
-              <div className="relative h-9 w-40"><Image src="/images/caribe-logo.png" alt="Caribe Motors" fill sizes="160px" className="object-contain object-left" /></div>
+              <div className="relative h-11 w-48"><Image src="/images/caribe-logo.png" alt="Caribe Motors" fill sizes="192px" className="object-contain object-left" /></div>
               <button type="button" onClick={closeMobileMenu} aria-label="Fermer le menu" className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-[#102a56]"><X className="h-5 w-5" /></button>
             </div>
             <nav aria-label="Navigation mobile" className="mt-5 space-y-1">
@@ -226,7 +225,7 @@ export default function Navbar() {
 
               {isMobileBrandsOpen && (
                 <div className="rounded-2xl bg-slate-50 p-3">
-                  <Link href="/marques" onClick={closeMobileMenu} className="mb-3 block rounded-xl bg-white px-3 py-2 text-center text-xs font-bold text-[#54b834] shadow-sm">Voir toutes nos marques</Link>
+                  <Link href="/marques" onClick={closeMobileMenu} className="mb-3 block bg-[#54b834] px-3 py-2 text-center text-xs font-bold text-white transition-colors hover:bg-[#469f2d]">Voir toutes nos marques</Link>
                   <div className="grid grid-cols-4 gap-2">
                     {BRANDS.filter((brand) => brand.vehicles?.length).map((brand) => {
                       const isActive = mobileSelectedBrand === brand.id;

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import BrandScroller from "@/components/BrandScroller";
+import BrandMarquee from "@/components/BrandMarquee";
 import Footer from "@/components/Footer";
+import HomeVehicleHero from "@/components/HomeVehicleHero";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
@@ -9,5 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function BrandsPage() {
-  return <div className="min-h-screen bg-[#fcfcfc]"><Navbar /><main><BrandScroller /></main><Footer /></div>;
+  const brands = ["Chery", "Jetour", "Suzuki", "Jeep", "Dodge"];
+
+  return <div className="flex min-h-screen flex-col bg-[#f8fafc] text-[#172760]"><Navbar /><main className="flex flex-1 flex-col">{brands.map((brand) => <HomeVehicleHero key={brand} brand={brand} showActions />)}<BrandMarquee /></main><Footer /></div>;
 }

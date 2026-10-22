@@ -1,4 +1,5 @@
 import Image from "next/image";
+import WordReveal from "@/components/WordReveal";
 
 const BRANDS = [
   { name: "Jetour", image: "/images/brands/jetour.png" },
@@ -19,10 +20,10 @@ export default function BrandMarquee() {
     <section id="marques" className="relative w-full overflow-hidden border-t border-slate-100 py-10 sm:py-12 bg-gradient-to-b from-white via-slate-50/40 to-white">
       <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8 mb-7">
         <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#54b834]">
-          Distributeur Agréé
+          <WordReveal text="Distributeur Agréé" stagger={0.18} />
         </span>
         <h2 className="mt-1 text-lg font-bold uppercase tracking-wider text-[#102a56]/90 sm:text-xl">
-          Nos Marques
+          <WordReveal text="Nos Marques" delay={0.5} stagger={0.22} duration={0.68} />
         </h2>
       </div>
 

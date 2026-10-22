@@ -52,7 +52,6 @@ const BRANDS: Brand[] = [
       { id: "x70-fl", name: "X70 FL", category: "SUV familial", image: "/images/jetour/model-x70.png" },
       { id: "x70-plus", name: "X70 Plus", category: "SUV familial", image: "/images/jetour/model-x70plus.png" },
       { id: "x90-plus", name: "X90 Plus", category: "Grand SUV", image: "/images/jetour/model-x90plus.png" },
-      { id: "g700", name: "Zongheng G700", category: "Grand SUV d’aventure", image: "/images/jetour/models/g700/g700-009-2.jpg" },
     ],
   },
   {

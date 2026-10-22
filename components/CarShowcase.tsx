@@ -130,10 +130,11 @@ const CATALOG = PRESENTATIONS.flatMap((brand) =>
 );
 
 interface CarShowcaseProps {
-  onOpenTestDrive: (model: string, color: string, image: string) => void;
+  onOpenTestDrive?: (model: string, color: string, image: string) => void;
+  hideCatalogHero?: boolean;
 }
 
-export default function CarShowcase({ onOpenTestDrive }: CarShowcaseProps) {
+export default function CarShowcase({ onOpenTestDrive, hideCatalogHero = false }: CarShowcaseProps) {
   const [catalogIndex, setCatalogIndex] = useState(0);
   const currentCatalog = CATALOG[catalogIndex];
 
@@ -160,7 +161,7 @@ export default function CarShowcase({ onOpenTestDrive }: CarShowcaseProps) {
 
   return (
     <section id="vehicules" className="bg-white">
-      <div className="relative overflow-hidden bg-white px-4 py-14 text-[#102a56] sm:px-6 sm:py-20 lg:px-8">
+      <div className={`relative overflow-hidden bg-white px-4 py-14 text-[#102a56] sm:px-6 sm:py-20 lg:px-8 ${hideCatalogHero ? "hidden" : ""}`}>
         <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div>
             <AnimatePresence mode="wait">
@@ -199,14 +200,14 @@ export default function CarShowcase({ onOpenTestDrive }: CarShowcaseProps) {
         </div>
       </div>
 
-      {PRESENTATIONS.map((brand, index) => (
+      {[...PRESENTATIONS].sort((first, second) => (first.id === "chery" ? -1 : second.id === "chery" ? 1 : 0)).map((brand, index) => (
         <BrandSlide key={brand.id} brand={brand} index={index} onOpenTestDrive={onOpenTestDrive} />
       ))}
     </section>
   );
 }
 
-function BrandSlide({ brand, index, onOpenTestDrive }: { brand: BrandPresentation; index: number; onOpenTestDrive: CarShowcaseProps["onOpenTestDrive"] }) {
+function BrandSlide({ brand, index, onOpenTestDrive }: { brand: BrandPresentation; index: number; onOpenTestDrive?: CarShowcaseProps["onOpenTestDrive"] }) {
   const [selectedVehicleId, setSelectedVehicleId] = useState(brand.vehicles[0].id);
   const [selectedColor, setSelectedColor] = useState(brand.vehicles[0].colors?.[0]);
   const selectedVehicle = brand.vehicles.find((vehicle) => vehicle.id === selectedVehicleId) ?? brand.vehicles[0];
@@ -251,9 +252,9 @@ function BrandSlide({ brand, index, onOpenTestDrive }: { brand: BrandPresentatio
             </div>
           )}
 
-          <button type="button" onClick={() => onOpenTestDrive(`${brand.name} ${selectedVehicle.name}`, colorName, displayImage)} className="mt-8 inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90" style={{ backgroundColor: brand.accent }}>
+          {onOpenTestDrive && <button type="button" onClick={() => onOpenTestDrive(`${brand.name} ${selectedVehicle.name}`, colorName, displayImage)} className="mt-8 inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90" style={{ backgroundColor: brand.accent }}>
             Demander un essai <ArrowUpRight className="h-4 w-4" />
-          </button>
+          </button>}
         </div>
 
         <div className="relative min-h-[300px] sm:min-h-[400px] lg:min-h-[470px]">

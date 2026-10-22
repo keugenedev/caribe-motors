@@ -7,6 +7,8 @@ import JetourGallery from "@/components/JetourGallery";
 import JetourModelHero from "@/components/JetourModelHero";
 import JetourSpecifications, { type JetourSpecification } from "@/components/JetourSpecifications";
 import Navbar from "@/components/Navbar";
+import Reveal from "@/components/Reveal";
+import WordReveal from "@/components/WordReveal";
 
 type Model = {
   name: string;
@@ -65,11 +67,6 @@ const models: Record<string, Model> = {
     gallery: [image("x90-plus", "x90-plus-003-1.png"), image("x90-plus", "x90-plus-002-interieur.png"), image("x90-plus", "x90-plus-004-2.png")],
     engine: "2.0L turbo", power: "~187 kW", torque: "~390 Nm", transmission: "DCT", seats: "7 places", consumption: "~8–11 L/100 km", dimensions: "~4 858 × 1 925 × 1 780 mm", wheelbase: "~2 850 mm",
   },
-  g700: {
-    name: "Zongheng G700", category: "Grand SUV d’aventure", description: "Une présence imposante et une conception orientée aventure pour envisager les grands trajets sans compromis.",
-    gallery: [image("g700", "g700-001-5.avif"), image("g700", "g700-004-interieur.avif"), image("g700", "g700-009-2.jpg")],
-    engine: "V6 / hybride selon marché", power: "Élevée", torque: "Élevé", transmission: "Automatique", seats: "5–7 places", consumption: "Variable", dimensions: "Grand SUV à châssis", wheelbase: "Empattement long",
-  },
 };
 
 export function generateStaticParams() {
@@ -106,16 +103,15 @@ export default async function JetourModelPage({ params }: { params: Promise<{ mo
         <section className="bg-[#f8fafc] px-5 py-16 sm:px-8 sm:py-24 lg:px-10">
           <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 lg:flex-row lg:items-end">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#54b834]">Jetour chez Caribe Motors</p>
-              <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-5xl">Votre prochaine aventure commence ici.</h2>
-              <p className="mt-5 max-w-xl text-base leading-8 text-slate-600">Contactez notre équipe pour connaître la disponibilité, les versions et les équipements du Jetour {car.name}.</p>
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#54b834]"><WordReveal text="Jetour chez Caribe Motors" delay={0.1} stagger={0.18} /></p>
+              <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-5xl"><WordReveal text="Votre prochaine aventure commence ici." delay={0.85} stagger={0.22} duration={0.7} /></h2>
+              <p className="mt-5 max-w-xl text-base leading-8 text-slate-600"><WordReveal text={`Contactez notre équipe pour connaître la disponibilité, les versions et les équipements du Jetour ${car.name}.`} delay={2.1} stagger={0.075} duration={0.48} /></p>
             </div>
-            <div className="flex flex-wrap gap-3">
-              <Link href="/vehicules/jetour/experience" className="inline-flex w-fit items-center gap-2 border border-[#102a56] px-6 py-3.5 text-sm font-bold text-[#102a56] transition hover:bg-[#102a56] hover:text-white">Explorer en 2D et 720° <ArrowRight className="h-4 w-4" /></Link>
+            <Reveal delay={3.7} className="flex flex-wrap gap-3">
               <Link href="/contact" className="inline-flex w-fit items-center gap-2 bg-[#54b834] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#469f2d]">
                 <CarFront className="h-4 w-4" /> Demander un essai <ArrowRight className="h-4 w-4" />
               </Link>
-            </div>
+            </Reveal>
           </div>
         </section>
       </main>
