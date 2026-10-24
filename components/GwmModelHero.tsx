@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
 
 type GwmModelHeroProps = {
   name: string;
@@ -12,16 +11,19 @@ type GwmModelHeroProps = {
   image: string;
 };
 
+const colorImages: Record<string, string> = {
+  orange: "/images/gwm/nav/orange.png",
+  red: "/images/gwm/nav/red.png",
+  blue: "/images/gwm/nav/blue.png",
+  silver: "/images/gwm/nav/silver.png",
+  black: "/images/gwm/nav/black.png",
+  brown: "/images/gwm/nav/brown.png",
+};
+
 export default function GwmModelHero({ name, category, description, image }: GwmModelHeroProps) {
-  const [vehicleImage, setVehicleImage] = useState(image);
   const searchParams = useSearchParams();
   const color = searchParams.get("color");
-
-  useEffect(() => {
-    const colorImages: Record<string, string> = { orange: "/images/gwm/nav/orange.png", red: "/images/gwm/nav/red.png", blue: "/images/gwm/nav/blue.png", silver: "/images/gwm/nav/silver.png", black: "/images/gwm/nav/black.png", brown: "/images/gwm/nav/brown.png" };
-    const frame = window.requestAnimationFrame(() => setVehicleImage((color && colorImages[color]) ?? image));
-    return () => window.cancelAnimationFrame(frame);
-  }, [color, image]);
+  const vehicleImage = (color && colorImages[color]) ?? image;
 
   return (
     <section className="relative isolate h-[calc(100svh-76px)] overflow-hidden bg-[#fcfcfc] lg:h-[calc(100svh-120px)]">
@@ -41,8 +43,7 @@ export default function GwmModelHero({ name, category, description, image }: Gwm
           <p className="mx-auto mt-5 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">{description}</p>
         </motion.header>
 
-        <motion.div initial={{ opacity: 0, y: 96, scale: 0.9 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 1.9, delay: 0.55, ease: [0.16, 1, 0.3, 1] }} className="relative mx-auto mt-auto h-[min(40vh,18rem)] w-full max-w-2xl sm:h-[min(44vh,22rem)] md:max-w-4xl lg:h-[min(47vh,27rem)] lg:max-w-5xl">
-          <div className="absolute inset-x-[20%] bottom-[10%] h-9 rounded-full bg-slate-900/15 blur-xl" />
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.45, ease: "easeOut" }} className="relative mx-auto mt-auto h-[min(40vh,18rem)] w-full max-w-2xl sm:h-[min(44vh,22rem)] md:max-w-4xl lg:h-[min(47vh,27rem)] lg:max-w-5xl">
           <Image src={vehicleImage} alt={`GWM ${name}`} fill priority sizes="(max-width: 767px) 100vw, (max-width: 1023px) 896px, 1024px" className="object-contain object-bottom drop-shadow-[0_24px_24px_rgba(15,23,42,0.16)]" />
         </motion.div>
       </div>
