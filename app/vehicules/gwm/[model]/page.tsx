@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Link from "next/link";
 import { ArrowRight, CarFront } from "lucide-react";
 import { notFound } from "next/navigation";
@@ -41,8 +42,10 @@ export default async function GwmModelPage({ params }: { params: Promise<{ model
     <div className="min-h-screen bg-white text-[#102a56]">
       <Navbar />
       <main>
-        <GwmModelHero name={car.name} category={car.category} description={car.description} image={car.image} />
-        <GwmPSeriesExperience />
+        <Suspense fallback={null}>
+          <GwmModelHero name={car.name} category={car.category} description={car.description} image={car.image} />
+          <GwmPSeriesExperience />
+        </Suspense>
         <VehicleSpecifications brand={`GWM ${car.name}`} specifications={car.specifications} />
         <VehicleGallery brand="GWM" name={car.name} images={car.gallery} />
         <section className="bg-[#f8fafc] px-5 py-16 sm:px-8 sm:py-24 lg:px-10">

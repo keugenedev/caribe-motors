@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Rotate3D } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 type Color = {
@@ -27,6 +28,8 @@ export default function GwmPSeriesExperience() {
   const [selectedColor, setSelectedColor] = useState(colors[5]);
   const [frame, setFrame] = useState(0);
   const dragStart = useRef<{ x: number; frame: number } | null>(null);
+  const searchParams = useSearchParams();
+  const color = searchParams.get("color");
 
   useEffect(() => {
     frames.forEach((source) => {
@@ -36,10 +39,9 @@ export default function GwmPSeriesExperience() {
   }, []);
 
   useEffect(() => {
-    const color = new URLSearchParams(window.location.search).get("color");
     const frame = window.requestAnimationFrame(() => setSelectedColor(colors.find((option) => option.id === color) ?? colors[5]));
     return () => window.cancelAnimationFrame(frame);
-  }, []);
+  }, [color]);
 
   const updateFrame = (next: number) => setFrame((next + frames.length) % frames.length);
 

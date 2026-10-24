@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Link from "next/link";
 import { ArrowRight, CarFront } from "lucide-react";
 import { notFound } from "next/navigation";
@@ -37,8 +38,10 @@ export default async function TankModelPage({ params }: { params: Promise<{ mode
   const car = models[(await params).model];
   if (!car) notFound();
   return <div className="min-h-screen bg-white text-[#102a56]"><Navbar /><main>
-    <VehicleDetailHero brand="GWM Tank" name={car.name} category={car.category} logo="/images/brands/Tank.png" vehicle={car.image} colorImages={Object.fromEntries(car.colors.map((color) => [color.id, color.image]))} description={car.description} />
-    <VehicleColorExperience name={car.name} colors={car.colors} />
+    <Suspense fallback={null}>
+      <VehicleDetailHero brand="GWM Tank" name={car.name} category={car.category} logo="/images/brands/Tank.png" vehicle={car.image} colorImages={Object.fromEntries(car.colors.map((color) => [color.id, color.image]))} description={car.description} />
+      <VehicleColorExperience name={car.name} colors={car.colors} />
+    </Suspense>
     <VehicleSpecifications brand={car.name} specifications={car.specifications} />
     <VehicleGallery brand="GWM Tank" name={car.name} images={car.gallery} />
     <section className="bg-[#f8fafc] px-5 py-16 sm:px-8 sm:py-24 lg:px-10"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 lg:flex-row lg:items-end"><div><p className="text-xs font-bold uppercase tracking-[0.22em] text-[#54b834]"><WordReveal text="GWM Tank chez Caribe Motors" delay={0.1} stagger={0.18} /></p><h2 className="mt-4 text-3xl font-black tracking-tight sm:text-5xl"><WordReveal text="Prêt pour votre prochain défi." delay={0.7} stagger={0.22} duration={0.7} /></h2><p className="mt-5 max-w-xl text-base leading-8 text-slate-600"><WordReveal text="Contactez notre équipe pour connaître la disponibilité, les équipements et planifier un essai." delay={1.8} stagger={0.075} duration={0.48} /></p></div><Reveal delay={3.1}><Link href="/contact" className="inline-flex items-center gap-2 bg-[#54b834] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#469f2d]"><CarFront className="h-4 w-4" /> Prendre rendez-vous <ArrowRight className="h-4 w-4" /></Link></Reveal></div></section>

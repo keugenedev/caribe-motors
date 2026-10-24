@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 type VehicleDetailHeroProps = {
@@ -16,12 +17,13 @@ type VehicleDetailHeroProps = {
 
 export default function VehicleDetailHero({ brand, name, category, logo, vehicle, colorImages, description }: VehicleDetailHeroProps) {
   const [vehicleImage, setVehicleImage] = useState(vehicle);
+  const searchParams = useSearchParams();
+  const color = searchParams.get("color");
 
   useEffect(() => {
-    const color = new URLSearchParams(window.location.search).get("color");
     const frame = window.requestAnimationFrame(() => setVehicleImage((color && colorImages?.[color]) ?? vehicle));
     return () => window.cancelAnimationFrame(frame);
-  }, [colorImages, vehicle]);
+  }, [color, colorImages, vehicle]);
 
   return <section className="relative isolate h-[calc(100svh-76px)] overflow-hidden bg-[#fcfcfc] lg:h-[calc(100svh-120px)]">
     <motion.div aria-hidden="true" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 0.055, scale: 1 }} transition={{ duration: 2.1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }} className="pointer-events-none absolute inset-x-0 top-[42%] z-0 h-32 -translate-y-1/2 sm:h-48 lg:h-64"><Image src={logo} alt="" fill sizes="100vw" className="object-contain" /></motion.div>

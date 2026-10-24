@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 type GwmModelHeroProps = {
@@ -13,13 +14,14 @@ type GwmModelHeroProps = {
 
 export default function GwmModelHero({ name, category, description, image }: GwmModelHeroProps) {
   const [vehicleImage, setVehicleImage] = useState(image);
+  const searchParams = useSearchParams();
+  const color = searchParams.get("color");
 
   useEffect(() => {
     const colorImages: Record<string, string> = { orange: "/images/gwm/nav/orange.png", red: "/images/gwm/nav/red.png", blue: "/images/gwm/nav/blue.png", silver: "/images/gwm/nav/silver.png", black: "/images/gwm/nav/black.png", brown: "/images/gwm/nav/brown.png" };
-    const color = new URLSearchParams(window.location.search).get("color");
     const frame = window.requestAnimationFrame(() => setVehicleImage((color && colorImages[color]) ?? image));
     return () => window.cancelAnimationFrame(frame);
-  }, [image]);
+  }, [color, image]);
 
   return (
     <section className="relative isolate h-[calc(100svh-76px)] overflow-hidden bg-[#fcfcfc] lg:h-[calc(100svh-120px)]">
