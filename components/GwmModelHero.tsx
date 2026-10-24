@@ -44,7 +44,7 @@ export default function GwmModelHero({ name, category, description, image }: Gwm
         </motion.header>
 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.45, ease: "easeOut" }} className="relative mx-auto mt-auto h-[min(40vh,18rem)] w-full max-w-2xl sm:h-[min(44vh,22rem)] md:max-w-4xl lg:h-[min(47vh,27rem)] lg:max-w-5xl">
-          <AnimatePresence initial={false} mode="wait">
+          <AnimatePresence mode="wait">
             <motion.div
               key={vehicleImage}
               initial={{ opacity: 0, scale: 0.985 }}
