@@ -271,7 +271,7 @@ export default function Navbar() {
                       {displayedBrand.vehicles.map((vehicle) => {
                         const href = vehicleHref(displayedBrand, vehicle);
                         const content = <><div className="relative h-20 overflow-hidden"><Image src={vehicle.image} alt={`${displayedBrand.name} ${vehicle.name}`} fill sizes="220px" className="object-contain" /></div>{vehicle.modelLogo ? <span className="relative mt-2 block h-5 w-24"><Image src={vehicle.modelLogo} alt={vehicle.name} fill sizes="96px" className="object-contain object-left" /></span> : <p className="mt-2 text-xs font-bold text-[#102a56]">{vehicle.label ?? vehicle.name}</p>}</>;
-                        return vehicle.color ? <a key={vehicle.image} href={href} onClick={closeBrandsMenu} className="rounded-xl p-2.5 transition-colors hover:bg-slate-50">{content}</a> : <Link key={vehicle.image} href={href} onClick={closeBrandsMenu} className="rounded-xl p-2.5 transition-colors hover:bg-slate-50">{content}</Link>;
+                        return vehicle.color ? <Link key={vehicle.image} href={href} onClick={() => { window.scrollTo(0, 0); closeBrandsMenu(); }} className="rounded-xl p-2.5 transition-colors hover:bg-slate-50">{content}</Link> : <Link key={vehicle.image} href={href} onClick={closeBrandsMenu} className="rounded-xl p-2.5 transition-colors hover:bg-slate-50">{content}</Link>;
                       })}
                     </div></>
                   )}
@@ -323,7 +323,7 @@ export default function Navbar() {
                       {displayedMobileBrand.vehicles.map((vehicle) => {
                         const href = vehicleHref(displayedMobileBrand, vehicle);
                         const content = <><div className="relative h-16"><Image src={vehicle.image} alt={`${displayedMobileBrand.name} ${vehicle.name}`} fill sizes="150px" className="object-contain" /></div>{vehicle.modelLogo ? <span className="relative mt-1 block h-4 w-20"><Image src={vehicle.modelLogo} alt={vehicle.name} fill sizes="80px" className="object-contain object-left" /></span> : <p className="mt-1 text-xs font-bold text-[#102a56]">{vehicle.label ?? vehicle.name}</p>}</>;
-                        return vehicle.color ? <a key={vehicle.image} href={href} onClick={closeMobileMenu} className="rounded-xl bg-white p-2.5">{content}</a> : <Link key={vehicle.image} href={href} onClick={closeMobileMenu} className="rounded-xl bg-white p-2.5">{content}</Link>;
+                        return vehicle.color ? <Link key={vehicle.image} href={href} onClick={() => { window.scrollTo(0, 0); closeMobileMenu(); }} className="rounded-xl bg-white p-2.5">{content}</Link> : <Link key={vehicle.image} href={href} onClick={closeMobileMenu} className="rounded-xl bg-white p-2.5">{content}</Link>;
                       })}
                     </div>
                   )}

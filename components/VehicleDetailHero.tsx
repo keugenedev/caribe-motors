@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
 
 type VehicleDetailHeroProps = {
   brand: string;
@@ -16,14 +15,9 @@ type VehicleDetailHeroProps = {
 };
 
 export default function VehicleDetailHero({ brand, name, category, logo, vehicle, colorImages, description }: VehicleDetailHeroProps) {
-  const [vehicleImage, setVehicleImage] = useState(vehicle);
   const searchParams = useSearchParams();
   const color = searchParams.get("color");
-
-  useEffect(() => {
-    const frame = window.requestAnimationFrame(() => setVehicleImage((color && colorImages?.[color]) ?? vehicle));
-    return () => window.cancelAnimationFrame(frame);
-  }, [color, colorImages, vehicle]);
+  const vehicleImage = (color && colorImages?.[color]) ?? vehicle;
 
   return <section className="relative isolate h-[calc(100svh-76px)] overflow-hidden bg-[#fcfcfc] lg:h-[calc(100svh-120px)]">
     <motion.div aria-hidden="true" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 0.055, scale: 1 }} transition={{ duration: 2.1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }} className="pointer-events-none absolute inset-x-0 top-[42%] z-0 h-32 -translate-y-1/2 sm:h-48 lg:h-64"><Image src={logo} alt="" fill sizes="100vw" className="object-contain" /></motion.div>
@@ -34,7 +28,7 @@ export default function VehicleDetailHero({ brand, name, category, logo, vehicle
         <div className="mt-5 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm font-light text-slate-500 sm:text-base"><span>{category}</span><span className="text-slate-300">|</span><span>Design</span><span className="text-slate-300">|</span><span>Performance</span></div>
         <p className="mx-auto mt-5 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">{description}</p>
       </motion.header>
-      <motion.div initial={{ opacity: 0, y: 96, scale: 0.9 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 1.9, delay: 0.55, ease: [0.16, 1, 0.3, 1] }} className="relative mx-auto mt-auto h-[min(42vh,18rem)] w-full max-w-2xl sm:h-[min(46vh,22rem)] md:max-w-4xl lg:h-[min(48vh,26rem)] lg:max-w-5xl"><div className="absolute inset-x-[20%] bottom-[10%] h-9 rounded-full bg-slate-900/15 blur-xl" /><Image src={vehicleImage} alt={`${brand} ${name}`} fill priority sizes="(max-width: 767px) 100vw, (max-width: 1023px) 896px, 1024px" className="object-contain object-bottom drop-shadow-[0_24px_24px_rgba(15,23,42,0.16)]" /></motion.div>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.45, ease: "easeOut" }} className="relative mx-auto mt-auto h-[min(42vh,18rem)] w-full max-w-2xl sm:h-[min(46vh,22rem)] md:max-w-4xl lg:h-[min(48vh,26rem)] lg:max-w-5xl"><Image src={vehicleImage} alt={`${brand} ${name}`} fill priority sizes="(max-width: 767px) 100vw, (max-width: 1023px) 896px, 1024px" className="object-contain object-bottom drop-shadow-[0_24px_24px_rgba(15,23,42,0.16)]" /></motion.div>
     </div>
   </section>;
 }
