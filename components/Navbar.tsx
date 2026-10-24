@@ -133,8 +133,8 @@ const BRANDS: Brand[] = [
     vehicles: [{ name: "Durango", image: "/images/vehicles/Durango.png" }],
   },
   { id: "chrysler", name: "Chrysler", image: "/images/brands/Chrysler.png" },
-  { id: "faw", name: "FAW", image: "/images/brands/faw.png" },
-  { id: "gac", name: "GAC", image: "/images/brands/gac.png" },
+  { id: "faw", name: "FAW", image: "/images/brands/FAW.png" },
+  { id: "gac", name: "GAC", image: "/images/brands/GAC.png" },
 ];
 
 const PRELOADED_NAV_IMAGES = BRANDS

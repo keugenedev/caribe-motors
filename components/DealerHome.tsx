@@ -16,8 +16,8 @@ const brands = [
   { name: "RAM", image: "/images/brands/Ram.png", href: "https://www.ramcaribbean.com/" },
   { name: "Dodge", image: "/images/brands/Dodge.png", href: "https://www.dodge.com/" },
   { name: "Chrysler", image: "/images/brands/Chrysler.png", href: "https://www.chrysler.com/" },
-  { name: "FAW", image: "/images/brands/faw.png", href: "https://www.faw.com/" },
-  { name: "GAC", image: "/images/brands/gac.png", href: "https://www.gacgroup.com/en" },
+  { name: "FAW", image: "/images/brands/FAW.png", href: "https://www.faw.com/" },
+  { name: "GAC", image: "/images/brands/GAC.png", href: "https://www.gacgroup.com/en" },
 ];
 
 const heroGallery = [
