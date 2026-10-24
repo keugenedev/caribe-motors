@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import WordReveal from "@/components/WordReveal";
-import fawLogo from "../Logo Car/faw.png";
-import gacLogo from "../Logo Car/gac.png";
 
 const brands = [
   { name: "Suzuki", image: "/images/brands/Suzuki.png", href: "https://www.suzukicaribbean.com/" },
@@ -18,8 +16,8 @@ const brands = [
   { name: "RAM", image: "/images/brands/Ram.png", href: "https://www.ramcaribbean.com/" },
   { name: "Dodge", image: "/images/brands/Dodge.png", href: "https://www.dodge.com/" },
   { name: "Chrysler", image: "/images/brands/Chrysler.png", href: "https://www.chrysler.com/" },
-  { name: "FAW", image: fawLogo, href: "https://www.faw.com/" },
-  { name: "GAC", image: gacLogo, href: "https://www.gacgroup.com/en" },
+  { name: "FAW", image: "/images/brands/faw.png", href: "https://www.faw.com/" },
+  { name: "GAC", image: "/images/brands/gac.png", href: "https://www.gacgroup.com/en" },
 ];
 
 const heroGallery = [

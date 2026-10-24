@@ -7,7 +7,7 @@ const Icon = ({ children }: { children: React.ReactNode }) => (
 const SOCIAL_NETWORKS = [
   {
     name: "Facebook",
-    url: "https://www.facebook.com/caribemotors",
+    url: "https://www.facebook.com/share/1DgB24C3vG/?mibextid=wwXIfr",
     icon: (
       <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
         <path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5H17V4a24 24 0 0 0-2.3-.1c-2.3 0-3.9 1.4-3.9 4V10H8v3h2.8v8h2.7Z" />
@@ -16,7 +16,7 @@ const SOCIAL_NETWORKS = [
   },
   {
     name: "Instagram",
-    url: "https://www.instagram.com/caribemotors",
+    url: "https://www.instagram.com/caribemotorshaiti?cplk=MWJmamp6eHR2cGpvbg==",
     icon: (
       <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
         <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -45,7 +45,7 @@ const SOCIAL_NETWORKS = [
   },
   {
     name: "YouTube",
-    url: "https://www.youtube.com/@caribemotors",
+    url: "https://youtube.com/@caribemotorss.a.5259?si=m81mJ9g6VGrX8heQ",
     icon: (
       <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
         <path d="M23.5 6.2c-.3-1-1-1.8-2-2.1C19.7 3.5 12 3.5 12 3.5s-7.7 0-9.5.6c-1 .3-1.7 1.1-2 2.1C0 8 0 12 0 12s0 4 .5 5.8c.3 1 1 1.8 2 2.1 1.8.6 9.5.6 9.5.6s7.7 0 9.5-.6c1-.3 1.7-1.1 2-2.1.5-1.8.5-5.8.5-5.8s0-4-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z" />
@@ -60,7 +60,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-10 sm:px-6 lg:grid-cols-[1.1fr_1.45fr] lg:px-8">
         <div>
           <div className="relative h-12 w-48">
-            <Image src="/images/caribe-logo.png" alt="Caribe Motors" fill className="object-contain object-left brightness-0 invert" sizes="192px" />
+            <Image src="/images/crb.png?v=20261024-0900" alt="Caribe Motors" fill className="object-contain object-left" sizes="192px" />
           </div>
           <p className="mt-4 max-w-sm text-sm leading-6 text-blue-100">Votre partenaire automobile de confiance en Haïti. Découvrez nos véhicules, nos services et notre accompagnement personnalisé.</p>
           <p className="mt-5 text-xs font-semibold text-[#75d259]">Concessionnaire automobile · Haïti</p>
@@ -81,7 +81,7 @@ export default function Footer() {
               <h2 id="footer-addresses" className="text-sm font-semibold text-white">Nos adresses</h2>
               <div className="mt-4 space-y-3">
                 <a href="https://www.google.com/maps/search/?api=1&query=33%2C%20Boulevard%20Toussaint%20Louverture%2C%20Port-au-Prince%2C%20Haiti" target="_blank" rel="noopener noreferrer" className="group flex gap-3 text-sm leading-5 text-blue-100 transition hover:text-white"><Icon><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" /><circle cx="12" cy="10" r="2.5" /></svg></Icon><span>33, Blvd Toussaint Louverture,<br />Port-au-Prince, Haïti</span></a>
-                <a href="https://www.google.com/maps/search/?api=1&query=27%2C%20Bois%20Moquette%2C%20P%C3%A9tion-Ville%2C%20Haiti" target="_blank" rel="noopener noreferrer" className="group flex gap-3 text-sm leading-5 text-blue-100 transition hover:text-white"><Icon><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" /><circle cx="12" cy="10" r="2.5" /></svg></Icon><span>27, Bois Moquette,<br />Pétion-Ville, Haïti</span></a>
+                <a href="https://www.google.com/maps/search/?api=1&query=27%2C%20Bois%20Moquette%2C%20P%C3%A9tion-Ville%2C%20Haiti" target="_blank" rel="noopener noreferrer" className="group flex gap-3 text-sm leading-5 text-blue-100 transition hover:text-white"><Icon><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" /><circle cx="12" cy="10" r="2.5" /></svg></Icon><span>27, rue Bois Moquette,<br />Pétion-Ville, Haïti</span></a>
               </div>
             </section>
           </div>

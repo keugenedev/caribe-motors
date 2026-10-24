@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import TestDriveModal from "@/components/TestDriveModal";
 
-type BrandId = "jetour" | "chery" | "suzuki" | "jeep" | "dodge";
+type BrandId = "jetour" | "chery" | "gwm" | "suzuki" | "jeep" | "dodge";
 
 interface ColorOption {
   id: string;
@@ -39,6 +39,15 @@ const T1_COLORS: ColorOption[] = [
   { id: "gold", name: "Or Désert", hex: "#bca88e", borderHex: "#8f7c65", image: "/images/jetour/t1-gold.png" },
 ];
 
+const GWM_P_SERIES_COLORS: ColorOption[] = [
+  { id: "orange", name: "Orange volcanique", hex: "#c45a20", borderHex: "#924019", image: "/images/gwm/nav/orange.png" },
+  { id: "red", name: "Rouge passion", hex: "#b12626", borderHex: "#7f1d1d", image: "/images/gwm/nav/red.png" },
+  { id: "blue", name: "Bleu électrique", hex: "#1355ad", borderHex: "#0f3f80", image: "/images/gwm/nav/blue.png" },
+  { id: "silver", name: "Gris argent", hex: "#9ca3af", borderHex: "#6b7280", image: "/images/gwm/nav/silver.png" },
+  { id: "black", name: "Noir intense", hex: "#171717", borderHex: "#3f3f46", image: "/images/gwm/nav/black.png" },
+  { id: "brown", name: "Brun bronze", hex: "#76563e", borderHex: "#4c3424", image: "/images/gwm/nav/brown.png" },
+];
+
 const BRANDS: Brand[] = [
   {
     id: "jetour",
@@ -68,6 +77,14 @@ const BRANDS: Brand[] = [
       { id: "tiggo-8-csh", name: "Tiggo 8 CSH", category: "Collection Tiggo", image: "/images/chery/vehicles/tiggo-8-csh.png", modelLogo: "/images/chery/logos/tiggo-8-csh.png" },
       { id: "tiggo-9", name: "Tiggo 9", category: "Collection Tiggo", image: "/images/chery/vehicles/tiggo-9.png", modelLogo: "/images/chery/logos/tiggo-9.png" },
       { id: "tiggo-9-csh", name: "Tiggo 9 CSH", category: "Collection Tiggo", image: "/images/chery/vehicles/tiggo-9-csh.png", modelLogo: "/images/chery/logos/tiggo-9-csh.png" },
+    ],
+  },
+  {
+    id: "gwm",
+    name: "GWM",
+    logo: "/images/brands/GWM.png",
+    vehicles: [
+      { id: "p-series", name: "P-Series", category: "Pick-up 4x4", image: "/images/gwm/nav/brown.png", colors: GWM_P_SERIES_COLORS },
     ],
   },
   {
@@ -169,6 +186,7 @@ function BrandCollectionView({ brand, onOpenTestDrive }: { brand: Brand; onOpenT
             <button type="button" onClick={() => onOpenTestDrive(brand, selectedVehicle, colorName, displayImage)} className="rounded-none bg-[#54b834] px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#469f2d]">Demander un essai</button>
             {brand.id === "chery" && <Link href={`/vehicules/chery/${selectedVehicle.id}`} className="inline-flex text-sm font-bold text-[#102a56] underline decoration-[#54b834] decoration-2 underline-offset-4">Découvrir le Chery {selectedVehicle.name}</Link>}
             {brand.id === "jetour" && <Link href={`/vehicules/jetour/${selectedVehicle.id}`} className="inline-flex text-sm font-bold text-[#102a56] underline decoration-[#54b834] decoration-2 underline-offset-4">Découvrir le Jetour {selectedVehicle.name}</Link>}
+            {brand.id === "gwm" && <Link href={`/vehicules/gwm/${selectedVehicle.id}`} className="inline-flex text-sm font-bold text-[#102a56] underline decoration-[#54b834] decoration-2 underline-offset-4">Découvrir le GWM {selectedVehicle.name}</Link>}
           </div>
         </div>
 

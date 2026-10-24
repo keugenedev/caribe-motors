@@ -13,6 +13,8 @@ const BRANDS = [
   { name: "RAM", image: "/images/brands/Ram.png" },
   { name: "Dodge", image: "/images/brands/Dodge.png" },
   { name: "Chrysler", image: "/images/brands/Chrysler.png" },
+  { name: "FAW", image: "/images/brands/faw.png" },
+  { name: "GAC", image: "/images/brands/gac.png" },
 ];
 
 export default function BrandMarquee() {

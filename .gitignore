@@ -19,6 +19,22 @@
 /.next/
 /out/
 
+# Catalogues originaux locaux (les versions optimisées utilisées par le site sont dans public/)
+/GWM/
+/GWM Tank/
+/Tank 300/
+/Haval/
+/Gallery/
+/Chery Haiti_files/
+/Logo Car/
+/caribe-motors-site.tgz
+/Crb.png
+/faviconcrb.png
+/Logo monogramme CM blanc et vert.png
+/Haval1.png
+/haval 2.png
+/haval 3.png
+
 # production
 /build
 

@@ -27,7 +27,7 @@ const LOCATIONS = [
   },
   {
     name: "Pétion-Ville",
-    address: "27, Bois Moquette, Pétion-Ville, Haïti",
+    address: "27, rue Bois Moquette, Pétion-Ville, Haïti",
     url: "https://www.google.com/maps/search/?api=1&query=27%2C%20Bois%20Moquette%2C%20P%C3%A9tion-Ville%2C%20Haiti",
   },
 ];

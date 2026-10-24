@@ -31,8 +31,7 @@ export default function ContactRequestForm() {
       `Message : ${formData.get("message")}`,
     ].join("\n");
 
-    window.open(`https://wa.me/50929403001?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
-    setIsSubmitting(false);
+    window.location.assign(`https://wa.me/50929403001?text=${encodeURIComponent(message)}`);
   }
 
   return (
@@ -67,7 +66,7 @@ export default function ContactRequestForm() {
       <div className="sm:col-span-2">
         <button type="submit" disabled={isSubmitting} className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#1643aa] px-5 py-3 text-sm font-bold text-white shadow-lg shadow-blue-900/15 transition hover:bg-[#102a56] disabled:cursor-wait disabled:opacity-70">
           <Send className="h-4 w-4" aria-hidden="true" />
-          {isSubmitting ? "Préparation de votre demande..." : "Demander un devis via WhatsApp"}
+          {isSubmitting ? "Ouverture de WhatsApp..." : "Envoyer via WhatsApp"}
         </button>
       </div>
     </form>

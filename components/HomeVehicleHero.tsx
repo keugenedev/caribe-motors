@@ -34,6 +34,22 @@ const models: HomeModel[] = [
   { name: "X70 FL", category: "SUV familial", brand: "Jetour", brandLogo: "/images/brands/jetour.png", image: "/images/jetour/model-x70.png", detailsHref: "/vehicules/jetour/x70-fl", informationUrl: "https://www.jetourglobal.com" },
   { name: "X70 Plus", category: "SUV familial", brand: "Jetour", brandLogo: "/images/brands/jetour.png", image: "/images/jetour/model-x70plus.png", detailsHref: "/vehicules/jetour/x70-plus", informationUrl: "https://www.jetourglobal.com" },
   { name: "X90 Plus", category: "Grand SUV", brand: "Jetour", brandLogo: "/images/brands/jetour.png", image: "/images/jetour/model-x90plus.png", detailsHref: "/vehicules/jetour/x90-plus", informationUrl: "https://www.jetourglobal.com" },
+  { name: "P-Series · Brun", category: "Pick-up 4x4", brand: "GWM", brandLogo: "/images/brands/GWM.png", image: "/images/gwm/nav/brown.png", detailsHref: "/vehicules/gwm/p-series?color=brown", informationUrl: "https://www.gwm-global.com/" },
+  { name: "P-Series · Gris", category: "Pick-up 4x4", brand: "GWM", brandLogo: "/images/brands/GWM.png", image: "/images/gwm/nav/silver.png", detailsHref: "/vehicules/gwm/p-series?color=silver", informationUrl: "https://www.gwm-global.com/" },
+  { name: "P-Series · Orange", category: "Pick-up 4x4", brand: "GWM", brandLogo: "/images/brands/GWM.png", image: "/images/gwm/nav/orange.png", detailsHref: "/vehicules/gwm/p-series?color=orange", informationUrl: "https://www.gwm-global.com/" },
+  { name: "P-Series · Rouge", category: "Pick-up 4x4", brand: "GWM", brandLogo: "/images/brands/GWM.png", image: "/images/gwm/nav/red.png", detailsHref: "/vehicules/gwm/p-series?color=red", informationUrl: "https://www.gwm-global.com/" },
+  { name: "P-Series · Bleu", category: "Pick-up 4x4", brand: "GWM", brandLogo: "/images/brands/GWM.png", image: "/images/gwm/nav/blue.png", detailsHref: "/vehicules/gwm/p-series?color=blue", informationUrl: "https://www.gwm-global.com/" },
+  { name: "P-Series · Noir", category: "Pick-up 4x4", brand: "GWM", brandLogo: "/images/brands/GWM.png", image: "/images/gwm/nav/black.png", detailsHref: "/vehicules/gwm/p-series?color=black", informationUrl: "https://www.gwm-global.com/" },
+  { name: "H9 · Bleu", category: "Grand SUV familial 4x4", brand: "Haval", brandLogo: "/images/brands/Haval.png", image: "/images/haval/h9.png", detailsHref: "/vehicules/haval/h9?color=blue", informationUrl: "https://www.gwm-global.com/" },
+  { name: "H9 · Blanc", category: "Grand SUV familial 4x4", brand: "Haval", brandLogo: "/images/brands/Haval.png", image: "/images/haval/h9-white.png", detailsHref: "/vehicules/haval/h9?color=white", informationUrl: "https://www.gwm-global.com/" },
+  { name: "H9 · Noir", category: "Grand SUV familial 4x4", brand: "Haval", brandLogo: "/images/brands/Haval.png", image: "/images/haval/h9-black.png", detailsHref: "/vehicules/haval/h9?color=black", informationUrl: "https://www.gwm-global.com/" },
+  { name: "Tank 500 · Jaune abricot", category: "SUV 4x4 premium", brand: "Tank", brandLogo: "/images/brands/Tank.png", image: "/images/tank/tank-500/nav/gold.png", detailsHref: "/vehicules/tank/tank-500?color=gold", informationUrl: "https://www.gwm-global.com/" },
+  { name: "Tank 500 · Argent", category: "SUV 4x4 premium", brand: "Tank", brandLogo: "/images/brands/Tank.png", image: "/images/tank/tank-500/nav/silver.png", detailsHref: "/vehicules/tank/tank-500?color=silver", informationUrl: "https://www.gwm-global.com/" },
+  { name: "Tank 500 · Noir", category: "SUV 4x4 premium", brand: "Tank", brandLogo: "/images/brands/Tank.png", image: "/images/tank/tank-500/nav/black.png", detailsHref: "/vehicules/tank/tank-500?color=black", informationUrl: "https://www.gwm-global.com/" },
+  { name: "Tank 300 · Gris graphite", category: "SUV 4x4 tout-terrain", brand: "Tank", brandLogo: "/images/brands/Tank.png", image: "/images/tank/tank-300/nav/graphite.png", detailsHref: "/vehicules/tank/tank-300?color=graphite", informationUrl: "https://www.gwm-global.com/" },
+  { name: "Tank 300 · Orange", category: "SUV 4x4 tout-terrain", brand: "Tank", brandLogo: "/images/brands/Tank.png", image: "/images/tank/tank-300/nav/orange.png", detailsHref: "/vehicules/tank/tank-300?color=orange", informationUrl: "https://www.gwm-global.com/" },
+  { name: "Tank 300 · Gris clair", category: "SUV 4x4 tout-terrain", brand: "Tank", brandLogo: "/images/brands/Tank.png", image: "/images/tank/tank-300/nav/gray.png", detailsHref: "/vehicules/tank/tank-300?color=gray", informationUrl: "https://www.gwm-global.com/" },
+  { name: "Tank 300 · Blanc", category: "SUV 4x4 tout-terrain", brand: "Tank", brandLogo: "/images/brands/Tank.png", image: "/images/tank/tank-300/nav/white.png", detailsHref: "/vehicules/tank/tank-300?color=white", informationUrl: "https://www.gwm-global.com/" },
   { name: "Ignis", category: "Crossover urbain", brand: "Suzuki", brandLogo: "/images/brands/Suzuki.png", image: "/images/vehicles/Ignis.png", informationUrl: "https://www.globalsuzuki.com" },
   { name: "Jimny", category: "4x4 compact", brand: "Suzuki", brandLogo: "/images/brands/Suzuki.png", image: "/images/vehicles/Jimny.png", informationUrl: "https://www.globalsuzuki.com" },
   { name: "S-Cross", category: "SUV polyvalent", brand: "Suzuki", brandLogo: "/images/brands/Suzuki.png", image: "/images/vehicles/SCross.png", informationUrl: "https://www.globalsuzuki.com" },
@@ -52,7 +68,8 @@ type HomeVehicleHeroProps = {
 export default function HomeVehicleHero({ showActions = false, brand }: HomeVehicleHeroProps) {
   const displayedModels = brand ? models.filter((item) => item.brand === brand) : models;
   const [currentIndex, setCurrentIndex] = useState(0);
-  const model = displayedModels[currentIndex];
+  const model = displayedModels[currentIndex] ?? displayedModels[0];
+  if (!model) return null;
   const brandModels = displayedModels.filter((item) => item.brand === model.brand);
   const changeModel = (direction: -1 | 1) => setCurrentIndex((index) => (index + direction + displayedModels.length) % displayedModels.length);
   const selectModel = (selectedModel: HomeModel) => {
