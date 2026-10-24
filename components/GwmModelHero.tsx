@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useSearchParams } from "next/navigation";
 
 type GwmModelHeroProps = {
@@ -44,7 +44,18 @@ export default function GwmModelHero({ name, category, description, image }: Gwm
         </motion.header>
 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.45, ease: "easeOut" }} className="relative mx-auto mt-auto h-[min(40vh,18rem)] w-full max-w-2xl sm:h-[min(44vh,22rem)] md:max-w-4xl lg:h-[min(47vh,27rem)] lg:max-w-5xl">
-          <Image src={vehicleImage} alt={`GWM ${name}`} fill priority sizes="(max-width: 767px) 100vw, (max-width: 1023px) 896px, 1024px" className="object-contain object-bottom drop-shadow-[0_24px_24px_rgba(15,23,42,0.16)]" />
+          <AnimatePresence initial={false} mode="wait">
+            <motion.div
+              key={vehicleImage}
+              initial={{ opacity: 0, scale: 0.985 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.01 }}
+              transition={{ duration: 0.52, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute inset-0"
+            >
+              <Image src={vehicleImage} alt={`GWM ${name}`} fill priority sizes="(max-width: 767px) 100vw, (max-width: 1023px) 896px, 1024px" className="object-contain object-bottom drop-shadow-[0_24px_24px_rgba(15,23,42,0.16)]" />
+            </motion.div>
+          </AnimatePresence>
         </motion.div>
       </div>
     </section>
