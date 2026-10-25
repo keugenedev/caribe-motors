@@ -2,15 +2,19 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useSearchParams } from "next/navigation";
 
 type JetourModelHeroProps = {
   name: string;
   category: string;
   description: string;
   image: string;
+  colorImages?: Record<string, string>;
 };
 
-export default function JetourModelHero({ name, category, description, image }: JetourModelHeroProps) {
+export default function JetourModelHero({ name, category, description, image, colorImages }: JetourModelHeroProps) {
+  const searchParams = useSearchParams();
+  const selectedImage = colorImages?.[searchParams.get("color") ?? ""] ?? image;
   return (
     <section className="relative isolate h-[calc(100svh-76px)] overflow-hidden bg-[#fcfcfc] text-[#222] lg:h-[calc(100svh-120px)]">
       <motion.div aria-hidden="true" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 0.055, scale: 1 }} transition={{ duration: 2.1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }} className="pointer-events-none absolute inset-x-0 top-[42%] z-0 h-32 -translate-y-1/2 sm:h-48 lg:h-64">
@@ -29,9 +33,9 @@ export default function JetourModelHero({ name, category, description, image }: 
           <p className="mx-auto mt-5 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">{description}</p>
         </motion.header>
 
-        <motion.div initial={{ opacity: 0, y: 96, scale: 0.9 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 1.9, delay: 0.55, ease: [0.16, 1, 0.3, 1] }} className="relative mx-auto mt-auto h-[min(38vh,17rem)] w-full max-w-2xl sm:h-[min(42vh,20rem)] md:max-w-4xl lg:h-[min(44vh,24rem)] lg:max-w-5xl">
+        <motion.div key={selectedImage} initial={{ opacity: 0, y: 96, scale: 0.9 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 1.9, delay: 0.55, ease: [0.16, 1, 0.3, 1] }} className="relative mx-auto mt-auto h-[min(38vh,17rem)] w-full max-w-2xl sm:h-[min(42vh,20rem)] md:max-w-4xl lg:h-[min(44vh,24rem)] lg:max-w-5xl">
           <div className="absolute inset-x-[20%] bottom-[10%] h-9 rounded-full bg-slate-900/15 blur-xl" />
-          <Image src={image} alt={`Jetour ${name}`} fill priority sizes="(max-width: 767px) 100vw, (max-width: 1023px) 896px, 1024px" className="object-contain object-bottom drop-shadow-[0_24px_24px_rgba(15,23,42,0.16)]" />
+          <Image src={selectedImage} alt={`Jetour ${name}`} fill priority sizes="(max-width: 767px) 100vw, (max-width: 1023px) 896px, 1024px" className="object-contain object-bottom drop-shadow-[0_24px_24px_rgba(15,23,42,0.16)]" />
         </motion.div>
       </div>
     </section>

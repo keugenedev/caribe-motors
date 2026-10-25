@@ -26,13 +26,21 @@ const vehicleHref = (brand: Brand, vehicle: Vehicle) => {
   return brand.id === "chery"
   ? `/vehicules/chery/${vehicle.name.toLowerCase().replace(/\s+/g, "-")}`
   : brand.id === "jetour"
-    ? `/vehicules/jetour/${vehicle.name.toLowerCase().replace(/\s+/g, "-")}`
+    ? `/vehicules/jetour/${vehicle.name.toLowerCase().replace(/\s+/g, "-")}${colorQuery}`
     : brand.id === "gwm"
       ? `/vehicules/gwm/${vehicle.name.toLowerCase().replace(/\s+/g, "-")}${colorQuery}`
       : brand.id === "tank"
         ? `/vehicules/tank/${vehicle.name.toLowerCase().replace(/\s+/g, "-")}${colorQuery}`
         : brand.id === "haval"
           ? `/vehicules/haval/${vehicle.name.toLowerCase().replace(/\s+/g, "-")}${colorQuery}`
+          : brand.id === "suzuki"
+            ? `/vehicules/suzuki/${vehicle.name.toLowerCase().replace(/\s+/g, "-")}`
+          : brand.id === "jeep"
+            ? `/vehicules/jeep/${vehicle.name.toLowerCase().replace(/\s+/g, "-")}`
+          : brand.id === "faw"
+            ? `/vehicules/faw/${vehicle.name.toLowerCase().replace(/\s+/g, "-")}`
+            : brand.id === "ram"
+              ? `/vehicules/ram/${vehicle.name.toLowerCase().replace(/\s+/g, "-")}`
         : "/marques";
 };
 
@@ -42,6 +50,8 @@ const BRANDS: Brand[] = [
     name: "Jetour",
     image: "/images/brands/jetour.png",
     vehicles: [
+      { name: "G700", label: "G700 · Noir", color: "black", image: "/images/jetour/models/g700/black.png" },
+      { name: "G700", label: "G700 · Blanc", color: "white", image: "/images/jetour/models/g700/white.png" },
       { name: "T1", image: "/images/jetour/model-t1.png" },
       { name: "T2", image: "/images/jetour/model-t2.png" },
       { name: "X50", image: "/images/jetour/models/x50/x50-001-7.png" },
@@ -85,6 +95,9 @@ const BRANDS: Brand[] = [
     name: "Haval",
     image: "/images/brands/Haval.png",
     vehicles: [
+      { name: "H7", label: "Haval H7 Â· Vert", color: "green", image: "/images/haval/h7/vert.png" },
+      { name: "H7", label: "Haval H7 Â· Noir", color: "black", image: "/images/haval/h7/noir.png" },
+      { name: "H7", label: "Haval H7 Â· Blanc", color: "white", image: "/images/haval/h7/blanc.png" },
       { name: "H9", label: "Haval H9 · Bleu", color: "blue", image: "/images/nav-thumbnails-v2/haval-h9-blue.png" },
       { name: "H9", label: "Haval H9 · Blanc", color: "white", image: "/images/nav-thumbnails-v2/haval-h9-white.png" },
       { name: "H9", label: "Haval H9 · Noir", color: "black", image: "/images/nav-thumbnails-v2/haval-h9-black.png" },
@@ -109,6 +122,7 @@ const BRANDS: Brand[] = [
     name: "Suzuki",
     image: "/images/brands/Suzuki.png",
     vehicles: [
+      { name: "Vitara", image: "/images/suzuki/vitara/vitara.png" },
       { name: "Ignis", image: "/images/vehicles/Ignis.png" },
       { name: "Jimny", image: "/images/vehicles/Jimny.png" },
       { name: "S-Cross", image: "/images/vehicles/SCross.png" },
@@ -125,7 +139,12 @@ const BRANDS: Brand[] = [
       { name: "Wrangler", image: "/images/vehicles/Wrangler.png" },
     ],
   },
-  { id: "ram", name: "RAM", image: "/images/brands/Ram.png" },
+  {
+    id: "ram",
+    name: "RAM",
+    image: "/images/brands/Ram.png",
+    vehicles: [{ name: "RAM 700", image: "/images/ram/700/ram-700-gris.png" }],
+  },
   {
     id: "dodge",
     name: "Dodge",
@@ -133,7 +152,15 @@ const BRANDS: Brand[] = [
     vehicles: [{ name: "Durango", image: "/images/vehicles/Durango.png" }],
   },
   { id: "chrysler", name: "Chrysler", image: "/images/brands/Chrysler.png" },
-  { id: "faw", name: "FAW", image: "/images/brands/FAW.png" },
+  {
+    id: "faw",
+    name: "FAW",
+    image: "/images/brands/FAW.png",
+    vehicles: [
+      { name: "Camion caisse", image: "/images/faw/camion-caisse.png" },
+      { name: "Camion plateau", image: "/images/faw/camion-plateau.png" },
+    ],
+  },
   { id: "gac", name: "GAC", image: "/images/brands/GAC.png" },
 ];
 

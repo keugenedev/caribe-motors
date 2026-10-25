@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Link from "next/link";
 import { ArrowRight, CarFront } from "lucide-react";
 import { notFound } from "next/navigation";
@@ -15,6 +16,7 @@ type Model = {
   category: string;
   description: string;
   heroImage?: string;
+  colorImages?: Record<string, string>;
   gallery: string[];
   engine: string;
   power: string;
@@ -67,6 +69,12 @@ const models: Record<string, Model> = {
     gallery: [image("x90-plus", "x90-plus-003-1.png"), image("x90-plus", "x90-plus-002-interieur.png"), image("x90-plus", "x90-plus-004-2.png")],
     engine: "2.0L turbo", power: "~187 kW", torque: "~390 Nm", transmission: "DCT", seats: "7 places", consumption: "~8–11 L/100 km", dimensions: "~4 858 × 1 925 × 1 780 mm", wheelbase: "~2 850 mm",
   },
+  g700: {
+    name: "G700", category: "SUV hybride rechargeable tout-terrain", description: "Un grand SUV Jetour hybride rechargeable, conçu pour associer technologie, confort premium et capacités tout-terrain.",
+    heroImage: image("g700", "black.png"), colorImages: { black: image("g700", "black.png"), white: image("g700", "white.png") },
+    gallery: [image("g700", "gallery-1.png"), image("g700", "gallery-2.png"), image("g700", "gallery-3.png")],
+    engine: "2.0TD hybride rechargeable", power: "665 kW (904 PS)", torque: "1 135 Nm", transmission: "2-DHT hybride · 4x4", seats: "5 ou 6 places", consumption: "8,8 L/100 km (WLTC)", dimensions: "5 198 × 2 050 × 1 956 mm", wheelbase: "2 870 mm",
+  },
 };
 
 export function generateStaticParams() {
@@ -97,7 +105,7 @@ export default async function JetourModelPage({ params }: { params: Promise<{ mo
     <div className="min-h-screen bg-white text-[#102a56]">
       <Navbar />
       <main>
-        <JetourModelHero name={car.name} category={car.category} description={car.description} image={car.heroImage ?? car.gallery[0]} />
+        <Suspense fallback={null}><JetourModelHero name={car.name} category={car.category} description={car.description} image={car.heroImage ?? car.gallery[0]} colorImages={car.colorImages} /></Suspense>
         <JetourSpecifications specifications={specifications} />
         <JetourGallery name={car.name} images={car.gallery} />
         <section className="bg-[#f8fafc] px-5 py-16 sm:px-8 sm:py-24 lg:px-10">
