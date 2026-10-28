@@ -214,7 +214,7 @@ export default function Navbar() {
         <div className="mx-auto flex min-h-11 max-w-7xl items-center justify-between gap-6 px-6 py-2 text-[11px] font-semibold xl:px-8">
           <div className="flex items-center gap-4 text-blue-50">
             <a href="https://www.google.com/maps/search/?api=1&query=33%2C%20Boulevard%20Toussaint%20Louverture%2C%20Port-au-Prince%2C%20Haiti" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 transition hover:text-white"><MapPin aria-hidden="true" className="h-3.5 w-3.5 text-[#54b834]" />33, Blvd Toussaint Louverture, Port-au-Prince, Haïti</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=27%2C%20Bois%20Moquette%2C%20P%C3%A9tion-Ville%2C%20Haiti" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 transition hover:text-white"><MapPin aria-hidden="true" className="h-3.5 w-3.5 text-[#54b834]" />27, rue Bois Moquette, Pétion-Ville, Haïti</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Caribe%20Motors%2C%20Angle%20rue%20Rigaud%20et%20Rue%20Rebecca%2C%20P%C3%A9tion-Ville%2C%20Haiti" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 transition hover:text-white"><MapPin aria-hidden="true" className="h-3.5 w-3.5 text-[#54b834]" />Angle rue Rigaud et rue Rebecca, Pétion-Ville, Haïti</a>
           </div>
           <div className="flex shrink-0 items-center gap-3 text-blue-100">
             <a href="tel:+50929403001" className="inline-flex items-center gap-1.5 text-blue-50 transition hover:text-white"><Phone aria-hidden="true" className="h-3.5 w-3.5 text-[#54b834]" />+(509) 2940-3001</a>

@@ -27,8 +27,8 @@ const LOCATIONS = [
   },
   {
     name: "Pétion-Ville",
-    address: "27, rue Bois Moquette, Pétion-Ville, Haïti",
-    url: "https://www.google.com/maps/search/?api=1&query=27%2C%20Bois%20Moquette%2C%20P%C3%A9tion-Ville%2C%20Haiti",
+    address: "Caribe Motors, angle rue Rigaud et rue Rebecca, Pétion-Ville, Haïti",
+    url: "https://www.google.com/maps/search/?api=1&query=Caribe%20Motors%2C%20Angle%20rue%20Rigaud%20et%20Rue%20Rebecca%2C%20P%C3%A9tion-Ville%2C%20Haiti",
   },
 ];
 
