@@ -27,7 +27,7 @@ const SOCIAL_NETWORKS = [
   },
   {
     name: "LinkedIn",
-    url: "https://www.linkedin.com/company/caribe-motors",
+    url: "https://www.linkedin.com/company/caribe-motors-sa/",
     icon: (
       <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
         <path d="M6.5 8.5H3.7V20h2.8V8.5ZM5.1 4A1.6 1.6 0 1 0 5.1 7a1.6 1.6 0 0 0 0-3ZM20.3 13.4c0-3.5-1.9-5.1-4.4-5.1-2 0-2.9 1.1-3.4 1.9V8.5H9.7V20h2.8v-5.7c0-1.5.3-3 2.2-3 1.9 0 1.9 1.8 1.9 3.1V20h2.8v-6.6Z" />

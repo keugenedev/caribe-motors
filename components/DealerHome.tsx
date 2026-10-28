@@ -9,9 +9,9 @@ const brands = [
   { name: "Suzuki", image: "/images/brands/Suzuki.png", href: "https://www.suzukicaribbean.com/" },
   { name: "Chery", image: "/images/brands/Chery.png", href: "https://cheryhaiti.com/" },
   { name: "Jetour", image: "/images/brands/jetour.png", href: "https://www.jetourhaiti.com/index.html" },
-  { name: "GWM", image: "/images/brands/GWM.png", href: "https://www.gwm-global.com/" },
-  { name: "Haval", image: "/images/brands/Haval.png", href: "https://www.gwm-global.com/" },
-  { name: "Tank", image: "/images/brands/Tank.png", href: "https://www.gwm-global.com/" },
+  { name: "GWM", image: "/images/brands/GWM.png", href: "https://gwmcaribbean.com/" },
+  { name: "Haval", image: "/images/brands/Haval.png", href: "https://gwmcaribbean.com/" },
+  { name: "Tank", image: "/images/brands/Tank.png", href: "https://gwmcaribbean.com/" },
   { name: "Jeep", image: "/images/brands/Jeep.png", href: "https://www.jeep-caribbean.com/haiti" },
   { name: "RAM", image: "/images/brands/Ram.png", href: "https://www.ramcaribbean.com/" },
   { name: "Dodge", image: "/images/brands/Dodge.png", href: "https://www.dodge.com/" },
@@ -115,9 +115,12 @@ export default function DealerHome() {
         <div className="mt-7 grid gap-9 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <div>
             <p className="mt-7 text-xs font-bold uppercase tracking-[0.22em] text-[#54b834]"><WordReveal text="Bienvenue chez Caribe Motors" delay={0.28} stagger={0.16} /></p>
-            <h2 className="mt-4 text-4xl font-black tracking-[-0.05em] text-[#102a56] sm:text-5xl"><WordReveal text="Une expérience automobile simple et humaine." delay={1.2} stagger={0.2} duration={0.68} /></h2>
+            <h2 className="mt-4 text-4xl font-black tracking-[-0.05em] text-[#102a56] sm:text-5xl"><WordReveal text="Caribe Motors S.A. L’excellence automobile depuis 2002" delay={1.2} stagger={0.2} duration={0.68} /></h2>
           </div>
-          <p className="max-w-2xl text-base leading-8 text-slate-600 sm:text-lg"><WordReveal text="Depuis 2016, Caribe Motors accompagne les automobilistes haïtiens dans le choix de leur véhicule et leur suivi au quotidien. Notre équipe est là pour vous écouter, vous conseiller et vous accompagner." delay={2.7} stagger={0.065} duration={0.45} /></p>
+          <div className="max-w-2xl space-y-5 text-base leading-8 text-slate-600 sm:text-lg">
+            <p><WordReveal text="Fondée et ouverte au public en avril 2002, Caribe Motors S.A. est une entreprise de référence dans le secteur automobile en Haïti. Distributeur de marques internationales prestigieuses telles que Suzuki, Jetour, Chery, GWM, Gac, FAW, Chrysler, Dodge, Jeep et Ram, elle s’engage à offrir des véhicules de qualité, un service professionnel et une expérience client exceptionnelle." delay={2.7} stagger={0.04} duration={0.45} /></p>
+            <p><WordReveal text="Depuis plus de 24 ans, Caribe Motors S.A. accompagne ses clients avec une passion constante pour l’automobile, l’innovation et la satisfaction client." delay={4.2} stagger={0.06} duration={0.45} /></p>
+          </div>
         </div>
       </div>
     </section>
