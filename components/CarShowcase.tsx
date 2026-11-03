@@ -75,11 +75,8 @@ const PRESENTATIONS: BrandPresentation[] = [
       { id: "tiggo-2", name: "Tiggo 2", category: "Collection Tiggo", description: "Découvrez le Chery Tiggo 2 chez Caribe Motors.", image: "/images/chery/vehicles/tiggo-2.png", modelLogo: "/images/chery/logos/tiggo-2.png" },
       { id: "tiggo-4", name: "Tiggo 4", category: "Collection Tiggo", description: "Découvrez le Chery Tiggo 4 chez Caribe Motors.", image: "/images/chery/vehicles/tiggo-4.png", modelLogo: "/images/chery/logos/tiggo-4.png" },
       { id: "tiggo-7", name: "Tiggo 7", category: "Collection Tiggo", description: "Découvrez le Chery Tiggo 7 chez Caribe Motors.", image: "/images/chery/vehicles/tiggo-7.png", modelLogo: "/images/chery/logos/tiggo-7.png" },
-      { id: "tiggo-7-csh", name: "Tiggo 7 CSH", category: "Collection Tiggo", description: "Découvrez le Chery Tiggo 7 CSH chez Caribe Motors.", image: "/images/chery/vehicles/tiggo-7-csh.png", modelLogo: "/images/chery/logos/tiggo-7-csh.png" },
       { id: "tiggo-8", name: "Tiggo 8", category: "Collection Tiggo", description: "Découvrez le Chery Tiggo 8 chez Caribe Motors.", image: "/images/chery/vehicles/tiggo-8.png", modelLogo: "/images/chery/logos/tiggo-8.png" },
-      { id: "tiggo-8-csh", name: "Tiggo 8 CSH", category: "Collection Tiggo", description: "Découvrez le Chery Tiggo 8 CSH chez Caribe Motors.", image: "/images/chery/vehicles/tiggo-8-csh.png", modelLogo: "/images/chery/logos/tiggo-8-csh.png" },
       { id: "tiggo-9", name: "Tiggo 9", category: "Collection Tiggo", description: "Découvrez le Chery Tiggo 9 chez Caribe Motors.", image: "/images/chery/vehicles/tiggo-9.png", modelLogo: "/images/chery/logos/tiggo-9.png" },
-      { id: "tiggo-9-csh", name: "Tiggo 9 CSH", category: "Collection Tiggo", description: "Découvrez le Chery Tiggo 9 CSH chez Caribe Motors.", image: "/images/chery/vehicles/tiggo-9-csh.png", modelLogo: "/images/chery/logos/tiggo-9-csh.png" },
     ],
   },
   {
