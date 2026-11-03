@@ -31,7 +31,7 @@ export default function ContactRequestForm() {
       `Message : ${formData.get("message")}`,
     ].join("\n");
 
-    window.location.assign(`https://wa.me/50929403001?text=${encodeURIComponent(message)}`);
+    window.location.assign(`https://api.whatsapp.com/send/?phone=50946299878&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`);
   }
 
   return (

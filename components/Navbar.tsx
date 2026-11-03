@@ -252,6 +252,7 @@ export default function Navbar() {
           <Link href="/" aria-current={pathname === "/" ? "page" : undefined} className={`text-[15px] font-semibold transition hover:text-[#0d4b8e] ${pathname === "/" ? "text-[#54b834]" : "text-[#14223c]"}`}>Accueil</Link>
           <div className="inline-flex items-center gap-1"><Link href="/marques" onMouseEnter={() => setIsBrandsMenuOpen(true)} onFocus={() => setIsBrandsMenuOpen(true)} className={`text-[15px] font-semibold transition hover:text-[#0d4b8e] ${pathname === "/marques" ? "text-[#54b834]" : "text-[#14223c]"}`}>Nos marques</Link><button type="button" aria-label="Ouvrir le menu des marques" aria-expanded={isBrandsMenuOpen} aria-controls="menu-marques" onClick={() => setIsBrandsMenuOpen((open) => !open)} onMouseEnter={() => setIsBrandsMenuOpen(true)} onFocus={() => setIsBrandsMenuOpen(true)} className={`transition hover:text-[#0d4b8e] ${pathname === "/marques" ? "text-[#54b834]" : "text-[#14223c]"}`}><ChevronDown aria-hidden="true" className={`h-4 w-4 transition-transform ${isBrandsMenuOpen ? "rotate-180" : ""}`} /></button></div>
           <Link href="/services" aria-current={pathname === "/services" ? "page" : undefined} className={`text-[15px] font-semibold transition hover:text-[#0d4b8e] ${pathname === "/services" ? "text-[#54b834]" : "text-[#14223c]"}`}>Services</Link>
+          <Link href="/finance" aria-current={pathname === "/finance" ? "page" : undefined} className={`text-[15px] font-semibold transition hover:text-[#0d4b8e] ${pathname === "/finance" ? "text-[#54b834]" : "text-[#14223c]"}`}>Finance</Link>
           <Link href="/contact" aria-current={pathname === "/contact" ? "page" : undefined} className={`text-[15px] font-semibold transition hover:text-[#0d4b8e] ${pathname === "/contact" ? "text-[#54b834]" : "text-[#14223c]"}`}>Contact</Link>
 
           {isBrandsMenuOpen && (
@@ -358,6 +359,7 @@ export default function Navbar() {
               )}
 
               <Link href="/services" onClick={closeMobileMenu} className="block rounded-xl px-4 py-3 text-sm font-bold text-[#102a56] hover:bg-slate-50">Services</Link>
+              <Link href="/finance" onClick={closeMobileMenu} className="block rounded-xl px-4 py-3 text-sm font-bold text-[#102a56] hover:bg-slate-50">Finance</Link>
               <Link href="/contact" onClick={closeMobileMenu} className="block rounded-xl px-4 py-3 text-sm font-bold text-[#102a56] hover:bg-slate-50">Contact</Link>
             </nav>
           </aside>
