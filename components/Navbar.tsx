@@ -163,7 +163,10 @@ const BRANDS: Brand[] = [
 
 const GWM_BRAND_IDS = ["gwm", "tank", "haval"];
 const GWM_BRANDS = BRANDS.filter((brand) => GWM_BRAND_IDS.includes(brand.id));
-const NAV_BRANDS = BRANDS.filter((brand) => !["tank", "haval"].includes(brand.id));
+const NAV_BRANDS = [
+  ...BRANDS.filter((brand) => brand.id === "suzuki"),
+  ...BRANDS.filter((brand) => !["suzuki", "tank", "haval"].includes(brand.id)),
+];
 
 const navigationVehicleImage = (source: string) => {
   if (source.startsWith("/images/nav-thumbnails-v2/")) return source;
