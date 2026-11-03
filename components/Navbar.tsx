@@ -164,10 +164,6 @@ const BRANDS: Brand[] = [
   { id: "gac", name: "GAC", image: "/images/brands/GAC.png" },
 ];
 
-const PRELOADED_NAV_IMAGES = BRANDS
-  .filter((brand) => ["gwm", "tank", "haval"].includes(brand.id))
-  .flatMap((brand) => brand.vehicles?.map((vehicle) => vehicle.image) ?? []);
-
 const GWM_BRAND_IDS = ["gwm", "tank", "haval"];
 const GWM_BRANDS = BRANDS.filter((brand) => GWM_BRAND_IDS.includes(brand.id));
 const NAV_BRANDS = BRANDS.filter((brand) => !["tank", "haval"].includes(brand.id));
@@ -207,9 +203,6 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white shadow-[0_8px_30px_rgba(15,23,42,0.06)]">
-      <div aria-hidden="true" className="pointer-events-none absolute h-px w-px overflow-hidden opacity-0">
-        {PRELOADED_NAV_IMAGES.map((image) => <Image key={image} src={image} alt="" width={220} height={110} sizes="220px" preload />)}
-      </div>
       <div className="hidden bg-[#102a56] text-white lg:block">
         <div className="mx-auto flex min-h-11 max-w-7xl items-center justify-between gap-6 px-6 py-2 text-[11px] font-semibold xl:px-8">
           <div className="flex items-center gap-4 text-blue-50">

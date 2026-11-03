@@ -14,15 +14,15 @@ type Color = {
 };
 
 const colors: Color[] = [
-  { id: "orange", name: "Orange volcanique", hex: "#c45a20", borderHex: "#924019", image: "/images/gwm/nav/orange.png" },
-  { id: "red", name: "Rouge passion", hex: "#b12626", borderHex: "#7f1d1d", image: "/images/gwm/nav/red.png" },
-  { id: "blue", name: "Bleu électrique", hex: "#1355ad", borderHex: "#0f3f80", image: "/images/gwm/nav/blue.png" },
-  { id: "silver", name: "Gris argent", hex: "#9ca3af", borderHex: "#6b7280", image: "/images/gwm/nav/silver.png" },
-  { id: "black", name: "Noir intense", hex: "#171717", borderHex: "#3f3f46", image: "/images/gwm/nav/black.png" },
-  { id: "brown", name: "Brun bronze", hex: "#76563e", borderHex: "#4c3424", image: "/images/gwm/nav/brown.png" },
+  { id: "orange", name: "Orange volcanique", hex: "#c45a20", borderHex: "#924019", image: "/images/gwm/p-series/optimized-colors/orange.webp" },
+  { id: "red", name: "Rouge passion", hex: "#b12626", borderHex: "#7f1d1d", image: "/images/gwm/p-series/optimized-colors/red.webp" },
+  { id: "blue", name: "Bleu électrique", hex: "#1355ad", borderHex: "#0f3f80", image: "/images/gwm/p-series/optimized-colors/blue.webp" },
+  { id: "silver", name: "Gris argent", hex: "#9ca3af", borderHex: "#6b7280", image: "/images/gwm/p-series/optimized-colors/silver.webp" },
+  { id: "black", name: "Noir intense", hex: "#171717", borderHex: "#3f3f46", image: "/images/gwm/p-series/optimized-colors/black.webp" },
+  { id: "brown", name: "Brun bronze", hex: "#76563e", borderHex: "#4c3424", image: "/images/gwm/p-series/optimized-colors/brown.webp" },
 ];
 
-const frames = Array.from({ length: 36 }, (_, index) => `/images/gwm/p-series/360/red-${String(index).padStart(2, "0")}.png`);
+const frames = Array.from({ length: 36 }, (_, index) => `/images/gwm/p-series/optimized-360/red-${String(index).padStart(2, "0")}.webp`);
 
 export default function GwmPSeriesExperience() {
   const [selectedColor, setSelectedColor] = useState(colors[5]);
@@ -30,13 +30,6 @@ export default function GwmPSeriesExperience() {
   const dragStart = useRef<{ x: number; frame: number } | null>(null);
   const searchParams = useSearchParams();
   const color = searchParams.get("color");
-
-  useEffect(() => {
-    frames.forEach((source) => {
-      const image = new window.Image();
-      image.src = source;
-    });
-  }, []);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => setSelectedColor(colors.find((option) => option.id === color) ?? colors[5]));

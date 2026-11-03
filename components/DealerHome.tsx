@@ -20,32 +20,7 @@ const brands = [
   { name: "GAC", image: "/images/brands/GAC.png", href: "https://www.gacgroup.com/en" },
 ];
 
-const heroGallery = [
-  "/images/chery/himla/himla-hero.jpg",
-  "/images/chery/himla/himla-terrain.jpeg",
-  "/images/chery/himla/himla-utility.jpg",
-  "/images/chery/details/tiggo-8/07-3529f35ace3f4bd5b72beee074ebf8fd430b8eeb-8192x4608.jpg",
-  "/images/chery/details/tiggo-8/17-87c8c19e43ca8acc9c23aa357896308a14d8bf85-8192x4608.jpg",
-  "/images/chery/details/tiggo-7/06-2fc5bb802e9e7487f6e179aca82bb7cf1aab116e-2500x1406.jpg",
-  "/images/chery/details/tiggo-7/05-2e2ea069460699239cd0b217a13e5d4da4ef64df-2500x1407.jpg",
-  "/images/chery/details/tiggo-4/01-02f80ef6d292e2b9f2ac74a7d9476a99ecf8647d-2880x1620.jpg",
-  "/images/chery/details/tiggo-4/02-0a9c3c72518f173dd8c4eb59d1a78776c4e233c8-4000x2250.jpg",
-  "/images/jetour/models/t1/t1-001-1.jpg",
-  "/images/jetour/models/t1/t1-007-2.jpg",
-  "/images/jetour/models/t2/t2-014-7.webp",
-  "/images/jetour/models/t2/t2-006-interieur.webp",
-  "/images/jetour/models/x70-plus/x70-plus-001-1.png",
-  "/images/jetour/models/x70-plus/x70-plus-004-interieur.png",
-  "/images/jetour/models/x90-plus/x90-plus-004-2.png",
-  "/images/gallery/gwm-p-series/commercial-01.jpg",
-  "/images/gallery/gwm-p-series/commercial-03.jpg",
-  "/images/gallery/gwm-p-series/commercial-05.jpg",
-  "/images/gallery/gwm-p-series/commercial-07.jpg",
-  "/images/gallery/gwm-p300/p300-01.jpg",
-  "/images/gallery/gwm-p300/p300-04.jpg",
-  "/images/gallery/gwm-p300/p300-09.jpg",
-  "/images/gallery/gwm-p300/p300-13.jpg",
-];
+const heroGallery = Array.from({ length: 24 }, (_, index) => `/images/home-gallery/${String(index + 1).padStart(2, "0")}.webp`);
 
 const heroTileIndexes = Array.from({ length: 13 }, (_, index) => index);
 const heroTitleWords = ["Toutes", "vos", "marques", "automobiles,", "au", "même", "endroit."];
@@ -82,7 +57,7 @@ export default function DealerHome() {
           return <div key={tileIndex} className={`relative overflow-hidden ${tileIndex === 0 ? "col-span-2 row-span-2" : ""}`}>
             <AnimatePresence initial={false} mode="wait">
               <motion.div key={image} initial={reduceMotion ? false : { opacity: 0, scale: 1.08, x: imageOffset }} animate={{ opacity: 1, scale: 1, x: 0 }} exit={reduceMotion ? undefined : { opacity: 0, scale: 0.97, x: -imageOffset }} transition={{ duration: reduceMotion ? 0 : 0.72, ease: [0.22, 1, 0.36, 1] }} className="absolute inset-0 will-change-transform">
-                <Image src={image} alt="" fill priority={tileIndex < 4} sizes="(max-width: 640px) 50vw, 25vw" className="object-cover" />
+                <Image src={image} alt="" fill preload={tileIndex === 0} sizes="(max-width: 640px) 50vw, 25vw" className="object-cover" />
               </motion.div>
             </AnimatePresence>
           </div>;

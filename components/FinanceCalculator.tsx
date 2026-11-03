@@ -70,7 +70,7 @@ export default function FinanceCalculator() {
   const insuranceLabel = `Assurance ${DURATION_UNITS[durationUnit].insuranceLabel}`;
 
   return (
-    <div className="mx-auto grid max-w-7xl overflow-hidden border border-slate-200 bg-white shadow-[0_16px_40px_rgba(15,38,82,0.09)] sm:grid-cols-2">
+    <div className="mx-auto grid max-w-6xl overflow-hidden border border-slate-200 bg-white sm:grid-cols-2">
       <section className="p-5 sm:p-8" aria-labelledby="finance-form-title">
         <div className="flex items-start gap-4">
           <span className="flex h-12 w-12 shrink-0 items-center justify-center bg-[#eaf3ff] text-[#1643aa]">
@@ -97,9 +97,9 @@ export default function FinanceCalculator() {
       </section>
 
       <aside className="bg-[#102a56] text-white" aria-live="polite">
-        <div className="bg-[radial-gradient(circle_at_100%_0%,rgba(84,184,52,0.32),transparent_40%)] px-6 pb-4 pt-5 sm:px-8">
+        <div className="px-6 pb-4 pt-5 sm:px-8">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#a9e797]">Estimation personnalisée</p>
-          <div className="mt-3 border border-white/15 bg-white/[0.09] px-5 py-3.5 backdrop-blur-sm">
+          <div className="mt-3 border border-white/15 px-5 py-3.5">
             <p className="text-sm font-medium text-blue-100">Votre mensualité estimée</p>
             <p className="mt-1 text-4xl font-bold tracking-tight">{displayCurrency(result.monthlyPayment)}</p>
             <p className="mt-1.5 text-xs text-blue-100">{isEstimateComplete ? "Par mois, assurance comprise" : "Remplissez les champs pour calculer"}</p>
@@ -107,17 +107,17 @@ export default function FinanceCalculator() {
         </div>
 
         <div className="px-6 pb-6 sm:px-8">
-          <div className="overflow-hidden border border-white/10 bg-white/[0.05] px-5 py-1">
+          <div className="overflow-hidden border border-white/10 px-5 py-1">
             <SummaryRow label="Montant financé" value={displayCurrency(result.amountFinanced)} />
             <SummaryRow label="Paiement véhicule" value={displayCurrency(result.loanPayment)} />
             <SummaryRow label={insuranceLabel} value={displayCurrency(toNumber(values.insurance))} />
             <SummaryRow label="Intérêts estimés" value={displayCurrency(result.interest)} />
           </div>
-          <div className="mt-4 flex items-center justify-between gap-4 bg-white/[0.10] px-5 py-4">
+          <div className="mt-4 flex items-center justify-between gap-4 px-5 py-4">
             <span className="text-sm font-semibold text-blue-50">{isEstimateComplete ? `Coût total sur ${durationLabel}` : "Coût total"}</span>
             <span className="text-base font-bold text-white">{displayCurrency(result.totalWithInsurance)}</span>
           </div>
-          <a href="/contact" className="group mt-5 flex w-full items-center justify-center gap-2 bg-[#54b834] px-5 py-3.5 text-sm font-bold text-white shadow-lg shadow-black/10 transition hover:bg-[#469f2d] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#102a56]">
+          <a href="/contact" className="group mt-5 flex w-full items-center justify-center gap-2 bg-[#54b834] px-5 py-3.5 text-sm font-bold text-white transition hover:bg-[#469f2d] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#102a56]">
             Parler à un conseiller
             <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
           </a>

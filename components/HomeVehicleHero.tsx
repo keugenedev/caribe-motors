@@ -72,9 +72,10 @@ const models: HomeModel[] = [
 type HomeVehicleHeroProps = {
   showActions?: boolean;
   brand?: string;
+  preload?: boolean;
 };
 
-export default function HomeVehicleHero({ showActions = false, brand }: HomeVehicleHeroProps) {
+export default function HomeVehicleHero({ showActions = false, brand, preload = false }: HomeVehicleHeroProps) {
   const displayedModels = brand ? models.filter((item) => item.brand === brand) : models;
   const [currentIndex, setCurrentIndex] = useState(0);
   const model = displayedModels[currentIndex] ?? displayedModels[0];
@@ -93,11 +94,11 @@ export default function HomeVehicleHero({ showActions = false, brand }: HomeVehi
           <motion.div aria-hidden="true" variants={{ initial: { opacity: 0, scale: 0.92 }, animate: { opacity: 0.055, scale: 1, transition: { duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] } }, exit: { opacity: 0, transition: { duration: 0.3, ease: "easeInOut" } } }} className="pointer-events-none absolute inset-x-0 top-[43%] h-32 -translate-y-1/2 sm:h-48 lg:h-64"><Image src={model.brandLogo} alt="" fill sizes="100vw" className="object-contain" /></motion.div>
           <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col px-5 py-14 pb-28 sm:px-8 sm:py-16 sm:pb-32 lg:px-10">
             <motion.header variants={{ initial: { opacity: 0, y: -18 }, animate: { opacity: 1, y: 0, transition: { duration: 0.65, ease: "easeOut" } }, exit: { opacity: 0, y: -8, transition: { duration: 0.3, ease: "easeInOut" } } }} className="relative text-center lg:-top-10">
-              <div className="relative mx-auto h-14 w-60 sm:h-16 sm:w-72"><Image src={model.modelLogo ?? model.brandLogo} alt={`${model.brand} ${model.name}`} fill priority sizes="288px" className="object-contain" /></div>
+              <div className="relative mx-auto h-14 w-60 sm:h-16 sm:w-72"><Image src={model.modelLogo ?? model.brandLogo} alt={`${model.brand} ${model.name}`} fill preload={preload} sizes="288px" className="object-contain" /></div>
               <div className="mt-7 flex justify-center gap-4 text-sm font-light text-slate-500 sm:text-base"><span>{model.category}</span><span className="text-slate-300">|</span><span>Design</span><span className="text-slate-300">|</span><span>Performance</span></div>
               {showActions && <div className="mt-6 flex flex-wrap justify-center gap-2.5"><Link href={model.detailsHref ?? model.informationUrl} target={model.detailsHref ? undefined : "_blank"} rel={model.detailsHref ? undefined : "noopener noreferrer"} className="inline-flex items-center gap-2 rounded-full bg-[#102a56] px-4 py-2.5 text-xs font-bold text-white transition hover:bg-[#1643aa]"><Info className="h-3.5 w-3.5" /> Voir le véhicule</Link><Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-[#54b834] px-4 py-2.5 text-xs font-bold text-white transition hover:bg-[#469f2d]"><CarFront className="h-3.5 w-3.5" /> Contactez-nous</Link></div>}
             </motion.header>
-            <motion.div variants={{ initial: { opacity: 0, y: 72, scale: 0.92 }, animate: { opacity: 1, y: 0, scale: 1, transition: { duration: 1.25, delay: 0.35, ease: [0.16, 1, 0.3, 1] } }, exit: { opacity: 0, y: 28, transition: { duration: 0.3, ease: "easeInOut" } } }} className="relative mx-auto mt-auto h-[clamp(14rem,47vh,25rem)] w-full max-w-4xl"><Image src={model.image} alt={`${model.brand} ${model.name}`} fill priority sizes="(max-width: 768px) 100vw, 1024px" className="object-contain object-bottom drop-shadow-[0_20px_20px_rgba(15,23,42,0.14)]" /></motion.div>
+            <motion.div variants={{ initial: { opacity: 0, y: 72, scale: 0.92 }, animate: { opacity: 1, y: 0, scale: 1, transition: { duration: 1.25, delay: 0.35, ease: [0.16, 1, 0.3, 1] } }, exit: { opacity: 0, y: 28, transition: { duration: 0.3, ease: "easeInOut" } } }} className="relative mx-auto mt-auto h-[clamp(14rem,47vh,25rem)] w-full max-w-4xl"><Image src={model.image} alt={`${model.brand} ${model.name}`} fill preload={preload} sizes="(max-width: 768px) 100vw, 1024px" className="object-contain object-bottom drop-shadow-[0_20px_20px_rgba(15,23,42,0.14)]" /></motion.div>
           </div>
         </motion.div>
       </AnimatePresence>
