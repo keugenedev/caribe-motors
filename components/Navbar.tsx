@@ -261,7 +261,7 @@ export default function Navbar() {
                 {NAV_BRANDS.map((brand) => {
                   const hasVehicles = Boolean(brand.vehicles?.length);
                   const isActive = selectedBrand === brand.id;
-                  const content = <Image src={brand.image} alt={brand.name} fill sizes="72px" className="object-contain p-1" />;
+                  const content = <Image src={brand.image} alt={brand.name} fill sizes="72px" priority loading="eager" className="object-contain p-1" />;
                   return hasVehicles ? (
                     <button key={brand.id} type="button" aria-label={`Afficher les modèles ${brand.name}`} onMouseEnter={() => previewBrand(brand)} onFocus={() => previewBrand(brand)} onClick={() => previewBrand(brand)} className={`relative flex h-14 w-[72px] items-center justify-center transition-colors ${isActive ? "" : "hover:bg-slate-50"}`}>
                       {content}
@@ -277,7 +277,7 @@ export default function Navbar() {
                 <div className="border-t border-slate-200 px-5 py-4">
                   <button type="button" onClick={() => setIsModelsOpen((open) => !open)} aria-expanded={isModelsOpen} className="flex w-full items-center justify-between text-left">
                     <span className="flex items-center gap-3">
-                      <span className="relative h-7 w-28"><Image src={displayedBrand.image} alt={displayedBrand.name} fill sizes="112px" className="object-contain object-left" /></span>
+                      <span className="relative h-7 w-28"><Image src={displayedBrand.image} alt={displayedBrand.name} fill sizes="112px" priority loading="eager" className="object-contain object-left" /></span>
                       <span className="text-sm font-bold text-[#102a56]">Tous les modèles</span>
                       <span className="text-xs font-medium text-slate-400">{displayedBrand.vehicles.length}</span>
                     </span>
@@ -289,7 +289,7 @@ export default function Navbar() {
                       {GWM_BRANDS.map((brand) => {
                         const isSelected = selectedGwmBrand === brand.id;
                         const previewGwmBrand = () => { setSelectedGwmBrand(brand.id); setIsModelsOpen(true); };
-                        return <button key={brand.id} type="button" onMouseEnter={previewGwmBrand} onFocus={previewGwmBrand} onClick={previewGwmBrand} aria-pressed={isSelected} className={`relative h-10 w-28 transition-opacity ${isSelected ? "opacity-100" : "opacity-60 hover:opacity-100"}`}><Image src={brand.image} alt={brand.name} fill sizes="112px" className="object-contain" />{isSelected && <span aria-hidden="true" className="absolute bottom-0 left-1/2 -translate-x-1/2" style={{ width: 48, height: 3, backgroundColor: "#54b834" }} />}</button>;
+                        return <button key={brand.id} type="button" onMouseEnter={previewGwmBrand} onFocus={previewGwmBrand} onClick={previewGwmBrand} aria-pressed={isSelected} className={`relative h-10 w-28 transition-opacity ${isSelected ? "opacity-100" : "opacity-60 hover:opacity-100"}`}><Image src={brand.image} alt={brand.name} fill sizes="112px" priority loading="eager" className="object-contain" />{isSelected && <span aria-hidden="true" className="absolute bottom-0 left-1/2 -translate-x-1/2" style={{ width: 48, height: 3, backgroundColor: "#54b834" }} />}</button>;
                       })}
                     </div>
                   )}
@@ -298,7 +298,7 @@ export default function Navbar() {
                     <><div className="mt-4 grid grid-cols-3 gap-3">
                       {displayedBrand.vehicles.map((vehicle) => {
                         const href = vehicleHref(displayedBrand, vehicle);
-                        const content = <><div className="relative h-20 overflow-hidden"><Image src={navigationVehicleImage(vehicle.image)} alt={`${displayedBrand.name} ${vehicle.name}`} fill sizes="220px" className="object-contain" /></div>{vehicle.modelLogo ? <span className="relative mt-2 block h-5 w-24"><Image src={vehicle.modelLogo} alt={vehicle.name} fill sizes="96px" className="object-contain object-left" /></span> : <p className="mt-2 text-xs font-bold text-[#102a56]">{vehicle.label ?? vehicle.name}</p>}</>;
+                        const content = <><div className="relative h-20 overflow-hidden"><Image src={navigationVehicleImage(vehicle.image)} alt={`${displayedBrand.name} ${vehicle.name}`} fill sizes="220px" loading="eager" className="object-contain" /></div>{vehicle.modelLogo ? <span className="relative mt-2 block h-5 w-24"><Image src={vehicle.modelLogo} alt={vehicle.name} fill sizes="96px" loading="eager" className="object-contain object-left" /></span> : <p className="mt-2 text-xs font-bold text-[#102a56]">{vehicle.label ?? vehicle.name}</p>}</>;
                         return vehicle.color ? <Link key={vehicle.image} href={href} onClick={() => { window.scrollTo(0, 0); closeBrandsMenu(); }} className="rounded-xl p-2.5 transition-colors hover:bg-slate-50">{content}</Link> : <Link key={vehicle.image} href={href} onClick={closeBrandsMenu} className="rounded-xl p-2.5 transition-colors hover:bg-slate-50">{content}</Link>;
                       })}
                     </div></>
@@ -334,14 +334,14 @@ export default function Navbar() {
                   <div className="grid grid-cols-4 gap-2">
                     {NAV_BRANDS.filter((brand) => brand.vehicles?.length).map((brand) => {
                       const isActive = mobileSelectedBrand === brand.id;
-                      return <button key={brand.id} type="button" onClick={() => setMobileSelectedBrand(brand.id)} aria-label={`Afficher les modèles ${brand.name}`} aria-pressed={isActive} className="relative h-12 bg-white"><Image src={brand.image} alt={brand.name} fill sizes="72px" className="object-contain p-2" />{isActive && <span aria-hidden="true" className="absolute left-1/2 z-10 -translate-x-1/2" style={{ bottom: 4, width: 40, height: 3, backgroundColor: "#54b834" }} />}</button>;
+                      return <button key={brand.id} type="button" onClick={() => setMobileSelectedBrand(brand.id)} aria-label={`Afficher les modèles ${brand.name}`} aria-pressed={isActive} className="relative h-12 bg-white"><Image src={brand.image} alt={brand.name} fill sizes="72px" priority loading="eager" className="object-contain p-2" />{isActive && <span aria-hidden="true" className="absolute left-1/2 z-10 -translate-x-1/2" style={{ bottom: 4, width: 40, height: 3, backgroundColor: "#54b834" }} />}</button>;
                     })}
                   </div>
                   {mobileSelectedBrand === "gwm" && (
                     <div className="mt-4 grid grid-cols-3 gap-2 border-y border-slate-200 py-3">
                       {GWM_BRANDS.map((brand) => {
                         const isSelected = mobileSelectedGwmBrand === brand.id;
-                        return <button key={brand.id} type="button" onClick={() => setMobileSelectedGwmBrand(brand.id)} aria-pressed={isSelected} className="relative h-9 bg-white"><Image src={brand.image} alt={brand.name} fill sizes="96px" className="object-contain" />{isSelected && <span aria-hidden="true" className="absolute bottom-0 left-1/2 -translate-x-1/2" style={{ width: 36, height: 3, backgroundColor: "#54b834" }} />}</button>;
+                        return <button key={brand.id} type="button" onClick={() => setMobileSelectedGwmBrand(brand.id)} aria-pressed={isSelected} className="relative h-9 bg-white"><Image src={brand.image} alt={brand.name} fill sizes="96px" priority loading="eager" className="object-contain" />{isSelected && <span aria-hidden="true" className="absolute bottom-0 left-1/2 -translate-x-1/2" style={{ width: 36, height: 3, backgroundColor: "#54b834" }} />}</button>;
                       })}
                     </div>
                   )}
@@ -350,7 +350,7 @@ export default function Navbar() {
                     <div className="mt-4 grid grid-cols-2 gap-2">
                       {displayedMobileBrand.vehicles.map((vehicle) => {
                         const href = vehicleHref(displayedMobileBrand, vehicle);
-                        const content = <><div className="relative h-16"><Image src={navigationVehicleImage(vehicle.image)} alt={`${displayedMobileBrand.name} ${vehicle.name}`} fill sizes="150px" className="object-contain" /></div>{vehicle.modelLogo ? <span className="relative mt-1 block h-4 w-20"><Image src={vehicle.modelLogo} alt={vehicle.name} fill sizes="80px" className="object-contain object-left" /></span> : <p className="mt-1 text-xs font-bold text-[#102a56]">{vehicle.label ?? vehicle.name}</p>}</>;
+                        const content = <><div className="relative h-16"><Image src={navigationVehicleImage(vehicle.image)} alt={`${displayedMobileBrand.name} ${vehicle.name}`} fill sizes="150px" loading="eager" className="object-contain" /></div>{vehicle.modelLogo ? <span className="relative mt-1 block h-4 w-20"><Image src={vehicle.modelLogo} alt={vehicle.name} fill sizes="80px" loading="eager" className="object-contain object-left" /></span> : <p className="mt-1 text-xs font-bold text-[#102a56]">{vehicle.label ?? vehicle.name}</p>}</>;
                         return vehicle.color ? <Link key={vehicle.image} href={href} onClick={() => { window.scrollTo(0, 0); closeMobileMenu(); }} className="rounded-xl bg-white p-2.5">{content}</Link> : <Link key={vehicle.image} href={href} onClick={closeMobileMenu} className="rounded-xl bg-white p-2.5">{content}</Link>;
                       })}
                     </div>

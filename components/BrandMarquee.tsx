@@ -22,10 +22,10 @@ export default function BrandMarquee() {
     <section id="marques" className="relative w-full overflow-hidden border-t border-slate-100 py-10 sm:py-12 bg-gradient-to-b from-white via-slate-50/40 to-white">
       <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8 mb-7">
         <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#54b834]">
-          <WordReveal text="Distributeur Agréé" stagger={0.18} />
+          <WordReveal text="Distributeur Agréé" stagger={0.08} duration={0.3} />
         </span>
         <h2 className="mt-1 text-lg font-bold uppercase tracking-wider text-[#102a56]/90 sm:text-xl">
-          <WordReveal text="Nos Marques" delay={0.5} stagger={0.22} duration={0.68} />
+          <WordReveal text="Nos Marques" delay={0.1} stagger={0.1} duration={0.35} />
         </h2>
       </div>
 
@@ -41,7 +41,7 @@ export default function BrandMarquee() {
           {[...BRANDS, ...BRANDS, ...BRANDS].map((brand, idx) => (
             <div
               key={`${brand.name}-${idx}`}
-              className="flex shrink-0 items-center justify-center px-8 sm:px-12 opacity-65 transition-all duration-500 hover:opacity-100 hover:scale-105"
+              className="flex shrink-0 items-center justify-center px-8 sm:px-12 opacity-80 transition-all duration-300 hover:opacity-100 hover:scale-105"
             >
               <div className="relative h-10 w-28 sm:h-12 sm:w-32">
                 <Image
@@ -50,6 +50,8 @@ export default function BrandMarquee() {
                   fill
                   className="object-contain"
                   sizes="(max-width: 640px) 112px, 128px"
+                  loading="eager"
+                  priority={idx < 13}
                 />
               </div>
             </div>

@@ -12,5 +12,5 @@ export const metadata: Metadata = {
 export default function BrandsPage() {
   const brands = ["Chery", "Jetour", "GWM", "Haval", "Tank", "Suzuki", "Jeep", "RAM", "Dodge", "FAW"];
 
-  return <div className="flex min-h-screen flex-col bg-[#f8fafc] text-[#172760]"><Navbar /><main className="flex flex-1 flex-col">{brands.map((brand, index) => <HomeVehicleHero key={brand} brand={brand} showActions preload={index === 0} />)}<BrandMarquee /></main><Footer /></div>;
+  return <div className="flex min-h-screen flex-col bg-[#f8fafc] text-[#172760]"><Navbar /><main className="flex flex-1 flex-col">{brands.map((brand) => <HomeVehicleHero key={brand} brand={brand} showActions preload={true} />)}<BrandMarquee /></main><Footer /></div>;
 }
