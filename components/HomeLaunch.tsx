@@ -3,19 +3,11 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
 import DealerHome from "@/components/DealerHome";
 
 export default function HomeLaunch() {
   const [videoEnded, setVideoEnded] = useState(false);
   const finishVideo = () => setVideoEnded(true);
-
-  const scrollToOtherSections = () => {
-    const target = document.getElementById("autres-sections");
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <div className="flex flex-col">
@@ -94,22 +86,6 @@ export default function HomeLaunch() {
               <span aria-hidden="true">&rarr;</span>
             </button>
 
-            {/* Bouton Découvrir pour scroller immédiatement vers les autres sections */}
-            <div className="absolute bottom-6 left-1/2 z-20 -translate-x-1/2">
-              <button
-                type="button"
-                onClick={scrollToOtherSections}
-                aria-label="Faire défiler vers la suite"
-                className="group flex flex-col items-center gap-1.5 text-white/80 transition-all hover:text-white"
-              >
-                <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/90 group-hover:text-white">
-                  Découvrir
-                </span>
-                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/25 bg-white/10 backdrop-blur-sm transition group-hover:border-white/50 group-hover:bg-white/20">
-                  <ChevronDown className="h-5 w-5 animate-bounce" />
-                </span>
-              </button>
-            </div>
           </motion.section>
         ) : (
           <motion.div
