@@ -6,11 +6,11 @@ import { Calculator, ChevronRight } from "lucide-react";
 type Field = "vehiclePrice" | "insurance" | "downPayment" | "term" | "interestRate";
 type DurationUnit = "months" | "quarters" | "semesters" | "years";
 
-const DURATION_UNITS: Record<DurationUnit, { label: string; insuranceLabel: string; months: number }> = {
-  months: { label: "mois", insuranceLabel: "mensuelle", months: 1 },
-  quarters: { label: "trimestres", insuranceLabel: "trimestrielle", months: 3 },
-  semesters: { label: "semestres", insuranceLabel: "semestrielle", months: 6 },
-  years: { label: "années", insuranceLabel: "annuelle", months: 12 },
+const DURATION_UNITS: Record<DurationUnit, { label: string; months: number }> = {
+  months: { label: "mois", months: 1 },
+  quarters: { label: "trimestres", months: 3 },
+  semesters: { label: "semestres", months: 6 },
+  years: { label: "années", months: 12 },
 };
 
 const currency = new Intl.NumberFormat("fr-HT", {
@@ -18,8 +18,6 @@ const currency = new Intl.NumberFormat("fr-HT", {
   currency: "USD",
   maximumFractionDigits: 0,
 });
-
-const numberFormat = new Intl.NumberFormat("fr-HT", { maximumFractionDigits: 2 });
 
 function toNumber(value: string) {
   const parsed = Number(value.replace(/,/g, ""));
@@ -48,15 +46,11 @@ export default function FinanceCalculator() {
     const loanPayment = monthlyRate === 0
       ? amountFinanced / term
       : amountFinanced * (monthlyRate * (1 + monthlyRate) ** term) / ((1 + monthlyRate) ** term - 1);
-    const totalLoanPayments = loanPayment * term;
 
     return {
       amountFinanced,
       loanPayment,
       monthlyPayment: loanPayment + insuranceMonthly,
-      interest: Math.max(totalLoanPayments - amountFinanced, 0),
-      totalWithInsurance: totalLoanPayments + insuranceMonthly * term + downPayment,
-      term,
     };
   }, [durationUnit, values]);
 
@@ -66,8 +60,7 @@ export default function FinanceCalculator() {
 
   const isEstimateComplete = Object.values(values).every((value) => value.trim() !== "");
   const displayCurrency = (value: number) => isEstimateComplete ? currency.format(value) : "—";
-  const durationLabel = `${numberFormat.format(toNumber(values.term))} ${DURATION_UNITS[durationUnit].label}`;
-  const insuranceLabel = `Assurance ${DURATION_UNITS[durationUnit].insuranceLabel}`;
+  const insuranceLabel = "Assurance";
 
   return (
     <div className="mx-auto grid max-w-6xl overflow-hidden border border-slate-200 bg-white sm:grid-cols-2">
@@ -86,7 +79,7 @@ export default function FinanceCalculator() {
         <div className="mt-8 grid gap-5 sm:grid-cols-2">
           <InputField id="vehiclePrice" label="Prix du véhicule" value={values.vehiclePrice} onChange={(value) => updateValue("vehiclePrice", value)} prefix="$" inputMode="decimal" />
           <InputField id="insurance" label={insuranceLabel} value={values.insurance} onChange={(value) => updateValue("insurance", value)} prefix="$" inputMode="decimal" />
-          <InputField id="downPayment" label="Mise de fonds" value={values.downPayment} onChange={(value) => updateValue("downPayment", value)} prefix="$" inputMode="decimal" />
+          <InputField id="downPayment" label="Mise de fond (down payment)" value={values.downPayment} onChange={(value) => updateValue("downPayment", value)} prefix="$" inputMode="decimal" />
           <DurationField value={values.term} onChange={(value) => updateValue("term", value)} unit={durationUnit} onUnitChange={setDurationUnit} />
           <InputField id="interestRate" label="Taux d’intérêt annuel" value={values.interestRate} onChange={(value) => updateValue("interestRate", value)} suffix="%" inputMode="decimal" compact />
         </div>
@@ -100,9 +93,9 @@ export default function FinanceCalculator() {
         <div className="px-6 pb-4 pt-5 sm:px-8">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#a9e797]">Estimation personnalisée</p>
           <div className="mt-3 border border-white/15 px-5 py-3.5">
-            <p className="text-sm font-medium text-blue-100">Votre mensualité estimée</p>
+            <p className="text-sm font-medium text-blue-100">Votre paiement mensuel</p>
             <p className="mt-1 text-4xl font-bold tracking-tight">{displayCurrency(result.monthlyPayment)}</p>
-            <p className="mt-1.5 text-xs text-blue-100">{isEstimateComplete ? "Par mois, assurance comprise" : "Remplissez les champs pour calculer"}</p>
+            <p className="mt-1.5 text-xs text-blue-100">{isEstimateComplete ? "Montant à payer chaque mois, assurance comprise" : "Remplissez les champs pour calculer"}</p>
           </div>
         </div>
 
@@ -111,11 +104,6 @@ export default function FinanceCalculator() {
             <SummaryRow label="Montant financé" value={displayCurrency(result.amountFinanced)} />
             <SummaryRow label="Paiement véhicule" value={displayCurrency(result.loanPayment)} />
             <SummaryRow label={insuranceLabel} value={displayCurrency(toNumber(values.insurance))} />
-            <SummaryRow label="Intérêts estimés" value={displayCurrency(result.interest)} />
-          </div>
-          <div className="mt-4 flex items-center justify-between gap-4 px-5 py-4">
-            <span className="text-sm font-semibold text-blue-50">{isEstimateComplete ? `Coût total sur ${durationLabel}` : "Coût total"}</span>
-            <span className="text-base font-bold text-white">{displayCurrency(result.totalWithInsurance)}</span>
           </div>
           <a href="/contact" className="group mt-5 flex w-full items-center justify-center gap-2 bg-[#54b834] px-5 py-3.5 text-sm font-bold text-white transition hover:bg-[#469f2d] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#102a56]">
             Parler à un conseiller
