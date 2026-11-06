@@ -182,7 +182,6 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileBrandsOpen, setIsMobileBrandsOpen] = useState(false);
   const [mobileSelectedBrand, setMobileSelectedBrand] = useState<string | null>("jetour");
-  const [mobileSelectedGwmBrand, setMobileSelectedGwmBrand] = useState("gwm");
 
   useEffect(() => {
     const thumbnails = GWM_BRANDS.flatMap((brand) => brand.vehicles ?? []).map((vehicle) => navigationVehicleImage(vehicle.image));
@@ -209,9 +208,7 @@ export default function Navbar() {
     ? GWM_BRANDS.find((brand) => brand.id === selectedGwmBrand)
     : activeBrand;
   const activeMobileBrand = BRANDS.find((brand) => brand.id === mobileSelectedBrand);
-  const displayedMobileBrand = mobileSelectedBrand === "gwm"
-    ? GWM_BRANDS.find((brand) => brand.id === mobileSelectedGwmBrand)
-    : activeMobileBrand;
+  const displayedMobileBrand = activeMobileBrand;
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
@@ -365,15 +362,27 @@ export default function Navbar() {
                     })}
                   </div>
                   {mobileSelectedBrand === "gwm" && (
-                    <div className="mt-4 grid grid-cols-3 gap-2 border-y border-slate-200 py-3">
-                      {GWM_BRANDS.map((brand) => {
-                        const isSelected = mobileSelectedGwmBrand === brand.id;
-                        return <button key={brand.id} type="button" onClick={() => setMobileSelectedGwmBrand(brand.id)} aria-pressed={isSelected} className="relative h-9 bg-white"><Image src={brand.image} alt={brand.name} fill sizes="96px" priority loading="eager" className="object-contain" />{isSelected && <span aria-hidden="true" className="absolute bottom-0 left-1/2 -translate-x-1/2" style={{ width: 36, height: 3, backgroundColor: "#54b834" }} />}</button>;
-                      })}
+                    <div className="gwm-models-scroll mt-4 max-h-[calc(100svh-250px)] space-y-5 overflow-y-scroll pr-2">
+                      {GWM_BRANDS.map((brand, index) => (
+                        <section key={brand.id} className={index === 0 ? "" : "border-t border-slate-200 pt-5"}>
+                          <div className="flex items-center gap-3">
+                            <span className="relative h-7 w-28"><Image src={brand.image} alt={brand.name} fill sizes="112px" priority loading="eager" className="object-contain object-left" /></span>
+                            <span className="text-sm font-bold text-[#102a56]">Tous les modèles</span>
+                            <span className="text-xs font-medium text-slate-400">{brand.vehicles?.length}</span>
+                          </div>
+                          <div className="mt-3 grid grid-cols-2 gap-2">
+                            {brand.vehicles?.map((vehicle) => {
+                              const href = vehicleHref(brand, vehicle);
+                              const content = <><div className="relative h-16"><Image src={navigationVehicleImage(vehicle.image)} alt={`${brand.name} ${vehicle.name}`} fill sizes="150px" loading="eager" unoptimized className="object-contain" /></div>{vehicle.modelLogo ? <span className="relative mt-1 block h-4 w-20"><Image src={vehicle.modelLogo} alt={vehicle.name} fill sizes="80px" loading="eager" className="object-contain object-left" /></span> : <p className="mt-1 text-xs font-bold text-[#102a56]">{vehicle.label ?? vehicle.name}</p>}</>;
+                              return <Link key={vehicle.image} href={href} onClick={() => { window.scrollTo(0, 0); closeMobileMenu(); }} className="rounded-xl bg-white p-2.5">{content}</Link>;
+                            })}
+                          </div>
+                        </section>
+                      ))}
                     </div>
                   )}
 
-                  {displayedMobileBrand?.vehicles && (
+                  {mobileSelectedBrand !== "gwm" && displayedMobileBrand?.vehicles && (
                     <div className="mt-4 grid grid-cols-2 gap-2">
                       {displayedMobileBrand.vehicles.map((vehicle) => {
                         const href = vehicleHref(displayedMobileBrand, vehicle);
