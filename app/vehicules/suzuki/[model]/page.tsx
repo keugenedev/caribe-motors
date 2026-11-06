@@ -15,12 +15,43 @@ type Model = {
   name: string;
   category: string;
   vehicle: string;
+  colorImages?: Record<string, string>;
   description: string;
   gallery?: string[];
   specifications: VehicleSpecification[];
 };
 
 const models: Record<string, Model> = {
+  fronx: {
+    name: "Fronx",
+    category: "SUV coupé compact hybride léger",
+    vehicle: "/images/suzuki/fronx/fronx.png",
+    description: "Un SUV coupé compact au style expressif, associant une conduite souple, un habitacle confortable et la technologie hybride légère Suzuki.",
+    gallery: ["/images/suzuki/fronx/gallery-1.jpg", "/images/suzuki/fronx/gallery-2.jpeg", "/images/suzuki/fronx/gallery-3.jpg"],
+    specifications: [
+      { icon: "fuel", label: "Motorisation", value: "1.5L DUALJET + SHVS mild hybrid" },
+      { icon: "gauge", label: "Puissance maximale", value: "101 ch (74 kW)" },
+      { icon: "settings", label: "Couple maximal", value: "135 N·m" },
+      { icon: "settings", label: "Transmission", value: "Automatique 6 rapports" },
+      { icon: "ruler", label: "Longueur", value: "3 995 mm" },
+      { icon: "ruler", label: "Empattement", value: "2 520 mm" },
+    ],
+  },
+  across: {
+    name: "Across",
+    category: "SUV hybride rechargeable 4x4",
+    vehicle: "/images/suzuki/across/across.png",
+    description: "Le grand SUV hybride rechargeable de Suzuki, conçu pour les trajets électriques du quotidien comme pour les longues escapades en 4x4.",
+    gallery: ["/images/suzuki/across/gallery-1.jpg", "/images/suzuki/across/gallery-2.jpg", "/images/suzuki/across/gallery-3.jpg"],
+    specifications: [
+      { icon: "fuel", label: "Motorisation", value: "2.5L hybride rechargeable" },
+      { icon: "gauge", label: "Puissance système", value: "306 ch (225 kW)" },
+      { icon: "settings", label: "Transmission", value: "e-CVT" },
+      { icon: "settings", label: "Transmission intégrale", value: "E-Four 4x4 électrique" },
+      { icon: "fuel", label: "Autonomie électrique", value: "Jusqu’à 75 km (WLTP)" },
+      { icon: "ruler", label: "Coffre", value: "490 L" },
+    ],
+  },
   vitara: {
     name: "Vitara",
     category: "SUV compact 4x4",
@@ -52,16 +83,18 @@ const models: Record<string, Model> = {
   },
   jimny: {
     name: "Jimny",
-    category: "4x4 tout-terrain compact",
-    vehicle: "/images/vehicles/Jimny.png",
-    description: "Un véritable 4x4 compact Suzuki, conçu pour rester agile sur route comme hors des sentiers battus.",
+    category: "4x4 tout-terrain 5 portes",
+    vehicle: "/images/suzuki/jimny/jimny.png",
+    colorImages: { blue: "/images/suzuki/jimny/jimny.png", white: "/images/vehicles/Jimny.png" },
+    gallery: ["/images/suzuki/jimny/gallery-1.jpg", "/images/suzuki/jimny/gallery-2.png", "/images/suzuki/jimny/gallery-3.png"],
+    description: "Un véritable 4x4 Suzuki à cinq portes, conçu pour l’aventure avec davantage d’espace et de confort pour quatre adultes.",
     specifications: [
       { icon: "fuel", label: "Motorisation", value: "1.5L essence" },
-      { icon: "gauge", label: "Puissance maximale", value: "102 hp" },
+      { icon: "gauge", label: "Puissance maximale", value: "102 ch (75 kW)" },
       { icon: "settings", label: "Couple maximal", value: "130 N·m" },
-      { icon: "settings", label: "Transmission", value: "4AT · 4WD" },
-      { icon: "ruler", label: "Longueur", value: "3 645 mm" },
-      { icon: "ruler", label: "Empattement", value: "2 250 mm" },
+      { icon: "settings", label: "Transmission", value: "5MT / 4AT · ALLGRIP PRO 4WD" },
+      { icon: "ruler", label: "Longueur", value: "3 985 mm" },
+      { icon: "ruler", label: "Empattement", value: "2 590 mm" },
     ],
   },
   "s-cross": {
@@ -97,7 +130,7 @@ export default async function SuzukiModelPage({ params }: { params: Promise<{ mo
     <Navbar />
     <main>
       <Suspense fallback={null}>
-        <VehicleDetailHero brand="Suzuki" name={vehicle.name} category={vehicle.category} logo="/images/brands/Suzuki.png" vehicle={vehicle.vehicle} description={vehicle.description} brandFirst />
+        <VehicleDetailHero brand="Suzuki" name={vehicle.name} category={vehicle.category} logo="/images/brands/Suzuki.png" vehicle={vehicle.vehicle} colorImages={vehicle.colorImages} description={vehicle.description} brandFirst />
       </Suspense>
       <VehicleSpecifications brand={`Suzuki ${vehicle.name}`} specifications={vehicle.specifications} />
       {vehicle.gallery && <VehicleGallery brand="Suzuki" name={vehicle.name} images={vehicle.gallery} />}
@@ -106,7 +139,7 @@ export default async function SuzukiModelPage({ params }: { params: Promise<{ mo
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#54b834]"><WordReveal text="Suzuki chez Caribe Motors" delay={0.1} stagger={0.18} /></p>
             <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-5xl"><WordReveal text="Pret pour votre prochaine aventure." delay={0.7} stagger={0.22} duration={0.7} /></h2>
-            <p className="mt-5 max-w-xl text-base leading-8 text-slate-600"><WordReveal text="Contactez notre equipe pour connaitre la disponibilite et planifier votre essai du Suzuki Vitara." delay={1.8} stagger={0.075} duration={0.48} /></p>
+            <p className="mt-5 max-w-xl text-base leading-8 text-slate-600"><WordReveal text={`Contactez notre équipe pour connaître la disponibilité et planifier votre essai du Suzuki ${vehicle.name}.`} delay={1.8} stagger={0.075} duration={0.48} /></p>
           </div>
           <Reveal delay={3.1}><Link href="/contact" className="inline-flex items-center gap-2 bg-[#54b834] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#469f2d]"><CarFront className="h-4 w-4" /> Prendre rendez-vous <ArrowRight className="h-4 w-4" /></Link></Reveal>
         </div>

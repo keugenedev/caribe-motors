@@ -87,7 +87,10 @@ const PRESENTATIONS: BrandPresentation[] = [
     background: "#fcfbf7",
     accent: "#1e438d",
     vehicles: [
-      { id: "jimny", name: "Jimny", category: "4x4 compact", description: "Le caractère tout-terrain dans un format iconique.", image: "/images/vehicles/Jimny.png" },
+      { id: "fronx", name: "Fronx", category: "SUV coupé compact hybride léger", description: "Un SUV coupé compact, fluide et pensé pour le quotidien.", image: "/images/suzuki/fronx/fronx.png" },
+      { id: "across", name: "Across", category: "SUV hybride rechargeable 4x4", description: "Un SUV spacieux qui combine autonomie électrique et polyvalence 4x4.", image: "/images/suzuki/across/across.png" },
+      { id: "jimny", name: "Jimny", category: "4x4 tout-terrain 5 portes", description: "Le caractère tout-terrain iconique, avec cinq portes et plus d’espace.", image: "/images/suzuki/jimny/jimny.png" },
+      { id: "jimny-white", name: "Jimny Blanc", category: "4x4 tout-terrain compact", description: "Le Jimny iconique dans sa livrée blanche, prêt pour les escapades hors des sentiers battus.", image: "/images/vehicles/Jimny.png" },
       { id: "s-cross", name: "S-Cross", category: "SUV polyvalent", description: "Un SUV qui accompagne tous les trajets.", image: "/images/vehicles/SCross.png" },
     ],
   },

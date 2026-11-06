@@ -88,7 +88,10 @@ const BRANDS: Brand[] = [
     name: "Suzuki",
     logo: "/images/brands/Suzuki.png",
     vehicles: [
-      { id: "jimny", name: "Jimny", category: "4x4 compact", image: "/images/vehicles/Jimny.png" },
+      { id: "fronx", name: "Fronx", category: "SUV coupé compact hybride léger", image: "/images/suzuki/fronx/fronx.png" },
+      { id: "across", name: "Across", category: "SUV hybride rechargeable 4x4", image: "/images/suzuki/across/across.png" },
+      { id: "jimny", name: "Jimny", category: "4x4 tout-terrain 5 portes", image: "/images/suzuki/jimny/jimny.png" },
+      { id: "jimny-white", name: "Jimny Blanc", category: "4x4 tout-terrain compact", image: "/images/vehicles/Jimny.png" },
       { id: "s-cross", name: "S-Cross", category: "SUV polyvalent", image: "/images/vehicles/SCross.png" },
     ],
   },

@@ -34,7 +34,7 @@ const vehicleHref = (brand: Brand, vehicle: Vehicle) => {
         : brand.id === "haval"
           ? `/vehicules/haval/${vehicle.name.toLowerCase().replace(/\s+/g, "-")}${colorQuery}`
           : brand.id === "suzuki"
-            ? `/vehicules/suzuki/${vehicle.name.toLowerCase().replace(/\s+/g, "-")}`
+            ? `/vehicules/suzuki/${vehicle.name.toLowerCase().replace(/\s+/g, "-")}${colorQuery}`
           : brand.id === "jeep"
             ? `/vehicules/jeep/${vehicle.name.toLowerCase().replace(/\s+/g, "-")}`
           : brand.id === "faw"
@@ -117,7 +117,10 @@ const BRANDS: Brand[] = [
     name: "Suzuki",
     image: "/images/brands/Suzuki.png",
     vehicles: [
-      { name: "Jimny", image: "/images/vehicles/Jimny.png" },
+      { name: "Fronx", image: "/images/suzuki/fronx/fronx.png" },
+      { name: "Across", image: "/images/suzuki/across/across.png" },
+      { name: "Jimny", label: "Jimny · Bleu", color: "blue", image: "/images/suzuki/jimny/jimny.png" },
+      { name: "Jimny", label: "Jimny · Blanc", color: "white", image: "/images/vehicles/Jimny.png" },
       { name: "S-Cross", image: "/images/vehicles/SCross.png" },
     ],
   },
