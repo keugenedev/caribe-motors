@@ -88,7 +88,6 @@ const BRANDS: Brand[] = [
     name: "Suzuki",
     logo: "/images/brands/Suzuki.png",
     vehicles: [
-      { id: "ignis", name: "Ignis", category: "Crossover urbain", image: "/images/vehicles/Ignis.png" },
       { id: "jimny", name: "Jimny", category: "4x4 compact", image: "/images/vehicles/Jimny.png" },
       { id: "s-cross", name: "S-Cross", category: "SUV polyvalent", image: "/images/vehicles/SCross.png" },
     ],

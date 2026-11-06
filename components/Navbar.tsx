@@ -117,8 +117,6 @@ const BRANDS: Brand[] = [
     name: "Suzuki",
     image: "/images/brands/Suzuki.png",
     vehicles: [
-      { name: "Vitara", image: "/images/suzuki/vitara/vitara.png" },
-      { name: "Ignis", image: "/images/vehicles/Ignis.png" },
       { name: "Jimny", image: "/images/vehicles/Jimny.png" },
       { name: "S-Cross", image: "/images/vehicles/SCross.png" },
     ],

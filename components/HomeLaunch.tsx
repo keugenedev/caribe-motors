@@ -97,7 +97,7 @@ export default function HomeLaunch() {
               }}
               className="absolute inset-0 h-full w-full object-cover"
             >
-              <source src="/videos/suzuki-across.mp4?v=20261106" type="video/mp4" />
+              <source src="/videos/suzuki-across-light.mp4" type="video/mp4" />
             </video>
 
             <motion.div

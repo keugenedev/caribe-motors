@@ -87,7 +87,6 @@ const PRESENTATIONS: BrandPresentation[] = [
     background: "#fcfbf7",
     accent: "#1e438d",
     vehicles: [
-      { id: "ignis", name: "Ignis", category: "Crossover urbain", description: "Un format agile, prêt pour le rythme de la ville.", image: "/images/vehicles/Ignis.png" },
       { id: "jimny", name: "Jimny", category: "4x4 compact", description: "Le caractère tout-terrain dans un format iconique.", image: "/images/vehicles/Jimny.png" },
       { id: "s-cross", name: "S-Cross", category: "SUV polyvalent", description: "Un SUV qui accompagne tous les trajets.", image: "/images/vehicles/SCross.png" },
     ],
