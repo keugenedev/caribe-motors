@@ -202,7 +202,7 @@ export default function DealerHome({
                 <div className="max-w-2xl space-y-5 text-base leading-8 text-slate-600 sm:text-lg">
                   <p>
                     <WordReveal
-                      text="Fondée et ouverte au public en avril 2002, Caribe Motors S.A. est une entreprise de référence dans le secteur automobile en Haïti. Distributeur de marques internationales prestigieuses telles que Suzuki, Jetour, Chery, GWM, Gac, FAW, Chrysler, Dodge, Jeep et Ram, elle s’engage à offrir des véhicules de qualité, un service professionnel et une expérience client exceptionnelle."
+                      text="Fondée et ouverte au public en avril 2002, Caribe Motors S.A. est une entreprise de référence dans le secteur automobile en Haïti. Distributeur de marques internationales prestigieuses telles que Suzuki, Jetour, Chery, GWM, GAC, FAW, Chrysler, Dodge, Jeep et Ram, elle s’engage à offrir des véhicules de qualité, un service professionnel et une expérience client exceptionnelle."
                       delay={2.7}
                       stagger={0.04}
                       duration={0.45}

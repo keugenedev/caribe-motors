@@ -39,11 +39,6 @@ export default function HomeLaunch() {
             >
               <source src="/videos/suzuki-fronx.mp4" type="video/mp4" />
             </video>
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,22,49,0.76)_0%,rgba(7,22,49,0.28)_55%,rgba(7,22,49,0.48)_100%)]"
-            />
-
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
@@ -74,17 +69,6 @@ export default function HomeLaunch() {
                 />
               </motion.div>
             </motion.div>
-
-            {/* Bouton pour passer la vidéo */}
-            <button
-              type="button"
-              onClick={finishVideo}
-              aria-label="Passer la vidéo et afficher l'accueil"
-              className="absolute bottom-6 right-6 z-20 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur-md transition-all hover:border-white/40 hover:bg-black/60 sm:bottom-8 sm:right-8"
-            >
-              <span>Passer</span>
-              <span aria-hidden="true">&rarr;</span>
-            </button>
 
           </motion.section>
         ) : (
