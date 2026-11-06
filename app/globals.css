@@ -66,6 +66,31 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Always-visible scrollbar for the grouped GWM, Haval, and Tank menu. */
+.gwm-models-scroll {
+  scrollbar-color: var(--caribe-green) #e2e8f0;
+  scrollbar-gutter: stable;
+  scrollbar-width: auto;
+}
+
+.gwm-models-scroll::-webkit-scrollbar {
+  width: 14px;
+}
+
+.gwm-models-scroll::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+
+.gwm-models-scroll::-webkit-scrollbar-thumb {
+  background: var(--caribe-green);
+  border: 3px solid #e2e8f0;
+  border-radius: 9999px;
+}
+
+.gwm-models-scroll::-webkit-scrollbar-thumb:hover {
+  background: #469f2d;
+}
+
 /* Professional Continuous Marquee Animations */
 @keyframes marqueeLeft {
   0% {

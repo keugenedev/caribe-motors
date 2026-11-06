@@ -60,7 +60,6 @@ const BRANDS: Brand[] = [
       { id: "dashing", name: "Dashing", category: "SUV coupé", image: "/images/jetour/model-dashing.png" },
       { id: "x70-fl", name: "X70 FL", category: "SUV familial", image: "/images/jetour/model-x70.png" },
       { id: "x70-plus", name: "X70 Plus", category: "SUV familial", image: "/images/jetour/model-x70plus.png" },
-      { id: "x90-plus", name: "X90 Plus", category: "Grand SUV", image: "/images/jetour/model-x90plus.png" },
     ],
   },
   {

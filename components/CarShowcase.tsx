@@ -59,7 +59,6 @@ const PRESENTATIONS: BrandPresentation[] = [
       { id: "dashing", name: "Dashing", category: "SUV coupé", description: "Un design contemporain pensé pour la ville.", image: "/images/jetour/model-dashing.png" },
       { id: "x70", name: "X70", category: "SUV familial", description: "De l’espace pour accompagner chaque projet.", image: "/images/jetour/model-x70.png" },
       { id: "x70plus", name: "X70 Plus", category: "SUV familial", description: "Confort et polyvalence au quotidien.", image: "/images/jetour/model-x70plus.png" },
-      { id: "x90plus", name: "X90 Plus", category: "Grand SUV", description: "Une présence premium pour les grands trajets.", image: "/images/jetour/model-x90plus.png" },
     ],
   },
   {

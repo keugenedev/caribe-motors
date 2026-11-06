@@ -9,6 +9,7 @@ import JetourModelHero from "@/components/JetourModelHero";
 import JetourSpecifications, { type JetourSpecification } from "@/components/JetourSpecifications";
 import Navbar from "@/components/Navbar";
 import Reveal from "@/components/Reveal";
+import VehicleColorExperience, { type VehicleColor } from "@/components/VehicleColorExperience";
 import WordReveal from "@/components/WordReveal";
 
 type Model = {
@@ -17,6 +18,7 @@ type Model = {
   description: string;
   heroImage?: string;
   colorImages?: Record<string, string>;
+  colors?: VehicleColor[];
   gallery: string[];
   engine: string;
   power: string;
@@ -63,15 +65,13 @@ const models: Record<string, Model> = {
     gallery: [image("x70-plus", "x70-plus-001-1.png"), image("x70-plus", "x70-plus-004-interieur.png"), image("x70-plus", "x70-plus-005-3.png")],
     engine: "1.5L turbo · 1 498 cm³", power: "115 kW à 5 500 tr/min", torque: "230 Nm", transmission: "6-DCT", seats: "7 places", consumption: "~7–9 L/100 km", dimensions: "4 724 × 1 900 × 1 720 mm", wheelbase: "2 720 mm",
   },
-  "x90-plus": {
-    name: "X90 Plus", category: "Grand SUV", description: "De l’espace pour chaque passager et de la puissance pour les longues distances, dans un SUV à l’allure premium.",
-    heroImage: "/images/jetour/model-x90plus.png",
-    gallery: [image("x90-plus", "x90-plus-003-1.png"), image("x90-plus", "x90-plus-002-interieur.png"), image("x90-plus", "x90-plus-004-2.png")],
-    engine: "2.0L turbo", power: "~187 kW", torque: "~390 Nm", transmission: "DCT", seats: "7 places", consumption: "~8–11 L/100 km", dimensions: "~4 858 × 1 925 × 1 780 mm", wheelbase: "~2 850 mm",
-  },
   g700: {
     name: "G700", category: "SUV hybride rechargeable tout-terrain", description: "Un grand SUV Jetour hybride rechargeable, conçu pour associer technologie, confort premium et capacités tout-terrain.",
-    heroImage: image("g700", "black.png"), colorImages: { black: image("g700", "black.png"), white: image("g700", "white.png") },
+    heroImage: image("g700", "white.png"), colorImages: { black: image("g700", "black.png"), white: image("g700", "white.png") },
+    colors: [
+      { id: "white", name: "Blanc", hex: "#f8fafc", borderHex: "#cbd5e1", image: image("g700", "white.png") },
+      { id: "black", name: "Noir", hex: "#18181b", borderHex: "#3f3f46", image: image("g700", "black.png") },
+    ],
     gallery: [image("g700", "gallery-1.png"), image("g700", "gallery-2.png"), image("g700", "gallery-3.png")],
     engine: "2.0TD hybride rechargeable", power: "665 kW (904 PS)", torque: "1 135 Nm", transmission: "2-DHT hybride · 4x4", seats: "5 ou 6 places", consumption: "8,8 L/100 km (WLTC)", dimensions: "5 198 × 2 050 × 1 956 mm", wheelbase: "2 870 mm",
   },
@@ -106,6 +106,7 @@ export default async function JetourModelPage({ params }: { params: Promise<{ mo
       <Navbar />
       <main>
         <Suspense fallback={null}><JetourModelHero name={car.name} category={car.category} description={car.description} image={car.heroImage ?? car.gallery[0]} colorImages={car.colorImages} /></Suspense>
+        {car.colors && <Suspense fallback={null}><VehicleColorExperience name={car.name} colors={car.colors} /></Suspense>}
         <JetourSpecifications specifications={specifications} />
         <JetourGallery name={car.name} images={car.gallery} />
         <section className="bg-[#f8fafc] px-5 py-16 sm:px-8 sm:py-24 lg:px-10">

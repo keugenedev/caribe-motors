@@ -50,7 +50,6 @@ const BRANDS: Brand[] = [
     name: "Jetour",
     image: "/images/brands/jetour.png",
     vehicles: [
-      { name: "G700", label: "G700 · Noir", color: "black", image: "/images/jetour/models/g700/black.png" },
       { name: "G700", label: "G700 · Blanc", color: "white", image: "/images/jetour/models/g700/white.png" },
       { name: "T1", image: "/images/jetour/model-t1.png" },
       { name: "T2", image: "/images/jetour/model-t2.png" },
@@ -58,7 +57,6 @@ const BRANDS: Brand[] = [
       { name: "Dashing", image: "/images/jetour/model-dashing.png" },
       { name: "X70 FL", image: "/images/jetour/model-x70.png" },
       { name: "X70 Plus", image: "/images/jetour/model-x70plus.png" },
-      { name: "X90 Plus", image: "/images/jetour/model-x90plus.png" },
     ],
   },
   {
@@ -273,7 +271,28 @@ export default function Navbar() {
                 })}
               </div>
 
-              {displayedBrand?.vehicles && (
+              {selectedBrand === "gwm" && (
+                <div className="gwm-models-scroll max-h-[calc(100svh-140px)] overflow-y-scroll border-t border-slate-200 px-5 pt-4 pb-16">
+                  {GWM_BRANDS.map((brand, index) => (
+                    <section key={brand.id} className={index === 0 ? "" : "mt-5 border-t border-slate-200 pt-5"}>
+                      <div className="flex items-center gap-3">
+                        <span className="relative h-7 w-28"><Image src={brand.image} alt={brand.name} fill sizes="112px" priority loading="eager" className="object-contain object-left" /></span>
+                        <span className="text-sm font-bold text-[#102a56]">Tous les modèles</span>
+                        <span className="text-xs font-medium text-slate-400">{brand.vehicles?.length}</span>
+                      </div>
+                      <div className="mt-4 grid grid-cols-3 gap-3">
+                        {brand.vehicles?.map((vehicle) => {
+                          const href = vehicleHref(brand, vehicle);
+                          const content = <><div className="relative h-20 overflow-hidden"><Image src={navigationVehicleImage(vehicle.image)} alt={`${brand.name} ${vehicle.name}`} fill sizes="220px" loading="eager" className="object-contain" /></div>{vehicle.modelLogo ? <span className="relative mt-2 block h-5 w-24"><Image src={vehicle.modelLogo} alt={vehicle.name} fill sizes="96px" loading="eager" className="object-contain object-left" /></span> : <p className="mt-2 text-xs font-bold text-[#102a56]">{vehicle.label ?? vehicle.name}</p>}</>;
+                          return <Link key={vehicle.image} href={href} onClick={() => { window.scrollTo(0, 0); closeBrandsMenu(); }} className="rounded-xl p-2.5 transition-colors hover:bg-slate-50">{content}</Link>;
+                        })}
+                      </div>
+                    </section>
+                  ))}
+                </div>
+              )}
+
+              {selectedBrand !== "gwm" && displayedBrand?.vehicles && (
                 <div className="border-t border-slate-200 px-5 py-4">
                   <button type="button" onClick={() => setIsModelsOpen((open) => !open)} aria-expanded={isModelsOpen} className="flex w-full items-center justify-between text-left">
                     <span className="flex items-center gap-3">
