@@ -28,6 +28,7 @@ export default function HomeLaunch() {
               muted
               playsInline
               preload="auto"
+              poster="/images/suzuki/across-poster.jpg"
               onEnded={finishFronx}
               onError={finishFronx}
               onTimeUpdate={(event) => {
@@ -97,7 +98,7 @@ export default function HomeLaunch() {
               }}
               className="absolute inset-0 h-full w-full object-cover"
             >
-              <source src="/videos/suzuki-across-light.mp4" type="video/mp4" />
+              <source src="/videos/suzuki-across-fast.mp4" type="video/mp4" />
             </video>
 
             <motion.div
