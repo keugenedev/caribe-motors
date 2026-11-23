@@ -91,7 +91,6 @@ const PRESENTATIONS: BrandPresentation[] = [
       { id: "across", name: "Across", category: "SUV hybride rechargeable 4x4", description: "Un SUV spacieux qui combine autonomie électrique et polyvalence 4x4.", image: "/images/suzuki/across/across.png" },
       { id: "jimny", name: "Jimny", category: "4x4 tout-terrain 5 portes", description: "Le caractère tout-terrain iconique, avec cinq portes et plus d’espace.", image: "/images/suzuki/jimny/jimny.png" },
       { id: "jimny-white", name: "Jimny Blanc", category: "4x4 tout-terrain compact", description: "Le Jimny iconique dans sa livrée blanche, prêt pour les escapades hors des sentiers battus.", image: "/images/vehicles/Jimny.png" },
-      { id: "s-cross", name: "S-Cross", category: "SUV polyvalent", description: "Un SUV qui accompagne tous les trajets.", image: "/images/vehicles/SCross.png" },
     ],
   },
   {
@@ -103,10 +102,9 @@ const PRESENTATIONS: BrandPresentation[] = [
     background: "#f7f8f4",
     accent: "#31512f",
     vehicles: [
-      { id: "compass", name: "Compass", category: "SUV", description: "Un SUV fait pour explorer en toute confiance.", image: "/images/vehicles/Compass.png" },
       { id: "gladiator", name: "Gladiator", category: "Pick-up", description: "La force d’un pick-up avec l’ADN Jeep.", image: "/images/vehicles/Gladiator.png" },
       { id: "grand-cherokee", name: "Grand Cherokee", category: "SUV premium", description: "Une interprétation raffinée de l’aventure.", image: "/images/vehicles/GrandCheerokee.png" },
-      { id: "wrangler", name: "Wrangler", category: "4x4 iconique", description: "L’icône qui incarne l’aventure Jeep.", image: "/images/vehicles/Wrangler.png" },
+      { id: "wrangler", name: "Wrangler JL", category: "4x4 iconique", description: "L’icône qui incarne l’aventure Jeep.", image: "/images/vehicles/Wrangler-JL.png" },
     ],
   },
   {

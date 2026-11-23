@@ -19,20 +19,6 @@ type Model = {
 };
 
 const models: Record<string, Model> = {
-  compass: {
-    name: "Compass",
-    category: "SUV compact 4x4",
-    image: "/images/vehicles/Compass.png",
-    description: "Un SUV Jeep compact qui associe confort quotidien, technologies modernes et capacites 4x4 pour partir explorer en toute confiance.",
-    specifications: [
-      { icon: "fuel", label: "Motorisation", value: "2.0L Turbo essence" },
-      { icon: "gauge", label: "Puissance maximale", value: "200 hp" },
-      { icon: "settings", label: "Couple maximal", value: "300 N.m" },
-      { icon: "settings", label: "Transmission", value: "8AT · 4x4" },
-      { icon: "ruler", label: "Longueur", value: "4 404 mm" },
-      { icon: "ruler", label: "Empattement", value: "2 636 mm" },
-    ],
-  },
   gladiator: {
     name: "Gladiator",
     category: "Pick-up 4x4",
@@ -62,17 +48,17 @@ const models: Record<string, Model> = {
     ],
   },
   wrangler: {
-    name: "Wrangler",
-    category: "4x4 iconique",
-    image: "/images/vehicles/Wrangler.png",
-    description: "L'icone Jeep concue pour sortir des sentiers battus, avec une motorisation turbo, une transmission automatique et une vraie capacite 4x4.",
+    name: "Wrangler JL",
+    category: "4x4 tout-terrain · 4 portes · 2026",
+    image: "/images/vehicles/Wrangler-JL.png",
+    description: "Le Wrangler JL 2026 conjugue le caractère Jeep, quatre portes et des capacités tout-terrain pour les aventures au quotidien.",
     specifications: [
-      { icon: "fuel", label: "Motorisation", value: "2.0L Turbo essence" },
-      { icon: "gauge", label: "Puissance maximale", value: "270 hp" },
-      { icon: "settings", label: "Couple maximal", value: "400 N.m" },
-      { icon: "settings", label: "Transmission", value: "8AT · 4x4" },
-      { icon: "ruler", label: "Longueur", value: "4 785 mm" },
+      { icon: "fuel", label: "Motorisations selon version", value: "2.0L turbo ou 3.6L V6 essence" },
+      { icon: "gauge", label: "Puissance selon moteur", value: "270 hp (2.0L) ou 285 hp (3.6L)" },
+      { icon: "settings", label: "Transmission", value: "4x4 · boîte selon version" },
+      { icon: "ruler", label: "Longueur avec roue de secours", value: "4 785 mm" },
       { icon: "ruler", label: "Empattement", value: "3 008 mm" },
+      { icon: "settings", label: "Capacité", value: "5 places · 4 portes" },
     ],
   },
 };
@@ -97,6 +83,7 @@ export default async function JeepModelPage({ params }: { params: Promise<{ mode
         <VehicleDetailHero brand="Jeep" name={car.name} category={car.category} logo="/images/brands/Jeep.png" vehicle={car.image} description={car.description} brandFirst />
       </Suspense>
       <VehicleSpecifications brand={`Jeep ${car.name}`} specifications={car.specifications} />
+      {(await params).model === "wrangler" && <p className="mx-auto max-w-7xl px-5 pb-10 text-sm leading-6 text-slate-500 sm:px-8 lg:px-10">Données de référence du Wrangler 2026 à 4 portes (marché nord-américain). Motorisation et équipements à confirmer selon le véhicule disponible. <a className="underline" href="https://s3.amazonaws.com/chryslermedia.iconicweb.com/mediasite/specs/2026_JP_Wrangler_SPl4u58u77eeicb0t51n2lc8s5fg.pdf" target="_blank" rel="noreferrer">Fiche technique constructeur</a>.</p>}
       <section className="bg-[#f8fafc] px-5 py-16 sm:px-8 sm:py-24 lg:px-10">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <div>

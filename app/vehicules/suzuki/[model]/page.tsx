@@ -97,20 +97,6 @@ const models: Record<string, Model> = {
       { icon: "ruler", label: "Empattement", value: "2 590 mm" },
     ],
   },
-  "s-cross": {
-    name: "S-Cross",
-    category: "SUV familial",
-    vehicle: "/images/vehicles/SCross.png",
-    description: "Un crossover Suzuki polyvalent qui associe confort, espace et technologies adaptées aux trajets en famille.",
-    specifications: [
-      { icon: "fuel", label: "Motorisation", value: "1.4L BOOSTERJET" },
-      { icon: "gauge", label: "Puissance maximale", value: "129 hp" },
-      { icon: "settings", label: "Couple maximal", value: "235 N·m" },
-      { icon: "settings", label: "Transmission", value: "Automatique 6 rapports" },
-      { icon: "ruler", label: "Longueur", value: "4 300 mm" },
-      { icon: "ruler", label: "Empattement", value: "2 600 mm" },
-    ],
-  },
 };
 
 export function generateStaticParams() {

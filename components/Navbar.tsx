@@ -121,7 +121,6 @@ const BRANDS: Brand[] = [
       { name: "Across", image: "/images/suzuki/across/across.png" },
       { name: "Jimny", label: "Jimny · Bleu", color: "blue", image: "/images/suzuki/jimny/jimny.png" },
       { name: "Jimny", label: "Jimny · Blanc", color: "white", image: "/images/vehicles/Jimny.png" },
-      { name: "S-Cross", image: "/images/vehicles/SCross.png" },
     ],
   },
   {
@@ -129,10 +128,9 @@ const BRANDS: Brand[] = [
     name: "Jeep",
     image: "/images/brands/Jeep.png",
     vehicles: [
-      { name: "Compass", image: "/images/vehicles/Compass.png" },
       { name: "Gladiator", image: "/images/vehicles/Gladiator.png" },
       { name: "Grand Cherokee", image: "/images/vehicles/GrandCheerokee.png" },
-      { name: "Wrangler", image: "/images/vehicles/Wrangler.png" },
+      { name: "Wrangler", label: "Wrangler JL", image: "/images/vehicles/Wrangler-JL.png" },
     ],
   },
   {
@@ -291,7 +289,7 @@ export default function Navbar() {
                       <div className="mt-4 grid grid-cols-3 gap-3">
                         {brand.vehicles?.map((vehicle) => {
                           const href = vehicleHref(brand, vehicle);
-                          const content = <><div className="relative h-20 overflow-hidden"><Image src={navigationVehicleImage(vehicle.image)} alt={`${brand.name} ${vehicle.name}`} fill sizes="220px" loading="eager" unoptimized className="object-contain" /></div>{vehicle.modelLogo ? <span className="relative mt-2 block h-5 w-24"><Image src={vehicle.modelLogo} alt={vehicle.name} fill sizes="96px" loading="eager" className="object-contain object-left" /></span> : <p className="mt-2 text-xs font-bold text-[#102a56]">{vehicle.label ?? vehicle.name}</p>}</>;
+                          const content = <><div className="relative h-20 overflow-hidden"><Image src={navigationVehicleImage(vehicle.image)} alt={`${brand.name} ${vehicle.name}`} fill sizes="220px" loading="eager" unoptimized className={`object-contain ${vehicle.image === "/images/vehicles/Wrangler-JL.png" ? "scale-125" : ""}`} /></div>{vehicle.modelLogo ? <span className="relative mt-2 block h-5 w-24"><Image src={vehicle.modelLogo} alt={vehicle.name} fill sizes="96px" loading="eager" className="object-contain object-left" /></span> : <p className="mt-2 text-xs font-bold text-[#102a56]">{vehicle.label ?? vehicle.name}</p>}</>;
                           return <Link key={vehicle.image} href={href} onClick={() => { window.scrollTo(0, 0); closeBrandsMenu(); }} className="rounded-xl p-2.5 transition-colors hover:bg-slate-50">{content}</Link>;
                         })}
                       </div>
@@ -376,7 +374,7 @@ export default function Navbar() {
                           <div className="mt-3 grid grid-cols-2 gap-2">
                             {brand.vehicles?.map((vehicle) => {
                               const href = vehicleHref(brand, vehicle);
-                              const content = <><div className="relative h-16"><Image src={navigationVehicleImage(vehicle.image)} alt={`${brand.name} ${vehicle.name}`} fill sizes="150px" loading="eager" unoptimized className="object-contain" /></div>{vehicle.modelLogo ? <span className="relative mt-1 block h-4 w-20"><Image src={vehicle.modelLogo} alt={vehicle.name} fill sizes="80px" loading="eager" className="object-contain object-left" /></span> : <p className="mt-1 text-xs font-bold text-[#102a56]">{vehicle.label ?? vehicle.name}</p>}</>;
+                              const content = <><div className={`relative h-16 ${vehicle.image === "/images/vehicles/Wrangler-JL.png" ? "overflow-hidden" : ""}`}><Image src={navigationVehicleImage(vehicle.image)} alt={`${brand.name} ${vehicle.name}`} fill sizes="150px" loading="eager" unoptimized className={`object-contain ${vehicle.image === "/images/vehicles/Wrangler-JL.png" ? "scale-125" : ""}`} /></div>{vehicle.modelLogo ? <span className="relative mt-1 block h-4 w-20"><Image src={vehicle.modelLogo} alt={vehicle.name} fill sizes="80px" loading="eager" className="object-contain object-left" /></span> : <p className="mt-1 text-xs font-bold text-[#102a56]">{vehicle.label ?? vehicle.name}</p>}</>;
                               return <Link key={vehicle.image} href={href} onClick={() => { window.scrollTo(0, 0); closeMobileMenu(); }} className="rounded-xl bg-white p-2.5">{content}</Link>;
                             })}
                           </div>

@@ -92,7 +92,6 @@ const BRANDS: Brand[] = [
       { id: "across", name: "Across", category: "SUV hybride rechargeable 4x4", image: "/images/suzuki/across/across.png" },
       { id: "jimny", name: "Jimny", category: "4x4 tout-terrain 5 portes", image: "/images/suzuki/jimny/jimny.png" },
       { id: "jimny-white", name: "Jimny Blanc", category: "4x4 tout-terrain compact", image: "/images/vehicles/Jimny.png" },
-      { id: "s-cross", name: "S-Cross", category: "SUV polyvalent", image: "/images/vehicles/SCross.png" },
     ],
   },
   {
@@ -100,10 +99,9 @@ const BRANDS: Brand[] = [
     name: "Jeep",
     logo: "/images/brands/Jeep.png",
     vehicles: [
-      { id: "compass", name: "Compass", category: "SUV", image: "/images/vehicles/Compass.png" },
       { id: "gladiator", name: "Gladiator", category: "Pick-up", image: "/images/vehicles/Gladiator.png" },
       { id: "grand-cherokee", name: "Grand Cherokee", category: "SUV premium", image: "/images/vehicles/GrandCheerokee.png" },
-      { id: "wrangler", name: "Wrangler", category: "4x4 iconique", image: "/images/vehicles/Wrangler.png" },
+      { id: "wrangler", name: "Wrangler JL", category: "4x4 iconique", image: "/images/vehicles/Wrangler-JL.png" },
     ],
   },
   {
