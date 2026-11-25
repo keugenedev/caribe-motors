@@ -42,7 +42,6 @@ const models: Record<string, Model> = {
     category: "SUV hybride rechargeable 4x4",
     vehicle: "/images/suzuki/across/across-new.png",
     description: "Le grand SUV hybride rechargeable de Suzuki, conçu pour les trajets électriques du quotidien comme pour les longues escapades en 4x4.",
-    gallery: ["/images/suzuki/across/gallery-1.jpg", "/images/suzuki/across/gallery-2.jpg", "/images/suzuki/across/gallery-3.jpg"],
     specifications: [
       { icon: "fuel", label: "Motorisation", value: "2.5L hybride rechargeable" },
       { icon: "gauge", label: "Puissance système", value: "306 ch (225 kW)" },
