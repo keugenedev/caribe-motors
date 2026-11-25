@@ -3,16 +3,7 @@
 import { useMemo, useState } from "react";
 import { Calculator, ChevronRight } from "lucide-react";
 
-type Field = "vehiclePrice" | "insurance" | "downPayment" | "term" | "interestRate";
-type DurationUnit = "months" | "quarters" | "semesters" | "years";
-
-const DURATION_UNITS: Record<DurationUnit, { label: string; months: number }> = {
-  months: { label: "mois", months: 1 },
-  quarters: { label: "trimestres", months: 3 },
-  semesters: { label: "semestres", months: 6 },
-  years: { label: "années", months: 12 },
-};
-
+type Field = "vehiclePrice" | "downPayment" | "term" | "interestRate";
 const currency = new Intl.NumberFormat("fr-HT", {
   style: "currency",
   currency: "USD",
@@ -27,20 +18,16 @@ function toNumber(value: string) {
 export default function FinanceCalculator() {
   const [values, setValues] = useState<Record<Field, string>>({
     vehiclePrice: "",
-    insurance: "",
     downPayment: "",
     term: "",
     interestRate: "",
   });
-  const [durationUnit, setDurationUnit] = useState<DurationUnit>("months");
-
   const result = useMemo(() => {
     const vehiclePrice = toNumber(values.vehiclePrice);
-    const insurance = toNumber(values.insurance);
     const downPayment = Math.min(toNumber(values.downPayment), vehiclePrice);
-    const term = Math.max(1, Math.round(toNumber(values.term) * DURATION_UNITS[durationUnit].months));
+    const term = Math.max(1, Math.round(toNumber(values.term)));
     const interestRate = toNumber(values.interestRate);
-    const insuranceMonthly = insurance / DURATION_UNITS[durationUnit].months;
+    const insurance = (term / 12) * (vehiclePrice * 0.004 * 1.15) + 55;
     const amountFinanced = Math.max(vehiclePrice - downPayment, 0);
     const monthlyRate = interestRate / 100 / 12;
     const loanPayment = monthlyRate === 0
@@ -50,9 +37,10 @@ export default function FinanceCalculator() {
     return {
       amountFinanced,
       loanPayment,
-      monthlyPayment: loanPayment + insuranceMonthly,
+      insurance,
+      monthlyPayment: loanPayment + insurance / term,
     };
-  }, [durationUnit, values]);
+  }, [values]);
 
   const updateValue = (field: Field, value: string) => {
     setValues((current) => ({ ...current, [field]: value }));
@@ -60,7 +48,7 @@ export default function FinanceCalculator() {
 
   const isEstimateComplete = Object.values(values).every((value) => value.trim() !== "");
   const displayCurrency = (value: number) => isEstimateComplete ? currency.format(value) : "—";
-  const insuranceLabel = "Assurance";
+  const insuranceLabel = values.term ? `Assurance sur ${values.term} mois` : "Assurance";
 
   return (
     <div className="mx-auto grid max-w-6xl overflow-hidden border border-slate-200 bg-white sm:grid-cols-2">
@@ -78,9 +66,8 @@ export default function FinanceCalculator() {
 
         <div className="mt-8 grid gap-5 sm:grid-cols-2">
           <InputField id="vehiclePrice" label="Prix du véhicule" value={values.vehiclePrice} onChange={(value) => updateValue("vehiclePrice", value)} prefix="$" inputMode="decimal" />
-          <InputField id="insurance" label={insuranceLabel} value={values.insurance} onChange={(value) => updateValue("insurance", value)} prefix="$" inputMode="decimal" />
-          <InputField id="downPayment" label="Mise de fond (down payment)" value={values.downPayment} onChange={(value) => updateValue("downPayment", value)} prefix="$" inputMode="decimal" />
-          <DurationField value={values.term} onChange={(value) => updateValue("term", value)} unit={durationUnit} onUnitChange={setDurationUnit} />
+          <DurationField value={values.term} onChange={(value) => updateValue("term", value)} />
+          <InputField id="downPayment" label="Apport initial (Down Payment)" value={values.downPayment} onChange={(value) => updateValue("downPayment", value)} prefix="$" inputMode="decimal" help="Apport recommandé : 30 % du prix du véhicule." />
           <InputField id="interestRate" label="Taux d’intérêt annuel" value={values.interestRate} onChange={(value) => updateValue("interestRate", value)} suffix="%" inputMode="decimal" compact />
         </div>
 
@@ -103,7 +90,7 @@ export default function FinanceCalculator() {
           <div className="overflow-hidden border border-white/10 px-5 py-1">
             <SummaryRow label="Montant financé" value={displayCurrency(result.amountFinanced)} />
             <SummaryRow label="Paiement véhicule" value={displayCurrency(result.loanPayment)} />
-            <SummaryRow label={insuranceLabel} value={displayCurrency(toNumber(values.insurance))} />
+            <SummaryRow label={insuranceLabel} value={values.vehiclePrice.trim() && values.term ? currency.format(result.insurance) : "—"} />
           </div>
           <a href="/contact" className="group mt-5 flex w-full items-center justify-center gap-2 bg-[#54b834] px-5 py-3.5 text-sm font-bold text-white transition hover:bg-[#469f2d] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#102a56]">
             Parler à un conseiller
@@ -140,7 +127,6 @@ function InputField({
     <label htmlFor={id} className="block">
       <span className="flex items-start gap-1 text-[13px] font-semibold text-[#102a56]">
         <span className="whitespace-nowrap">{label}</span>
-        {help && <span className="ml-auto whitespace-nowrap text-[10px] font-medium leading-4 text-slate-400">{help}</span>}
       </span>
       <span className={`mt-2 flex ${compact ? "max-w-36" : "w-full"}`}>
         <span className="relative min-w-0 flex-1">
@@ -149,20 +135,19 @@ function InputField({
         </span>
         {suffix && <span className="flex h-12 w-10 shrink-0 items-center justify-center border border-slate-200 bg-slate-100 text-sm font-semibold text-slate-500">{suffix}</span>}
       </span>
+      {help && <span className="mt-1 block text-xs text-slate-500">{help}</span>}
     </label>
   );
 }
 
-function DurationField({ value, onChange, unit, onUnitChange }: { value: string; onChange: (value: string) => void; unit: DurationUnit; onUnitChange: (unit: DurationUnit) => void }) {
+function DurationField({ value, onChange }: { value: string; onChange: (value: string) => void }) {
   return (
     <label htmlFor="term" className="block">
-      <span className="text-sm font-semibold text-[#102a56]">Durée</span>
-      <span className="mt-2 flex max-w-xs">
-        <input id="term" value={value} onChange={(event) => onChange(event.target.value)} inputMode="numeric" min="0" className="h-12 min-w-0 flex-1 border border-r-0 border-slate-200 bg-slate-50 px-4 text-base font-semibold text-[#102a56] outline-none transition focus:border-[#1643aa] focus:bg-white focus:ring-4 focus:ring-[#1643aa]/10" />
-        <select aria-label="Unité de durée" value={unit} onChange={(event) => onUnitChange(event.target.value as DurationUnit)} className="h-12 w-32 border border-slate-200 bg-slate-100 px-2 text-sm font-semibold text-[#102a56] outline-none focus:border-[#1643aa] focus:ring-4 focus:ring-[#1643aa]/10">
-          {Object.entries(DURATION_UNITS).map(([key, option]) => <option key={key} value={key}>{option.label}</option>)}
-        </select>
-      </span>
+      <span className="block text-[13px] font-semibold text-[#102a56]">Durée</span>
+      <select id="term" value={value} onChange={(event) => onChange(event.target.value)} className="mt-2 h-12 w-full border border-slate-200 bg-slate-50 px-4 text-base font-semibold text-[#102a56] outline-none transition focus:border-[#1643aa] focus:bg-white focus:ring-4 focus:ring-[#1643aa]/10">
+        <option value="">Choisir une durée</option>
+        {[12, 24, 46, 60].map((months) => <option key={months} value={months}>{months} mois</option>)}
+      </select>
     </label>
   );
 }

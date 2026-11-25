@@ -77,12 +77,7 @@ const BRANDS: Brand[] = [
     name: "GWM",
     image: "/images/brands/GWM.png",
     vehicles: [
-      { name: "P-Series", label: "P-Series · Gris", color: "silver", image: "/images/nav-thumbnails-v2/gwm-silver.png" },
-      { name: "P-Series", label: "P-Series · Brun", color: "brown", image: "/images/nav-thumbnails-v2/gwm-brown.png" },
-      { name: "P-Series", label: "P-Series · Orange", color: "orange", image: "/images/nav-thumbnails-v2/gwm-orange.png" },
-      { name: "P-Series", label: "P-Series · Rouge", color: "red", image: "/images/nav-thumbnails-v2/gwm-red.png" },
-      { name: "P-Series", label: "P-Series · Bleu", color: "blue", image: "/images/nav-thumbnails-v2/gwm-blue.png" },
-      { name: "P-Series", label: "P-Series · Noir", color: "black", image: "/images/nav-thumbnails-v2/gwm-black.png" },
+      { name: "P-Series", label: "P-Series", color: "silver", image: "/images/nav-thumbnails-v2/gwm-silver.png" },
     ],
   },
   {
@@ -90,12 +85,8 @@ const BRANDS: Brand[] = [
     name: "Haval",
     image: "/images/brands/Haval.png",
     vehicles: [
-      { name: "H7", label: "Haval H7 Â· Vert", color: "green", image: "/images/haval/h7/vert.png" },
-      { name: "H7", label: "Haval H7 Â· Noir", color: "black", image: "/images/haval/h7/noir.png" },
-      { name: "H7", label: "Haval H7 Â· Blanc", color: "white", image: "/images/haval/h7/blanc.png" },
-      { name: "H9", label: "Haval H9 · Bleu", color: "blue", image: "/images/nav-thumbnails-v2/haval-h9-blue.png" },
-      { name: "H9", label: "Haval H9 · Blanc", color: "white", image: "/images/nav-thumbnails-v2/haval-h9-white.png" },
-      { name: "H9", label: "Haval H9 · Noir", color: "black", image: "/images/nav-thumbnails-v2/haval-h9-black.png" },
+      { name: "H7", label: "Haval H7", color: "green", image: "/images/haval/h7/vert.png" },
+      { name: "H9", label: "Haval H9", color: "blue", image: "/images/nav-thumbnails-v2/haval-h9-blue.png" },
     ],
   },
   {
@@ -103,13 +94,8 @@ const BRANDS: Brand[] = [
     name: "Tank",
     image: "/images/brands/Tank.png",
     vehicles: [
-      { name: "Tank 500", label: "Tank 500 · Beige doré", color: "gold", image: "/images/nav-thumbnails-v2/tank-500-gold.png" },
-      { name: "Tank 500", label: "Tank 500 · Argent", color: "silver", image: "/images/nav-thumbnails-v2/tank-500-silver.png" },
-      { name: "Tank 500", label: "Tank 500 · Noir", color: "black", image: "/images/nav-thumbnails-v2/tank-500-black.png" },
-      { name: "Tank 300", label: "Tank 300 · Gris graphite", color: "graphite", image: "/images/nav-thumbnails-v2/tank-300-graphite.png" },
-      { name: "Tank 300", label: "Tank 300 · Orange", color: "orange", image: "/images/nav-thumbnails-v2/tank-300-orange.png?v=20261024-0908" },
-      { name: "Tank 300", label: "Tank 300 · Gris clair", color: "gray", image: "/images/nav-thumbnails-v2/tank-300-gray.png?v=20261024" },
-      { name: "Tank 300", label: "Tank 300 · Blanc", color: "white", image: "/images/nav-thumbnails-v2/tank-300-white.png?v=20261024" },
+      { name: "Tank 500", label: "Tank 500", color: "gold", image: "/images/nav-thumbnails-v2/tank-500-gold.png" },
+      { name: "Tank 300", label: "Tank 300", color: "orange", image: "/images/nav-thumbnails-v2/tank-300-orange.png?v=20261024-0908" },
     ],
   },
   {
