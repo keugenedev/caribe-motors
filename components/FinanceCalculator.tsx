@@ -7,7 +7,8 @@ type Field = "vehiclePrice" | "downPayment" | "term" | "interestRate";
 const currency = new Intl.NumberFormat("fr-HT", {
   style: "currency",
   currency: "USD",
-  maximumFractionDigits: 0,
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
 });
 
 function toNumber(value: string) {
@@ -27,7 +28,7 @@ export default function FinanceCalculator() {
     const downPayment = Math.min(toNumber(values.downPayment), vehiclePrice);
     const term = Math.max(1, Math.round(toNumber(values.term)));
     const interestRate = toNumber(values.interestRate);
-    const insurance = (term / 12) * (vehiclePrice * 0.004 * 1.15) + 55;
+    const insurance = (term / 12) * (vehiclePrice * 0.04 * 1.15) + 55;
     const amountFinanced = Math.max(vehiclePrice - downPayment, 0) + insurance;
     const monthlyRate = interestRate / 100 / 12;
     const loanPayment = monthlyRate === 0
