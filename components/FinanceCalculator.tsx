@@ -28,7 +28,7 @@ export default function FinanceCalculator() {
     const term = Math.max(1, Math.round(toNumber(values.term)));
     const interestRate = toNumber(values.interestRate);
     const insurance = (term / 12) * (vehiclePrice * 0.004 * 1.15) + 55;
-    const amountFinanced = Math.max(vehiclePrice - downPayment, 0);
+    const amountFinanced = Math.max(vehiclePrice - downPayment, 0) + insurance;
     const monthlyRate = interestRate / 100 / 12;
     const loanPayment = monthlyRate === 0
       ? amountFinanced / term
@@ -38,7 +38,7 @@ export default function FinanceCalculator() {
       amountFinanced,
       loanPayment,
       insurance,
-      monthlyPayment: loanPayment + insurance / term,
+      monthlyPayment: loanPayment,
     };
   }, [values]);
 
@@ -51,20 +51,20 @@ export default function FinanceCalculator() {
   const insuranceLabel = values.term ? `Assurance sur ${values.term} mois` : "Assurance";
 
   return (
-    <div className="mx-auto grid max-w-6xl overflow-hidden border border-slate-200 bg-white sm:grid-cols-2">
-      <section className="p-5 sm:p-8" aria-labelledby="finance-form-title">
+    <div className="mx-auto grid max-w-6xl overflow-hidden border border-slate-200 bg-white lg:grid-cols-2">
+      <section className="min-w-0 p-5 sm:p-8" aria-labelledby="finance-form-title">
         <div className="flex items-start gap-4">
           <span className="flex h-12 w-12 shrink-0 items-center justify-center bg-[#eaf3ff] text-[#1643aa]">
             <Calculator className="h-6 w-6" aria-hidden="true" />
           </span>
-          <div>
+          <div className="min-w-0">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#54b834]">Estimation de financement</p>
             <h2 id="finance-form-title" className="mt-1 text-2xl font-bold tracking-tight text-[#102a56]">Configurez votre projet</h2>
             <p className="mt-2 text-sm leading-6 text-slate-500">Modifiez les montants ci-dessous pour voir votre paiement estimé.</p>
           </div>
         </div>
 
-        <div className="mt-8 grid gap-5 sm:grid-cols-2">
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
           <InputField id="vehiclePrice" label="Prix du véhicule" value={values.vehiclePrice} onChange={(value) => updateValue("vehiclePrice", value)} prefix="$" inputMode="decimal" />
           <DurationField value={values.term} onChange={(value) => updateValue("term", value)} />
           <InputField id="downPayment" label="Apport initial (Down Payment)" value={values.downPayment} onChange={(value) => updateValue("downPayment", value)} prefix="$" inputMode="decimal" help="Apport recommandé : 30 % du prix du véhicule." />
@@ -76,12 +76,12 @@ export default function FinanceCalculator() {
         </div>
       </section>
 
-      <aside className="bg-[#102a56] text-white" aria-live="polite">
+      <aside className="min-w-0 bg-[#102a56] text-white" aria-live="polite">
         <div className="px-6 pb-4 pt-5 sm:px-8">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#a9e797]">Estimation personnalisée</p>
           <div className="mt-3 border border-white/15 px-5 py-3.5">
             <p className="text-sm font-medium text-blue-100">Votre paiement mensuel</p>
-            <p className="mt-1 text-4xl font-bold tracking-tight">{displayCurrency(result.monthlyPayment)}</p>
+            <p className="mt-1 break-words text-3xl font-bold tracking-tight sm:text-4xl">{displayCurrency(result.monthlyPayment)}</p>
             <p className="mt-1.5 text-xs text-blue-100">{isEstimateComplete ? "Montant à payer chaque mois, assurance comprise" : "Remplissez les champs pour calculer"}</p>
           </div>
         </div>
@@ -89,7 +89,7 @@ export default function FinanceCalculator() {
         <div className="px-6 pb-6 sm:px-8">
           <div className="overflow-hidden border border-white/10 px-5 py-1">
             <SummaryRow label="Montant financé" value={displayCurrency(result.amountFinanced)} />
-            <SummaryRow label="Paiement véhicule" value={displayCurrency(result.loanPayment)} />
+            <SummaryRow label="Mensualité financée" value={displayCurrency(result.loanPayment)} />
             <SummaryRow label={insuranceLabel} value={values.vehiclePrice.trim() && values.term ? currency.format(result.insurance) : "—"} />
           </div>
           <a href="/contact" className="group mt-5 flex w-full items-center justify-center gap-2 bg-[#54b834] px-5 py-3.5 text-sm font-bold text-white transition hover:bg-[#469f2d] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#102a56]">
@@ -124,9 +124,9 @@ function InputField({
   compact?: boolean;
 }) {
   return (
-    <label htmlFor={id} className="block">
-      <span className="flex items-start gap-1 text-[13px] font-semibold text-[#102a56]">
-        <span className="whitespace-nowrap">{label}</span>
+    <label htmlFor={id} className="block min-w-0">
+      <span className="block text-[13px] font-semibold text-[#102a56]">
+        {label}
       </span>
       <span className={`mt-2 flex ${compact ? "max-w-36" : "w-full"}`}>
         <span className="relative min-w-0 flex-1">
@@ -154,9 +154,9 @@ function DurationField({ value, onChange }: { value: string; onChange: (value: s
 
 function SummaryRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-center justify-between gap-4 border-b border-white/10 py-3.5 text-sm last:border-b-0">
-      <span className="text-blue-100">{label}</span>
-      <span className="font-semibold text-white">{value}</span>
+    <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-b border-white/10 py-3.5 text-sm last:border-b-0">
+      <span className="min-w-0 text-blue-100">{label}</span>
+      <span className="break-words font-semibold text-white">{value}</span>
     </div>
   );
 }

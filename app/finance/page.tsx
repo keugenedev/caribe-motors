@@ -32,13 +32,13 @@ export default function FinancePage() {
         </section>
 
         <section className="px-4 pb-16 sm:px-6 lg:px-8">
-          <div className="mx-auto flex w-full max-w-7xl flex-row items-center justify-between gap-3 rounded-3xl border border-slate-200 bg-white p-4 shadow-sm sm:px-6 sm:py-5">
+          <div className="mx-auto flex w-full max-w-7xl flex-col items-start gap-3 rounded-3xl border border-slate-200 bg-white p-4 shadow-sm sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:px-6 sm:py-5">
             {[
               "Calcul instantané",
               "Assurance incluse",
               "Conseiller à votre écoute",
             ].map((item) => (
-              <div key={item} className="flex items-center gap-3 whitespace-nowrap text-sm leading-6 text-slate-600">
+              <div key={item} className="flex min-w-0 items-center gap-3 text-sm leading-6 text-slate-600">
                 <CheckCircle2 className="h-5 w-5 shrink-0 text-[#54b834]" aria-hidden="true" />
                 <span>{item}</span>
               </div>
